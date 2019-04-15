@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotate : MonoBehaviour
 {
 
-
+    //test - delete
     // Update is called once per frame
     void Update()
     {
