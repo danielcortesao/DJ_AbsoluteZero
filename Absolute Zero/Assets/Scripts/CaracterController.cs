@@ -111,7 +111,7 @@ public class CaracterController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("PickUp"))  //se player colide com um pickup (particula A)
+        if (other.gameObject.CompareTag("ParticulasA"))  //se player colide com um pickup (particula A)
         {
             if (gameObject)  //mudar isto para verificar o tamanho das outras particulas se forem mais pequenas, come
             {
