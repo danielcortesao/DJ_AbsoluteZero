@@ -1,2 +1,3 @@
 # DJ_AbsoluteZero
-porjecto de design de jogos
+Projecto de design de jogos
+
