@@ -24,9 +24,13 @@ public class generateA : MonoBehaviour
             //currentPosition += new Vector3(1f, 0f, 0f);
             
 
-
+            // istantiate an object of the assigned public variable gameObect with coordinates ranging betwen min and max.
             Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
-            Instantiate(A, position, Quaternion.identity);
+            GameObject tmpObj =  Instantiate(A, position, Quaternion.identity);
+
+            // scale the object
+            float size = Random.Range(-1.0f, 1.0f);
+            tmpObj.transform.localScale += new Vector3(size,size, 0);
 
         }
 
