@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ParticulasA
+  - ParticulasB
   layers:
   - Default
   - TransparentFX
