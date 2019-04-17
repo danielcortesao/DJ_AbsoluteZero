@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -112,6 +112,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &143680427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8390895515757063403, guid: a0f76835410a76e46bbd8e23dd96167d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907102529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &143680432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143680427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17cda50f367141ca94d2cd4555a5866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nivelTamanho: 3
+  velocidade: 3
+  chaves:
+    plasma: 0
+    gasoso: 0
+    liquido: 0
+    solido: 0
+  particulasSA:
+    sonar: 0
+    magnetico: 0
+    invisibildade: 0
+    camaraLenta: 0
+  rb: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +829,7 @@ GameObject:
   - component: {fileID: 1535111750}
   - component: {fileID: 1535111752}
   - component: {fileID: 1535111751}
+  - component: {fileID: 1535111753}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -919,6 +951,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1535111753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535111747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e140e4e4d3e49ff93808aec038bde3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nivelTamanho: 0
+  chaves:
+    plasma: 0
+    gasoso: 0
+    liquido: 0
+    solido: 0
+  particulasSA:
+    sonar: 0
+    magnetico: 0
+    invisibildade: 0
+    camaraLenta: 0
+  eventarioPSA:
+    sonar: 0
+    magnetico: 0
+    invisibildade: 0
+    camaraLenta: 0
+  velocidade: 0
+  gravity: 0
+  rb: {fileID: 0}
 --- !u!1001 &1907102529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1067,3 +1130,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2027829284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1735350815351490546, guid: 3d6f787ebb7e9dd469886aeb2dbc87ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 714665015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2027829285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027829284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d028e3230d534092aa2bb2851231a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nivelTamanho: 3
+  velocidade: 3
+  rb: {fileID: 0}
