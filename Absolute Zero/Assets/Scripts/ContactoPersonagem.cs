@@ -15,13 +15,13 @@ public class ContactoPersonagem : MonoBehaviour
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
-                    if(gameObject.transform.localScale.x < 1.0f) { 
+                    if(gameObject.transform.localScale.x < 1.3f) { 
                         gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                     }
                 }
                 else
                 {//Se Player < outro objecto
-                    if (gameObject.transform.localScale.x >= 0.1)
+                    if (gameObject.transform.localScale.x >= 0.4)
                     {
                         gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
                     }

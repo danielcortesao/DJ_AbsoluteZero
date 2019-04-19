@@ -14,7 +14,7 @@ public class ContactoA : MonoBehaviour
                     //Particle A <= Player 
                 if (gameObject.transform.localScale.x <= other.transform.localScale.x)
                 {
-                    if(gameObject.transform.localScale.x < 0.1f) { 
+                    if(gameObject.transform.localScale.x <= 0.3f) { 
                         Destroy(gameObject);
                     }
                     else{
@@ -23,7 +23,7 @@ public class ContactoA : MonoBehaviour
                 }
                 else
                 {   //Particle A > Player
-                    if (gameObject.transform.localScale.x < 1.0f)
+                    if (gameObject.transform.localScale.x < 1.4f)
                     {
                         gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                     }

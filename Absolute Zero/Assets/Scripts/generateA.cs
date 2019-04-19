@@ -29,7 +29,7 @@ public class generateA : MonoBehaviour
             GameObject tmpObj =  Instantiate(A, position, Quaternion.identity);
 
             // scale the object
-            float size = Random.Range(0.1f, 0.7f);
+            float size = Random.Range(0.0f, 1.1f) + 0.3f;
             tmpObj.transform.localScale = new Vector3(size,size, 0);
 
         }
