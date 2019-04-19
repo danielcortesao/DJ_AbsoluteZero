@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ParticulasA
   - ParticulasB
+  - PSA
   layers:
   - Default
   - TransparentFX

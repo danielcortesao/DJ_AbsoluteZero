@@ -108,29 +108,29 @@ public class CaracterController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
 
-        if (other.gameObject.CompareTag("ParticulasA") || other.gameObject.CompareTag("ParticulasB"))  //se player colide com um pickup (particula A)
-        {
-            if (gameObject)  //mudar isto para verificar o tamanho das outras particulas se forem mais pequenas, come
-            {
-                //Destroy(other.gameObject);
-                rb.mass++; //gain mass , it gets slow
-                speed--;
-                other.gameObject.SetActive(false); //poe o pickup (particula a a desaparecer do vista
-                count++;
-                setCountText();
+    //     if (other.gameObject.CompareTag("ParticulasA") || other.gameObject.CompareTag("ParticulasB"))  //se player colide com um pickup (particula A)
+    //     {
+    //         if (gameObject)  //mudar isto para verificar o tamanho das outras particulas se forem mais pequenas, come
+    //         {
+    //             //Destroy(other.gameObject);
+    //             rb.mass++; //gain mass , it gets slow
+    //             speed--;
+    //             other.gameObject.SetActive(false); //poe o pickup (particula a a desaparecer do vista
+    //             count++;
+    //             setCountText();
 
-                transform.localScale += new Vector3(0.1F, 0.1F, 0);
-            }
-            else
-            {
+    //             transform.localScale += new Vector3(0.1F, 0.1F, 0);
+    //         }
+    //         else
+    //         {
 
-            }
-        }
+    //         }
+    //     }
 
-    }
+    // }
 
     void setCountText()
     {

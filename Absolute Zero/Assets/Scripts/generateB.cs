@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class generateA : MonoBehaviour   
+public class generateB : MonoBehaviour   
 {
 
-    public GameObject A;
+    public GameObject B;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +26,10 @@ public class generateA : MonoBehaviour
 
             // istantiate an object of the assigned public variable gameObect with coordinates ranging betwen min and max.
             Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
-            GameObject tmpObj =  Instantiate(A, position, Quaternion.identity);
+            GameObject tmpObj =  Instantiate(B, position, Quaternion.identity);
 
             // scale the object
-            float size = Random.Range(0.1f, 0.7f);
+            float size = Random.Range(0.1f, 0.6f);
             tmpObj.transform.localScale = new Vector3(size,size, 0);
 
         }
