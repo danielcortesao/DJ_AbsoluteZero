@@ -91,18 +91,18 @@ public class GeradorDeCamadas : MonoBehaviour {
 
 	void createA(double x, double y, int size){
 		Vector3 position = new Vector3((float)x,(float)y,0);
-		Quaternion rotation = Quaternion.Euler(90, 0, 0);
+		Quaternion rotation = Quaternion.Euler(0, 0, 0);
 		GameObject newA = Instantiate(particulaA, position, rotation, gameObject.transform);
-		newA.transform.localScale = new Vector3((float)size, 0.1f, (float)size);
+		newA.transform.localScale = new Vector3((float)size, (float)size, 0.1f);
 		newA.SetActive(true);
 		//newA.transform.position = new Vector3((float)x, (float)y, -1.6f);
 	}
 
 	void createB(double x, double y, int size, int type){
 		Vector3 position = new Vector3((float)x,(float)y,0);
-		Quaternion rotation = Quaternion.Euler(90, 0, 0);
+		Quaternion rotation = Quaternion.Euler(0, 0, 0);
 		GameObject newB = Instantiate(particulaB, position, rotation, gameObject.transform);
-		newB.transform.localScale = new Vector3((float)size, 0.1f, (float)size);
+		newB.transform.localScale = new Vector3((float)size, (float)size, 0.1f);
 		newB.SetActive(true);
 	}
 
