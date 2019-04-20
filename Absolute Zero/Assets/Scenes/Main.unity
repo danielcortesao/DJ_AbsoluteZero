@@ -796,13 +796,13 @@ MonoBehaviour:
     plasma: 0
     gasoso: 0
     liquido: 0
-    solido: 0
-  particulasSA:
+    solido: 1
+  eventarioPSA:
     sonar: 0
     magnetico: 0
     invisibildade: 0
     camaraLenta: 0
-  eventarioPSA:
+  PSAActivas:
     sonar: 0
     magnetico: 0
     invisibildade: 0

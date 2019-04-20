@@ -54,8 +54,8 @@ public class personagem : MonoBehaviour
     // } 
     private float tamanho; 
     public Chaves chaves;
-    public ParticulasSA particulasSA;
     public EventarioPSA eventarioPSA;
+    public ParticulasSA PSAActivas;
     public float velocidade;
     public float gravity;
     // public Boundary2D boundary2d;
