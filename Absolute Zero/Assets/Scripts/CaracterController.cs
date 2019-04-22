@@ -94,17 +94,23 @@ public class CaracterController : MonoBehaviour
 
     void ArrowMove()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");  //vai buscar as coordenadas xx usando as arrow keys
-        float moveVertical = Input.GetAxis("Vertical");
+        //float moveHorizontal = Input.GetAxis("Horizontal");  //vai buscar as coordenadas xx usando as arrow keys
+        //float moveVertical = Input.GetAxis("Vertical");
 
         //float moveHorizontal = Input.GetAxis("Mouse X") * mouseSensitivityX * Time.deltaTime;
         //float moveVertical = Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
         //float moveVertical = Input.GetMouseButtonDown(1.0);
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
         //transform.Translate(dir);
-        rb.AddForce(movement * speed); //adiciona uma forca ao rigidbody 
+        //rb.AddForce(movement * speed); //adiciona uma forca ao rigidbody 
+
+        var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        transform.position += move * speed * Time.deltaTime;
+        
+           
+        
     }
 
 

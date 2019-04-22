@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ContactoB : MonoBehaviour
 {
-    public GameObject criaParticulas;
+    public GameObject C;
+    public GameObject B; // para o controlo de particulas
     private float timeLastImpact = 0.9f;
     private Rigidbody2D rb;
     private float deltaTime = 1.0f;
