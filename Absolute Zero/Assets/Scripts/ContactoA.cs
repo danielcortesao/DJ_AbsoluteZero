@@ -5,13 +5,14 @@ using UnityEngine;
 public class ContactoA : MonoBehaviour
 {
     public GameObject A; // para o controlo de particulas
-    private float timeLastImpact = -0.9f;
+    private float timeLastImpact = -0.4f;
+    private float deltaTime = 0.5f;
     void OnCollisionEnter2D(Collision2D other)
     {
         
         if(other.gameObject.CompareTag("Player")){
            //Correr apenas se passou 1 segundo
-            if(Time.time >= timeLastImpact + 1f){
+            if(Time.time >= timeLastImpact + deltaTime){
                     //Particle A <= Player 
                 if (gameObject.transform.localScale.x <= other.transform.localScale.x)
                 {

@@ -4,7 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - criaParticulas: {instanceID: 0}
   - C: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933, type: 3}
+  - B: {fileID: 8390895515757063403, guid: a0f76835410a76e46bbd8e23dd96167d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

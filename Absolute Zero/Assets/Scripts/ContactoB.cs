@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ContactoB : MonoBehaviour
 {
+    public GameObject criaParticulas;
     public GameObject C;
     public GameObject B; // para o controlo de particulas
-    private float timeLastImpact = 0.9f;
+    private float timeLastImpact = -0.4f;
     private Rigidbody2D rb;
-    private float deltaTime = 1.0f;
+    private float deltaTime = 0.5f;
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player")){

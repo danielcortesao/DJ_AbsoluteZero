@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ContactoPersonagem : MonoBehaviour
 {
-    private float timeLastImpact = -0.9f;
+    private float timeLastImpact = -0.4f;
+    private float deltaTime = 0.5f;
     public GameObject[] allObjectsC;
 
     void OnCollisionEnter2D(Collision2D other)
     {   //Correr apenas se passou 1 segundo
-        if(Time.time >= timeLastImpact + 1f){
+        if(Time.time >= timeLastImpact + deltaTime){
 
             if(other.gameObject.CompareTag("ParticulasA")){
                 Debug.Log(other.gameObject.name);
