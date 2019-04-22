@@ -5,6 +5,7 @@ using UnityEngine;
 public class ContactoB : MonoBehaviour
 {
     public GameObject C;
+    public GameObject B; // para o controlo de particulas
     private float timeLastImpact = 0.9f;
     private Rigidbody2D rb;
     void OnCollisionEnter2D(Collision2D other)
@@ -24,6 +25,16 @@ public class ContactoB : MonoBehaviour
                         //Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
                         GameObject tmpObj =  Instantiate(C, rb.position, Quaternion.identity);
                     }
+                    // controlo de particulas
+                    float minX = -8.0f;
+                    float maxX = -2.0f;
+                    float minY = -4.0f;
+                    float maxY = 4.0f;
+                    float Z = -1.0f;
+
+                    Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
+                    GameObject tmpObj2 = Instantiate(B, position, Quaternion.identity);
+                    // fim de controlo de particulas
                     Destroy(gameObject);
                 }
                 else

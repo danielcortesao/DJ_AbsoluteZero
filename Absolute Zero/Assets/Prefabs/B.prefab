@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   C: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933, type: 3}
+  B: {fileID: 8390895515757063403}
 --- !u!58 &167018542031991892
 CircleCollider2D:
   m_ObjectHideFlags: 0
