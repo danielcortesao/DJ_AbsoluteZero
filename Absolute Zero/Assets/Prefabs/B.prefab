@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7628878278162589947}
   - component: {fileID: 9145158809081441326}
   - component: {fileID: 4877070063390992607}
+  - component: {fileID: 1577156044397247252}
   - component: {fileID: 1493649286123614468}
   - component: {fileID: 167018542031991892}
   m_Layer: 0
@@ -116,6 +117,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd464472cc19ea4db2b339c8acb086d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1577156044397247252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390895515757063403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17cda50f367141ca94d2cd4555a5866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nivelTamanho: 3
+  velocidade: 5
+  chaves:
+    plasma: 0
+    gasoso: 0
+    liquido: 0
+    solido: 0
+  particulasSA:
+    sonar: 1
+    magnetico: 1
+    invisibildade: 1
+    camaraLenta: 1
+  rb: {fileID: 0}
 --- !u!114 &1493649286123614468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3780a8465c78e45eda12e412e0405f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  C: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933, type: 3}
+  criaParticulas: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933,
+    type: 3}
 --- !u!58 &167018542031991892
 CircleCollider2D:
   m_ObjectHideFlags: 0

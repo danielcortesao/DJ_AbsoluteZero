@@ -11,7 +11,7 @@ using UnityEngine;
 [System.Serializable]
 public class Chaves
 {
-    public bool plasma = false,gasoso = false, liquido = false, solido = false;
+    public bool plasma,gasoso, liquido, solido;
     //Constructores Chaves
     public Chaves(){
     }

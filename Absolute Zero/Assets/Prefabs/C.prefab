@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 4128499159178324221}
   - component: {fileID: 7628878278162589947}
   - component: {fileID: 9145158809081441326}
+  - component: {fileID: 4988911774358405462}
   - component: {fileID: 167018542031991892}
   - component: {fileID: 4877070063390992607}
   m_Layer: 0
   m_Name: C
-  m_TagString: ParticulasB
+  m_TagString: ParticulasC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +104,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4988911774358405462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390895515757063403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1dfee82b70fc4dc4a56df1793444ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ativa: 1
+  chaves:
+    plasma: 0
+    gasoso: 0
+    liquido: 0
+    solido: 0
+  particulasSA:
+    sonar: 0
+    magnetico: 0
+    invisibildade: 0
+    camaraLenta: 0
+  rb: {fileID: 0}
 --- !u!58 &167018542031991892
 CircleCollider2D:
   m_ObjectHideFlags: 0

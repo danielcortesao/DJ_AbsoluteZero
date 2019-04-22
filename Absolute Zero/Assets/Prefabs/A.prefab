@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nivelTamanho: 3
-  velocidade: 3
+  velocidade: 4
   rb: {fileID: 0}
 --- !u!114 &280661106546910114
 MonoBehaviour:

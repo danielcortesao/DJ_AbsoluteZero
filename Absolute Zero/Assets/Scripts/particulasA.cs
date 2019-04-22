@@ -8,9 +8,9 @@ public class particulasA : MonoBehaviour
     public Rigidbody2D rb;
 
     //Constructores particulas A
-        public particulasA(){
+    public particulasA(){
         nivelTamanho = 3;
-        velocidade = 3;
+        velocidade = 4;
     }
     public particulasA(int tam, float vel){
         nivelTamanho = tam;

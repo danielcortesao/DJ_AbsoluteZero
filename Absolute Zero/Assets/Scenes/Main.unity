@@ -796,7 +796,7 @@ MonoBehaviour:
     plasma: 0
     gasoso: 0
     liquido: 0
-    solido: 1
+    solido: 0
   eventarioPSA:
     sonar: 0
     magnetico: 0
@@ -822,6 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb613e3ef03c43fe9ee708e7cffd3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allObjectsC: []
 --- !u!58 &1535111755
 CircleCollider2D:
   m_ObjectHideFlags: 0

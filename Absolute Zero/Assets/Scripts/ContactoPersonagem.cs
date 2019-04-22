@@ -5,13 +5,14 @@ using UnityEngine;
 public class ContactoPersonagem : MonoBehaviour
 {
     private float timeLastImpact = -0.9f;
+    public GameObject[] allObjectsC;
 
     void OnCollisionEnter2D(Collision2D other)
     {   //Correr apenas se passou 1 segundo
         if(Time.time >= timeLastImpact + 1f){
 
             if(other.gameObject.CompareTag("ParticulasA")){
-                        Debug.Log(other.gameObject.name);
+                Debug.Log(other.gameObject.name);
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
@@ -29,7 +30,7 @@ public class ContactoPersonagem : MonoBehaviour
                 timeLastImpact = Time.time;
             } 
             else if(other.gameObject.CompareTag("ParticulasB")){
-                        Debug.Log(other.gameObject.name);
+                 Debug.Log(other.gameObject.name);
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
@@ -41,11 +42,40 @@ public class ContactoPersonagem : MonoBehaviour
                 }
                 timeLastImpact = Time.time;
             }
-            else if(other.gameObject.name == "PSA"){
+            else if(other.gameObject.CompareTag("ParticulasC")){
+                Debug.Log("Particula C" + other.gameObject.name);
+                //se está activa, as personagem ganha essa chave / PSA
+                if(other.gameObject.GetComponent<particulasC>().ativa == true)
+                    {
+                        Debug.Log("ganha chave/PSA");
+                        if(other.gameObject.GetComponent<particulasC>().chaves.plasma == true){
+                            gameObject.GetComponent<personagem>().chaves.plasma = true;}
+                        else if(other.gameObject.GetComponent<particulasC>().chaves.gasoso == true){
+                            gameObject.GetComponent<personagem>().chaves.gasoso = true;}
+                        else if(other.gameObject.GetComponent<particulasC>().chaves.liquido == true){
+                            gameObject.GetComponent<personagem>().chaves.liquido = true;}
+                        else if(other.gameObject.GetComponent<particulasC>().chaves.solido == true){
+                            gameObject.GetComponent<personagem>().chaves.solido = true;}
 
-            }
-             else if(other.gameObject.name == "Chaves"){
+                        else if(other.gameObject.GetComponent<particulasC>().particulasSA.sonar == true){
+                            gameObject.GetComponent<personagem>().eventarioPSA.sonar += 1;}
+                        else if(other.gameObject.GetComponent<particulasC>().particulasSA.magnetico == true){
+                            gameObject.GetComponent<personagem>().eventarioPSA.magnetico += 1;}
+                        else if(other.gameObject.GetComponent<particulasC>().particulasSA.invisibildade == true){
+                            gameObject.GetComponent<personagem>().eventarioPSA.invisibildade += 1;}
+                        else if(other.gameObject.GetComponent<particulasC>().particulasSA.camaraLenta == true){
+                            gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta += 1;}
 
+                        // descativa todas as particulas C
+                        allObjectsC = GameObject.FindGameObjectsWithTag("ParticulasC");
+                            foreach(GameObject go in allObjectsC){
+                                go.gameObject.GetComponent<particulasC>().ativa = false;
+                            }
+                       Destroy(other.gameObject);
+                    }
+                    timeLastImpact = Time.time;
+
+                
             }
         }
         //Destroy(gameObject);
