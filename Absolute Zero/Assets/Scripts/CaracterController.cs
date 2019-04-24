@@ -35,9 +35,6 @@ public class CaracterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        count = 0;
-        setCountText();
-        winText.text = "";
         // Move the Snake every 300ms
         //InvokeRepeating("Move", 0.3f, 0.3f);
         rb = GetComponent<Rigidbody2D>(); //vai buscar o componente rigidbody2d
@@ -137,14 +134,6 @@ public class CaracterController : MonoBehaviour
     //     }
 
     // }
-
-    void setCountText()
-    {
-        countText.text = "Count: " + count.ToString();
-        if (count >= 5)
-            winText.text = "You Win!";
-    }
-
 
     /*
          private  float distance_to_screen;

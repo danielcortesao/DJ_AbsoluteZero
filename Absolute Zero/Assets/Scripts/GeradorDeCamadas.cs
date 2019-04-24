@@ -96,6 +96,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		newA.transform.localScale = new Vector3((float)size, (float)size, 0.1f);
 		newA.SetActive(true);
 		//newA.transform.position = new Vector3((float)x, (float)y, -1.6f);
+		//newA.GetComponent.particulaA().nivelTamanho = size;
 	}
 
 	void createB(double x, double y, int size, int type){
@@ -104,6 +105,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		GameObject newB = Instantiate(particulaB, position, rotation, gameObject.transform);
 		newB.transform.localScale = new Vector3((float)size, (float)size, 0.1f);
 		newB.SetActive(true);
+		//newB.GetComponent.particulaB().nivelTamanho = size;
 	}
 
 	//________________________________________________________________________________________________
