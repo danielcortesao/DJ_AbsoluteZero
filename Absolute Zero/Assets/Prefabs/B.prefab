@@ -142,6 +142,7 @@ MonoBehaviour:
     invisibildade: 1
     camaraLenta: 1
   rb: {fileID: 0}
+  ChaseDistance: 10
 --- !u!114 &1493649286123614468
 MonoBehaviour:
   m_ObjectHideFlags: 0

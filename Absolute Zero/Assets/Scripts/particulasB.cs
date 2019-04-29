@@ -11,6 +11,27 @@ public class particulasB : MonoBehaviour
     public ParticulasSA particulasSA;
     public Rigidbody2D rb;
 
+    
+    public float ChaseDistance; //alcance da particula b (distancia apartir do qual a B começa a perseguir o personagem
+    private Transform target; // alvo que B vai perseguir (neste caso é sempre a personagem)
+    private bool contacto = false;
+    private float timeLeft = 10.0f;
+
+
+    private float latestDirectionChangeTime;
+    private readonly float directionChangeTime = 3f;
+    private Vector2 movementDirection;
+    private Vector2 movementPerSecond;
+
+
+    
+
+    
+
+   
+
+
+
     //Constructores particulas B
     public particulasB(){
         nivelTamanho = 3;
@@ -30,7 +51,135 @@ public class particulasB : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //poe o alvo a perseguir
+         
+        latestDirectionChangeTime = 0f; // para movB
+        calcuateNewMovementVector();
     }
+
+    void Update()
+    {
+        //codigo para perseguir personagem();
+        PerseguePersonagem();
+        ResetContacto();
+        //fim de codigo para perseguir personagem
+
+        //codigo para movimentr B
+        MovB();
+        //fim de codigo para movimentar B
+        
+    }
+
+    void MovB()
+    {
+        //if the changeTime was reached, calculate a new movement vector
+        if (Time.time - latestDirectionChangeTime > directionChangeTime)
+        {
+            latestDirectionChangeTime = Time.time;
+            calcuateNewMovementVector();
+        }
+
+
+
+        //move enemy: 
+        //implemementar condição para ficar dentro dos limites.
+        Vector2 norte = new Vector2(0.0f, 6.0f);
+        Vector2 sul = new Vector2(0.0f, -4.0f);
+        Vector2 este = new Vector2(8.0f, 0.0f);
+        Vector2 oeste = new Vector2(-8.0f, 0.0f);
+            
+        
+
+        if (transform.position.y >= norte.y)
+            movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), -1.0f).normalized;
+        if (transform.position.y <= sul.y)
+            movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), 1.0f).normalized;
+        if (transform.position.x >= este.x)
+            movementDirection = new Vector2(-1.0f, Random.Range(-1.0f, 1.0f)).normalized;
+        if (transform.position.x <= oeste.x)
+            movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
+
+        movementPerSecond = movementDirection * velocidade;
+
+        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
+        transform.position.y + (movementPerSecond.y * Time.deltaTime));
+    }
+
+    
+
+
+    void calcuateNewMovementVector()
+    {
+        //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
+        movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+        movementPerSecond = movementDirection * velocidade;
+    }
+
+    /*
+
+        public class Example : MonoBehaviour {
+        public float speed = 5.0f;
+        public Vector3 direction;
+
+        void Start() 
+        {
+            direction = (new Vector3(Random.Range(-1.0f,1.0f), Random.Range(-1.0f,1.0f),0.0f)).normalized;
+            transform.Rotate(direction);
+        }
+
+        void Update()
+        {
+            Vector3 newPos = transform.position + direction * speed * Time.deltaTime;
+            rigidbody.MovePosition (newPos);
+        }
+
+        void OnCollisionEnter (Collision col)
+        {
+            Debug.Log ("Collision");
+            if (col.gameObject.tag == "Muri")   
+            {
+                direction = col.contacts[0].normal;
+                direction = Quaternion.AngleAxis(Random.Range(-70.0f, 70.0f), Vector3.forward) * direction;
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
+        }
+    }
+
+
+       */
+
+    void ResetContacto()
+    {
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            contacto = false;
+            timeLeft = 10.0f;
+        }
+        
+    }
+
+    void PerseguePersonagem()
+    {
+        
+        if (contacto == false)
+        {
+           
+
+            if (gameObject.transform.localScale.x >= target.transform.localScale.x) // se B for maior que persongame vai perseguir
+                if (Vector2.Distance(transform.position, target.position) < ChaseDistance) // B persegue desde que este no seu aclance
+                    if (Vector2.Distance(transform.position, target.position) > 0.5)  //para de perseguir  esta distancia
+                {
+                        if (Vector2.Distance(transform.position, target.position) <= 1)
+                            contacto = true;
+
+                        transform.position = Vector2.MoveTowards(transform.position, target.position, velocidade * Time.deltaTime);
+                }
+            
+        }
+
+    }
+
 
     public int qtdChaves(){
         int filhos = 0;
