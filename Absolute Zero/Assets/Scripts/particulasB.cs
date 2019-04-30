@@ -85,10 +85,10 @@ public class particulasB : MonoBehaviour
 
         //move enemy: 
         //implemementar condição para ficar dentro dos limites.
-        Vector2 norte = new Vector2(0.0f, 6.0f);
-        Vector2 sul = new Vector2(0.0f, -4.0f);
-        Vector2 este = new Vector2(8.0f, 0.0f);
-        Vector2 oeste = new Vector2(-8.0f, 0.0f);
+        Vector2 norte = new Vector2(0.0f, 30.0f);
+        Vector2 sul = new Vector2(0.0f, -20.0f);
+        Vector2 este = new Vector2(40.0f, 0.0f);
+        Vector2 oeste = new Vector2(-40.0f, 0.0f);
             
         
 
@@ -174,7 +174,7 @@ public class particulasB : MonoBehaviour
             rb.AddForce(direction * force); // Adding the force to the player 
         }
         else{// se B for menor que personagem é repelida 
-            rb.AddForce(direction * force); // Adding the force to the player 
+            rb.AddForce(-direction * force); // Adding the force to the player 
         }
 
         // if (contacto == false)
