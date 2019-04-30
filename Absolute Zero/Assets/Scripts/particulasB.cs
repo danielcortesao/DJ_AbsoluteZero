@@ -163,6 +163,7 @@ public class particulasB : MonoBehaviour
 
     void PerseguePersonagem()
     {
+        //http://forum.brackeys.com/thread/2d-planetary-gravity/
         float mass1 = rb.mass; // Planets mass
         float mass2 = rb_target.mass; // this is 10, its Player mass
         Vector2 direction = transform.position - target.transform.position; // Direction to apply the force
