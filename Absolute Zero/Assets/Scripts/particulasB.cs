@@ -10,7 +10,8 @@ public class particulasB : MonoBehaviour
     public Chaves chaves;
     public ParticulasSA particulasSA;
     public Rigidbody2D rb;
-
+    public Rigidbody2D rb_target;
+    const float G = 6.674f * (10 ^ 11); // Gravitational constant
     
     public float ChaseDistance; //alcance da particula b (distancia apartir do qual a B começa a perseguir o personagem
     private Transform target; // alvo que B vai perseguir (neste caso é sempre a personagem)
@@ -52,7 +53,8 @@ public class particulasB : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //poe o alvo a perseguir
-         
+        rb_target = target.GetComponent<Rigidbody2D>();
+
         latestDirectionChangeTime = 0f; // para movB
         calcuateNewMovementVector();
     }
@@ -161,22 +163,34 @@ public class particulasB : MonoBehaviour
 
     void PerseguePersonagem()
     {
-        
-        if (contacto == false)
-        {
+        float mass1 = rb.mass; // Planets mass
+        float mass2 = rb_target.mass; // this is 10, its Player mass
+        Vector2 direction = transform.position - target.transform.position; // Direction to apply the force
+        float dist = Vector2.Distance(transform.position, target.transform.position); // Distance between player and planet
+        float force = G * ((mass1 * mass2) / (dist * dist)); // The force that should be applied
+        Debug.Log(force);
+        if (gameObject.transform.localScale.x >= target.transform.localScale.x){ // se B for maior que personagem atrai personagem
+            rb.AddForce(direction * force); // Adding the force to the player 
+        }
+        else{// se B for menor que personagem é repelida 
+            rb.AddForce(direction * force); // Adding the force to the player 
+        }
+
+        // if (contacto == false)
+        // {
            
 
-            if (gameObject.transform.localScale.x >= target.transform.localScale.x) // se B for maior que persongame vai perseguir
-                if (Vector2.Distance(transform.position, target.position) < ChaseDistance) // B persegue desde que este no seu aclance
-                    if (Vector2.Distance(transform.position, target.position) > 0.5)  //para de perseguir  esta distancia
-                {
-                        if (Vector2.Distance(transform.position, target.position) <= 1)
-                            contacto = true;
+        //     if (gameObject.transform.localScale.x >= target.transform.localScale.x) // se B for maior que persongame vai perseguir
+        //         if (Vector2.Distance(transform.position, target.position) < ChaseDistance) // B persegue desde que este no seu aclance
+        //             if (Vector2.Distance(transform.position, target.position) > 0.5)  //para de perseguir  esta distancia
+        //             {
+        //                 if (Vector2.Distance(transform.position, target.position) <= 1)
+        //                     contacto = true;
 
-                        transform.position = Vector2.MoveTowards(transform.position, target.position, velocidade * Time.deltaTime);
-                }
+        //                 transform.position = Vector2.MoveTowards(transform.position, target.position, velocidade * Time.deltaTime);
+        //             }
             
-        }
+        // }
 
     }
 
