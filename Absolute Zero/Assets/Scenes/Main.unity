@@ -823,6 +823,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allObjectsC: []
+  criaParticulas: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933,
+    type: 3}
 --- !u!58 &1535111755
 CircleCollider2D:
   m_ObjectHideFlags: 0

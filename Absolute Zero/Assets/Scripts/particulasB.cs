@@ -11,7 +11,7 @@ public class particulasB : MonoBehaviour
     public ParticulasSA particulasSA;
     public Rigidbody2D rb;
     public Rigidbody2D rb_target;
-    const float G = 6.674f * (10 ^ 11); // Gravitational constant
+    const float G = 10f * (10 ^ 11); // Gravitational constant
     
     public float ChaseDistance; //alcance da particula b (distancia apartir do qual a B começa a perseguir o personagem
     private Transform target; // alvo que B vai perseguir (neste caso é sempre a personagem)
@@ -23,15 +23,7 @@ public class particulasB : MonoBehaviour
     private readonly float directionChangeTime = 3f;
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
-
-
-    
-
-    
-
-   
-
-
+    private ArrayList filhosB = new ArrayList();
 
     //Constructores particulas B
     public particulasB(){
@@ -61,8 +53,8 @@ public class particulasB : MonoBehaviour
 
     void Update()
     {
-        //codigo para perseguir personagem();
-        PerseguePersonagem();
+        //codigo para  personagem();
+        forcaGravitica();
         ResetContacto();
         //fim de codigo para perseguir personagem
 
@@ -161,7 +153,7 @@ public class particulasB : MonoBehaviour
         
     }
 
-    void PerseguePersonagem()
+    void forcaGravitica()
     {
         //http://forum.brackeys.com/thread/2d-planetary-gravity/
         float mass1 = rb.mass; // Planets mass
@@ -169,12 +161,12 @@ public class particulasB : MonoBehaviour
         Vector2 direction = transform.position - target.transform.position; // Direction to apply the force
         float dist = Vector2.Distance(transform.position, target.transform.position); // Distance between player and planet
         float force = G * ((mass1 * mass2) / (dist * dist)); // The force that should be applied
-        Debug.Log(force);
+//        Debug.Log(force);
         if (gameObject.transform.localScale.x >= target.transform.localScale.x){ // se B for maior que personagem atrai personagem
-            rb.AddForce(direction * force); // Adding the force to the player 
+            rb.AddForce(-direction * force); // Adding the force to the player 
         }
         else{// se B for menor que personagem é repelida 
-            rb.AddForce(-direction * force); // Adding the force to the player 
+            rb.AddForce(direction * force); // Adding the force to the player 
         }
 
         // if (contacto == false)
@@ -206,6 +198,35 @@ public class particulasB : MonoBehaviour
         filhos = CountTrue(particulasSA.sonar, particulasSA.magnetico, particulasSA.invisibildade, particulasSA.camaraLenta);
         return filhos;
     }
+    public int qtdFilhosB(){
+        int filhos = 0;
+        filhos = CountTrue(chaves.plasma, chaves.gasoso,chaves.liquido, chaves.solido,particulasSA.sonar, particulasSA.magnetico, particulasSA.invisibildade, particulasSA.camaraLenta);
+        return filhos;
+    }
+    public ArrayList arrayFilhosB(){
+        if(chaves.plasma == true){filhosB.Add(("plasma"));}
+        if(chaves.gasoso == true){filhosB.Add(("gasoso"));}
+        if(chaves.liquido == true){filhosB.Add(("liquido"));}
+        if(chaves.solido == true){filhosB.Add(("solido"));}
+
+        if(particulasSA.sonar == true){filhosB.Add(("sonar"));}
+        if(particulasSA.magnetico == true){filhosB.Add(("magnetico"));}
+        if(particulasSA.invisibildade == true){filhosB.Add(("invisibildade"));}
+        if(particulasSA.camaraLenta == true){filhosB.Add(("camaraLenta"));}
+        return filhosB;
+    }
+    // public ArrayList arrayFilhosB(){
+    //     filhosB.Add(chaves.plasma ? 1 : 0);
+    //     filhosB.Add(chaves.gasoso ? 1 : 0);
+    //     filhosB.Add(chaves.liquido ? 1 : 0);
+    //     filhosB.Add(chaves.solido ? 1 : 0);
+    //     filhosB.Add(particulasSA.sonar);
+    //     filhosB.Add(particulasSA.magnetico);
+    //     filhosB.Add(particulasSA.invisibildade);
+    //     filhosB.Add(particulasSA.camaraLenta);
+    //     return filhosB;
+    // }
+
     public static int CountTrue(params bool[] args)
     {
     return args.Count(t => t);
