@@ -38,12 +38,12 @@ public class particulasA : MonoBehaviour
 
     void MovA()
     {
-        //if the changeTime was reached, calculate a new movement vector
-        if (Time.time - latestDirectionChangeTime > directionChangeTime)
-        {
-            latestDirectionChangeTime = Time.time;
-            CalcuateNewMovementVector();
-        }
+        // //if the changeTime was reached, calculate a new movement vector
+        // if (Time.time - latestDirectionChangeTime > directionChangeTime)
+        // {
+        //     latestDirectionChangeTime = Time.time;
+        //     CalcuateNewMovementVector();
+        // }
 
 
 
