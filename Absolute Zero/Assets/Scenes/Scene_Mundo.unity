@@ -654,6 +654,14 @@ MonoBehaviour:
     invisibildade: 0
     camaraLenta: 0
   rb: {fileID: 0}
+  rb_target: {fileID: 0}
+  ChaseDistance: 0
+  centroX: 0
+  centroY: 0
+  d1Dentro: 0
+  d2Dentro: 0
+  d1Fora: 0
+  d2Fora: 0
 --- !u!1 &848072498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1336,12 @@ MonoBehaviour:
   nivelTamanho: 3
   velocidade: 3
   rb: {fileID: 0}
+  centroX: 0
+  centroY: 0
+  d1Dentro: 0
+  d2Dentro: 0
+  d1Fora: 0
+  d2Fora: 0
 --- !u!1 &1250782158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1537,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462221153}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

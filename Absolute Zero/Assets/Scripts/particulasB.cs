@@ -25,6 +25,12 @@ public class particulasB : MonoBehaviour
     private Vector2 movementPerSecond;
     private ArrayList filhosB = new ArrayList();
 
+
+    //vars de area de movimento da particula
+    public double centroX,centroY;
+    public double d1Dentro, d2Dentro;
+    public double d1Fora, d2Fora;
+
     //Constructores particulas B
     public particulasB(){
         nivelTamanho = 3;
