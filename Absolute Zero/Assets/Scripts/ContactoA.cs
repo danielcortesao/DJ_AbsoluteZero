@@ -16,22 +16,22 @@ public class ContactoA : MonoBehaviour
                     //Particle A <= Player 
                 if (gameObject.transform.localScale.x <= other.transform.localScale.x)
                 {
-                    if(gameObject.transform.localScale.x <= 0.3f) {
-                        // controlo de particulas
-                        float minX = -8.0f;
-                        float maxX = -2.0f;
-                        float minY = -4.0f;
-                        float maxY = 4.0f;
-                        float Z = -1.0f;
+                    // if(gameObject.transform.localScale.x <= 0.3f) {
+                    //     // controlo de particulas
+                    //     float minX = -8.0f;
+                    //     float maxX = -2.0f;
+                    //     float minY = -4.0f;
+                    //     float maxY = 4.0f;
+                    //     float Z = -1.0f;
 
-                        Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
-                        GameObject tmpObj = Instantiate(A, position, Quaternion.identity);
-                        // fim de controlo de particulas
+                    //     Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
+                    //     GameObject tmpObj = Instantiate(A, position, Quaternion.identity);
+                    //     // fim de controlo de particulas
                         Destroy(gameObject);
-                    }
-                    else{
-                        gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-                    }
+                    // }
+                    // else{
+                    //     gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+                    // }
                 }
                 else
                 {   //Particle A > Player

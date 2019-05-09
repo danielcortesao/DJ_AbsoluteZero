@@ -44,12 +44,12 @@ public class particulasA : MonoBehaviour
 
     void MovA()
     {
-        // //if the changeTime was reached, calculate a new movement vector
-        // if (Time.time - latestDirectionChangeTime > directionChangeTime)
-        // {
-        //     latestDirectionChangeTime = Time.time;
-        //     CalcuateNewMovementVector();
-        // }
+         //if the changeTime was reached, calculate a new movement vector
+         if (Time.time - latestDirectionChangeTime > directionChangeTime)
+         {
+             latestDirectionChangeTime = Time.time;
+             CalcuateNewMovementVector();
+         }
 
 
 
@@ -76,7 +76,10 @@ public class particulasA : MonoBehaviour
 
         movementPerSecond = movementDirection * velocidade;
 
-        CalcuateNewMovementVector();
+
+        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
+        transform.position.y + (movementPerSecond.y * Time.deltaTime));
+
 
 
         //criar vetor de movimentação
