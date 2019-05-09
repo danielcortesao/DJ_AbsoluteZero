@@ -11,7 +11,7 @@ public class particulasA : MonoBehaviour
     private readonly float directionChangeTime = 3f;
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
-
+    public GameObject personagem;
     //Constructores particulas A
     public particulasA(){
         nivelTamanho = 3;
@@ -34,6 +34,24 @@ public class particulasA : MonoBehaviour
     void Update()
     {
         MovA();
+        // slow motion nas partículas
+
+        /*
+        if (personagem.GetComponent<powerUps>().isLento)
+        {
+            Time.timeScale = 0.1f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+        else{
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }*/
+
+        if (Input.GetKeyDown("l"))
+        {
+           
+            rb.velocity *= 0.5f;
+        }
     }
 
     void MovA()

@@ -61,7 +61,14 @@ public class particulasB : MonoBehaviour
         //codigo para movimentr B
         MovB();
         //fim de codigo para movimentar B
-        
+        // slow motion nas partículas
+        if (Input.GetKeyDown("l"))
+        {
+            //Time.timeScale = 0.1f;
+            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            rb.velocity *= 0.8f;
+        }
+
     }
 
     void MovB()
