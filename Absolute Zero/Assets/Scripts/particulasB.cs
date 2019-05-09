@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
-using System.Linq;
 
 public class particulasB : MonoBehaviour
 {
@@ -72,6 +70,15 @@ public class particulasB : MonoBehaviour
 
     void MovB()
     {
+
+        //if the changeTime was reached, calculate a new movement vector
+        /*if (Time.time - latestDirectionChangeTime > directionChangeTime)
+        {
+            latestDirectionChangeTime = Time.time;
+            calcuateNewMovementVector();
+        }
+        */
+
         // //if the changeTime was reached, calculate a new movement vector
         // if (Time.time - latestDirectionChangeTime > directionChangeTime)
         // {

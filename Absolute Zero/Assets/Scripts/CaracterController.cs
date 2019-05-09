@@ -86,7 +86,7 @@ public class CaracterController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, mouseTarget, speed * Time.deltaTime);
             }
         }
-        //transform.right = direction;
+        transform.right = direction;
     }
 
     void ArrowMove()
