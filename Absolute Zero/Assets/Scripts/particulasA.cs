@@ -34,6 +34,8 @@ public class particulasA : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        latestDirectionChangeTime = 0f; // para movB
+        CalcuateNewMovementVector();
     }
 
     void Update()
@@ -43,12 +45,12 @@ public class particulasA : MonoBehaviour
 
     void MovA()
     {
-        // //if the changeTime was reached, calculate a new movement vector
-        // if (Time.time - latestDirectionChangeTime > directionChangeTime)
-        // {
-        //     latestDirectionChangeTime = Time.time;
-        //     CalcuateNewMovementVector();
-        // }
+         //if the changeTime was reached, calculate a new movement vector
+         if (Time.time - latestDirectionChangeTime > directionChangeTime)
+         {
+             latestDirectionChangeTime = Time.time;
+             CalcuateNewMovementVector();
+         }
 
 
 
@@ -74,6 +76,9 @@ public class particulasA : MonoBehaviour
             movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
 
         movementPerSecond = movementDirection * velocidade;
+
+        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
+        transform.position.y + (movementPerSecond.y * Time.deltaTime));
 
 
 
