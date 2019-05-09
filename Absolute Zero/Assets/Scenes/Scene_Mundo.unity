@@ -1480,29 +1480,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1200805065}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1200805068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200805067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d028e3230d534092aa2bb2851231a6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nivelTamanho: 3
-  velocidade: 3
-  rb: {fileID: 0}
-  movementDirection: {x: 0, y: 0}
-  centroX: 0
-  centroY: 0
-  d1Dentro: 0
-  d2Dentro: 0
-  d1Fora: 0
-  d2Fora: 0
-  anguloDeMovimento: 0
 --- !u!1 &1250782158
 GameObject:
   m_ObjectHideFlags: 0
