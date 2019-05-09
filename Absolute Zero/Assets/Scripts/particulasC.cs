@@ -16,12 +16,14 @@ public class particulasC : MonoBehaviour
         // int r = Random.Range(1, 9);
         
     }
-    public void activaChaves(Chaves c){
-        chaves = c;
-    }
-    public void activaChaves(string chave){
+    // public void activaChaves(Chaves c){
+    //     chaves = c;
+    // }
+    public void activaChaves(string chave, bool a){
+        Debug.Log("1activa" + a);
+        this.ativa = a;
         switch (chave)
-        {
+        {   
             case "plasma":
                 chaves.plasma = true;
                 chaves.gasoso = false;
@@ -54,13 +56,15 @@ public class particulasC : MonoBehaviour
                 break;
         }
     }
-    public void ActivaPSA(ParticulasSA c){
-        // nivelTamanho = tam;
-        // velocidade = vel;
-        particulasSA = c;
-    }
-        public void ActivaPSA(string psa){
-       switch (psa)
+    // public void activaPSA(ParticulasSA c){
+    //     // nivelTamanho = tam;
+    //     // velocidade = vel;
+    //     particulasSA = c;
+    // }
+        public void activaPSA(string psa, bool a){
+        this.ativa = a;
+        Debug.Log("2activa" + psa + ", "+ a);
+        switch (psa)
         {
             case "sonar":
                 particulasSA.sonar = true;

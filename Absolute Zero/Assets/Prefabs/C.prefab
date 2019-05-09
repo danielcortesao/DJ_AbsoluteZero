@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dfee82b70fc4dc4a56df1793444ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ativa: 1
+  ativa: 0
   chaves:
     plasma: 0
     gasoso: 0
