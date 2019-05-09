@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+using System.Collections;
 
 public class particulasB : MonoBehaviour
 {
@@ -79,6 +79,15 @@ public class particulasB : MonoBehaviour
 
     void MovB()
     {
+
+        //if the changeTime was reached, calculate a new movement vector
+        /*if (Time.time - latestDirectionChangeTime > directionChangeTime)
+        {
+            latestDirectionChangeTime = Time.time;
+            calcuateNewMovementVector();
+        }
+        */
+
         // //if the changeTime was reached, calculate a new movement vector
         // if (Time.time - latestDirectionChangeTime > directionChangeTime)
         // {
@@ -216,6 +225,7 @@ public class particulasB : MonoBehaviour
         filhos = CountTrue(chaves.plasma, chaves.gasoso,chaves.liquido, chaves.solido,particulasSA.sonar, particulasSA.magnetico, particulasSA.invisibildade, particulasSA.camaraLenta);
         return filhos;
     }
+
     public ArrayList arrayFilhosB(){
         if(chaves.plasma == true){filhosB.Add(("plasma"));}
         if(chaves.gasoso == true){filhosB.Add(("gasoso"));}

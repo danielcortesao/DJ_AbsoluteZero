@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5b7602d2dec9c8e4abb790de492c5615, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4914388, g: 0, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,7 +142,14 @@ MonoBehaviour:
     invisibildade: 1
     camaraLenta: 1
   rb: {fileID: 0}
+  rb_target: {fileID: 0}
   ChaseDistance: 10
+  centroX: 0
+  centroY: 0
+  d1Dentro: 0
+  d2Dentro: 0
+  d1Fora: 0
+  d2Fora: 0
 --- !u!114 &1493649286123614468
 MonoBehaviour:
   m_ObjectHideFlags: 0
