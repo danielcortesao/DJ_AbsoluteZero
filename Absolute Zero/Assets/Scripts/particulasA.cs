@@ -9,13 +9,20 @@ public class particulasA : MonoBehaviour
 
     private float latestDirectionChangeTime;
     private readonly float directionChangeTime = 3f;
-    private Vector2 movementDirection;
-    private Vector2 movementPerSecond;
+    public Vector2 movementDirection;
+
     public GameObject personagem;
+
+
+
+    //vars de area de movimento da particula
+    public double centroX,centroY;
+    public double d1Dentro, d2Dentro;
+    public double d1Fora, d2Fora;
+    public double anguloDeMovimento;
+
     //Constructores particulas A
     public particulasA(){
-        nivelTamanho = 3;
-        velocidade = 4;
     }
     public particulasA(int tam, float vel){
         nivelTamanho = tam;
@@ -67,6 +74,9 @@ public class particulasA : MonoBehaviour
 
         //move enemy: 
         //implemementar condição para ficar dentro dos limites.
+        
+
+
         Vector2 norte = new Vector2(0.0f, 30.0f);
         Vector2 sul = new Vector2(0.0f, -20.0f);
         Vector2 este = new Vector2(40.0f, 0.0f);
@@ -85,8 +95,59 @@ public class particulasA : MonoBehaviour
 
         movementPerSecond = movementDirection * velocidade;
 
-        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
-        transform.position.y + (movementPerSecond.y * Time.deltaTime));
+
+
+
+        //criar vetor de movimentação
+        /*
+
+        ERRO --------------------------------------------------------------
+        double anguloAdicional = UnityEngine.Random.Range(-45.0f, 45.0f);
+        anguloDeMovimento += anguloDeMovimento;
+        if(anguloDeMovimento> 360.0){
+            anguloDeMovimento -= 360.0;
+        }
+        anguloAdicional = anguloDeMovimento * (Mathf.PI/180);
+        float addVetorX = Mathf.Cos((float)anguloAdicional) * 10;
+        float addVetorY = Mathf.Sin((float)anguloAdicional) * 10;
+        
+
+    -------------------------------
+        */
+
+
+        double newPosicaoX = transform.position.x + (movementPerSecond.x*Time.deltaTime);
+        double newPosicaoY = transform.position.y + movementPerSecond.y*Time.deltaTime;
+
+        bool newPosicaoValida = false;
+        //verificar se a nova posicao está dentro dos limites
+        double verificarFora = Mathf.Pow((float)(newPosicaoX-centroX),2)/Mathf.Pow((float)d2Fora,2) + Mathf.Pow((float)(newPosicaoY-centroY),2)/Mathf.Pow((float)d1Fora,2);
+        //Debug.Log(verificarFora);
+
+        if(verificarFora <= 1.0){
+            //Debug.Log("Fora Check");
+            if(d1Dentro == 0){
+                newPosicaoValida = true;
+            }
+            else{
+                double verificarDentro = Mathf.Pow((float)(newPosicaoX-centroX),2)/Mathf.Pow((float)d2Dentro,2) + Mathf.Pow((float)(newPosicaoY-centroY),2)/Mathf.Pow((float)d1Dentro,2);
+                if(verificarFora <= 1.0){
+                    newPosicaoValida = true;
+                }
+            }
+
+        }
+
+        if(newPosicaoValida){
+            //Debug.Log("Moveu");
+           
+            
+            transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
+                                             transform.position.y + (movementPerSecond.y * Time.deltaTime));
+
+        }
+
+    
     }
 
 
