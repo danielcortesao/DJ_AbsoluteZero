@@ -34,6 +34,7 @@ public class particulasA : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        CalcuateNewMovementVector();
     }
 
     void Update()
@@ -75,7 +76,7 @@ public class particulasA : MonoBehaviour
 
         movementPerSecond = movementDirection * velocidade;
 
-
+        CalcuateNewMovementVector();
 
 
         //criar vetor de movimentação
@@ -124,7 +125,6 @@ public class particulasA : MonoBehaviour
             
             transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
                                              transform.position.y + (movementPerSecond.y * Time.deltaTime));
-
         }
 
     

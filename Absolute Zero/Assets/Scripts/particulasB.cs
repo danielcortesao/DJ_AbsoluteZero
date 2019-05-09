@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using System.Collections;
 
 public class particulasB : MonoBehaviour
 {
@@ -216,6 +217,7 @@ public class particulasB : MonoBehaviour
         filhos = CountTrue(chaves.plasma, chaves.gasoso,chaves.liquido, chaves.solido,particulasSA.sonar, particulasSA.magnetico, particulasSA.invisibildade, particulasSA.camaraLenta);
         return filhos;
     }
+
     public ArrayList arrayFilhosB(){
         if(chaves.plasma == true){filhosB.Add(("plasma"));}
         if(chaves.gasoso == true){filhosB.Add(("gasoso"));}
