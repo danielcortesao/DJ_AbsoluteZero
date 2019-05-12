@@ -110,13 +110,7 @@ public class particulasC : MonoBehaviour
 
     private void Update()
     {
-        // slow motion nas partículas
-        if (Input.GetKeyDown("l"))
-        {
-            rb.velocity *= 0.5f;
-        }
-
-        //rb.velocity *= 1 / 0.5f;
+       
     }
 
 }

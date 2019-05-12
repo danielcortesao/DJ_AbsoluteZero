@@ -8,11 +8,7 @@ public class Sons : MonoBehaviour {
     //public AudioClip lentoClip;
 
 
-
-    private bool parar;
-
     bool lento = false;
-    bool invisivel = false;
     bool pause1;
     bool pause2;
     float tempoInicio;
@@ -25,7 +21,6 @@ public class Sons : MonoBehaviour {
     void Start () {
 
         timeRemaining = 15;
-        parar = false;
         audioSource = GameObject.FindGameObjectWithTag("sons").GetComponentsInChildren<AudioSource>();
         personagem = GameObject.FindGameObjectWithTag("Player");
         audioSource[0].Play();

@@ -31,6 +31,14 @@ public class particulasB : MonoBehaviour
     public double d1Dentro, d2Dentro;
     public double d1Fora, d2Fora;
 
+
+
+    //Vars para campo magnetico
+    private float forceFactor = 20.0f;
+
+
+    public GameObject personagem;
+
     //Constructores particulas B
     public particulasB(){
         nivelTamanho = 3;
@@ -55,6 +63,8 @@ public class particulasB : MonoBehaviour
 
         latestDirectionChangeTime = 0f; // para movB
         calcuateNewMovementVector();
+
+        personagem = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -65,16 +75,10 @@ public class particulasB : MonoBehaviour
         //fim de codigo para perseguir personagem
 
         //codigo para movimentr B
-        MovB();
+        //MovB();
         //fim de codigo para movimentar B
         // slow motion nas partículas
-        if (Input.GetKeyDown("l"))
-        {
-            //Time.timeScale = 0.1f;
-            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
-            rb.velocity *= 0.8f;
-        }
-
+      
     }
 
     void MovB()
@@ -183,13 +187,37 @@ public class particulasB : MonoBehaviour
         Vector2 direction = transform.position - target.transform.position; // Direction to apply the force
         float dist = Vector2.Distance(transform.position, target.transform.position); // Distance between player and planet
         float force = G * ((mass1 * mass2) / (dist * dist)); // The force that should be applied
-//        Debug.Log(force);
-        if (gameObject.transform.localScale.x >= target.transform.localScale.x){ // se B for maior que personagem atrai personagem
-            rb.AddForce(-direction * force); // Adding the force to the player 
-        }
-        else{// se B for menor que personagem é repelida 
-            rb.AddForce(direction * force); // Adding the force to the player 
-        }
+                                                             //        Debug.Log(force);
+
+
+        //if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
+        //{
+        //    if (gameObject.transform.localScale.x >= target.transform.localScale.x)
+        //    { // se B for maior que personagem atrai personagem
+        //        rb.AddForce(-direction * force); // Adding the force to the player 
+        //    }
+        //    else
+        //    {// se B for menor que personagem é repelida 
+        //        rb.AddForce(direction * force); // Adding the force to the player 
+        //    }
+        //}
+
+        // CAMPO MAGNETICOOOOO
+        //else{
+        //    Debug.Log("MAGNETICO");
+        //    if (gameObject.transform.localScale.x >= target.transform.localScale.x)
+        //    { // se B for maior que personagem atrai personagem
+        //        Debug.Log("menor que a personagem");
+        //        rb.AddForce((personagem.transform.position - transform.position) * forceFactor * Time.smoothDeltaTime);
+        //    }
+        //    else
+        //    {// se B for menor que personagem é repelida 
+        //     // Adding the force to the player 
+        //        rb.AddForce((transform.position - personagem.transform.position) * forceFactor * Time.smoothDeltaTime);
+        //    }
+        //}
+
+
 
         // if (contacto == false)
         // {

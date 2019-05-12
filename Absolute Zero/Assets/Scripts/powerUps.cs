@@ -43,6 +43,8 @@ public class powerUps : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         timeRemaining = 15;
         timeCoolDown = 30;
+
+        isLento = false;
   
         invisivel = this.GetComponent<personagem>().PSAActivas.invisibildade;
         mag = this.GetComponent<personagem>().PSAActivas.magnetico;
@@ -167,6 +169,7 @@ public class powerUps : MonoBehaviour
             if(this.GetComponent<personagem>().eventarioPSA.magnetico>0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
             
             {
+
                 this.GetComponent<personagem>().pwAtivo = true;
                 this.GetComponent<personagem>().eventarioPSA.magnetico--;
                 this.GetComponent<personagem>().PSAActivas.magnetico = true;
@@ -194,7 +197,6 @@ public class powerUps : MonoBehaviour
                 Debug.Log("Campo magnetico");
                 timeRemaining = 15;
                 magnetico.SetActive(false);
-                isMagnetico = false;
                 this.GetComponent<personagem>().PSAActivas.magnetico = false;
                 isMagnetico = false;
                 esperar = true;
@@ -205,6 +207,7 @@ public class powerUps : MonoBehaviour
         //------------------- INVISIBILIDADE -------------------------
         if (Input.GetKeyDown("j"))
         {
+            Debug.Log("invisibildade");
             if (this.GetComponent<personagem>().eventarioPSA.invisibildade > 0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
             {
                 this.GetComponent<personagem>().pwAtivo = true;
@@ -254,7 +257,61 @@ public class powerUps : MonoBehaviour
             }
         }
 
-       
+
+
+        //           CAMARA LENTA
+
+
+        if (Input.GetKeyDown("l"))
+        {
+            Debug.Log("camara lenta");
+            if (this.GetComponent<personagem>().eventarioPSA.camaraLenta > 0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
+            {
+                this.GetComponent<personagem>().pwAtivo = true;
+                Debug.Log("Entrei na camara lenta");
+                this.GetComponent<personagem>().PSAActivas.camaraLenta = true;
+                this.GetComponent<personagem>().eventarioPSA.camaraLenta--;
+                isLento = true;
+            }
+            else
+            {
+                Debug.Log("nao existe camara lenta");
+            }
+        }
+
+        if (isLento)
+        {
+
+            timeRemaining -= Time.deltaTime;
+            coolDown = true;
+            if (timeRemaining > 0)
+            {
+
+                Time.timeScale = 0.5f;
+                Debug.Log("CAMARA LENTA");
+                //rb.velocity= new Vector3(0, 100, 0);
+                Debug.Log(timeRemaining);
+            }
+            else
+            {
+                this.GetComponent<personagem>().pwAtivo = false;
+                this.GetComponent<personagem>().PSAActivas.camaraLenta = false;
+                timeRemaining = 15;
+                isLento = false;
+            }
+
+        }
+
+        if (coolDown)
+        {
+            timeCoolDown -= Time.deltaTime;
+            if (timeCoolDown <= 0)
+            {
+                timeCoolDown = 30;
+                coolDown = false;
+            }
+        }
+
     }
 
 

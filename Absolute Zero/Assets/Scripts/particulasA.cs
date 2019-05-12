@@ -12,14 +12,17 @@ public class particulasA : MonoBehaviour
     public Vector2 movementDirection;
 
     public GameObject personagem;
+    public GameObject particulaA;
 
-
+    public Vector2 movementPerSecond;
 
     //vars de area de movimento da particula
     public double centroX,centroY;
     public double d1Dentro, d2Dentro;
     public double d1Fora, d2Fora;
     public double anguloDeMovimento;
+
+    public bool lento;
 
     //Constructores particulas A
     public particulasA(){
@@ -37,11 +40,18 @@ public class particulasA : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         CalcuateNewMovementVector();
+        lento = false;
+        particulaA = GameObject.FindWithTag("ParticulasA");
     }
 
     void Update()
     {
         MovA();
+
+
+
+
+
         // slow motion nas partículas
 
         /*
@@ -55,11 +65,8 @@ public class particulasA : MonoBehaviour
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }*/
 
-        if (Input.GetKeyDown("l"))
-        {
-           
-            rb.velocity *= 0.5f;
-        }
+       
+
     }
 
     void MovA()
@@ -155,7 +162,7 @@ public class particulasA : MonoBehaviour
         }
         if(newPosicaoValida==false)
         {
-            Debug.Log("mudou direcao");
+           //Debug.Log("mudou direcao");
 
 
             transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.deltaTime),

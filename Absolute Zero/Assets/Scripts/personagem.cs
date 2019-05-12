@@ -63,6 +63,8 @@ public class personagem : MonoBehaviour
 
     public bool pwAtivo;
 
+    public bool lento;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,7 @@ public class personagem : MonoBehaviour
         nivelTamanho = 3;
         velocidade = 3;
         pwAtivo = false;
+        lento = false;
     }
 
     //// Update is called once per frame
@@ -89,6 +92,14 @@ public class personagem : MonoBehaviour
         //     Mathf.Clamp(rb.position.x, boundary2d.xMin, boundary2d.xMax),
         //     Mathf.Clamp(rb.position.y, boundary2d.yMin, boundary2d.yMax)
         // );
+
+
+        if(Input.GetKeyDown("l")){
+            lento = true;
+        }
+        if(lento){
+            velocidade = 15;
+        }
 
 
     }

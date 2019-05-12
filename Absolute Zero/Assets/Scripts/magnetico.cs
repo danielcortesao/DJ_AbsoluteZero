@@ -5,14 +5,17 @@ using UnityEngine;
 public class magnetico : MonoBehaviour
 {
 
-    public GameObject mag;
-    public GameObject campo;
-    public float forceFactor = 10f;
+    private GameObject mag;
+    private GameObject campo;
+    public float forceFactor;
     private bool aproximar = false;
     // Start is called before the first frame updat
     void Start()
     {
-        
+        campo = GameObject.FindGameObjectWithTag("magnetico");
+        campo.SetActive(false);
+        Debug.Log(campo);
+        mag = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -21,20 +24,21 @@ public class magnetico : MonoBehaviour
 
         if (campo.active)
         {
-            if (this.GetComponent<Renderer>().bounds.Intersects(campo.GetComponent<Renderer>().bounds) )
-            {
-                if (this.GetComponent<particulasA>().nivelTamanho <= mag.GetComponent<personagem>().nivelTamanho)
+           if (this.GetComponent<Renderer>().bounds.Intersects(campo.GetComponent<Renderer>().bounds) )
+          {
+               
+                if (this.GetComponent<particulasB>().nivelTamanho <= mag.GetComponent<personagem>().nivelTamanho)
                 {
-                    GetComponent<Rigidbody2D>().AddForce((mag.transform.position - transform.position) * forceFactor * Time.smoothDeltaTime);
+                    GetComponent<Rigidbody2D>().AddForce((mag.transform.position - transform.position) * forceFactor * Time.deltaTime);
                 }
                 else{
-                    GetComponent<Rigidbody2D>().AddForce((transform.position - mag.transform.position) * forceFactor * Time.smoothDeltaTime);
+                    GetComponent<Rigidbody2D>().AddForce((transform.position - mag.transform.position) * forceFactor * Time.deltaTime);
 
                 }
 
 
 
-            }
+           }
 
 
         }
