@@ -10,16 +10,13 @@ public class particulasA : MonoBehaviour
     private float latestDirectionChangeTime;
     private readonly float directionChangeTime = 3f;
     public Vector2 movementDirection;
-<<<<<<< HEAD
+
 
     public GameObject personagem;
     public GameObject particulaA;
 
     public Vector2 movementPerSecond;
-=======
-    private Vector2 movementPerSecond;
 
->>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
 
     //vars de area de movimento da particula
     public double centroX,centroY;
@@ -53,7 +50,7 @@ public class particulasA : MonoBehaviour
     void Update()
     {
         MovA();
-<<<<<<< HEAD
+
 
 
 
@@ -74,11 +71,10 @@ public class particulasA : MonoBehaviour
 
        
 
-=======
+
         float novoTam = (float)nivelTamanho*0.1f+0.3f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
 
->>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
     }
 
     void MovA()
@@ -167,7 +163,6 @@ public class particulasA : MonoBehaviour
             
             transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
                                              transform.position.y + (movementPerSecond.y * Time.deltaTime));
-<<<<<<< HEAD
         }
         if(newPosicaoValida==false)
         {
@@ -178,10 +173,8 @@ public class particulasA : MonoBehaviour
                                              transform.position.y  + (movementPerSecond.y * -1 * Time.deltaTime));
 
         } 
-=======
->>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
 
-        }
+
 
     
     }

@@ -74,18 +74,16 @@ public class particulasB : MonoBehaviour
         //fim de codigo para perseguir personagem
 
         //codigo para movimentr B
-<<<<<<< HEAD
         //MovB();
         //fim de codigo para movimentar B
         // slow motion nas partículas
       
-=======
+
         MovB();
         float novoTam = (float)nivelTamanho*0.1f+0.3f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);;
         //fim de codigo para movimentar B
-        
->>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
+
     }
 
     void MovB()
