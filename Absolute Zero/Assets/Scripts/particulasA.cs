@@ -23,7 +23,8 @@ public class particulasA : MonoBehaviour
     public double d1Dentro, d2Dentro;
     public double d1Fora, d2Fora;
     public double anguloDeMovimento;
-
+    public GameObject controladorCamada;
+    public string nomeZona;
     public bool lento;
 
     //Constructores particulas A
@@ -50,12 +51,6 @@ public class particulasA : MonoBehaviour
     void Update()
     {
         MovA();
-
-
-
-
-
-
         // slow motion nas partículas
 
         /*
@@ -68,13 +63,9 @@ public class particulasA : MonoBehaviour
             Time.timeScale = 1f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }*/
-
-       
-
-
+        
         float novoTam = (float)nivelTamanho*0.1f+0.3f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
-
     }
 
     void MovA()
@@ -111,8 +102,8 @@ public class particulasA : MonoBehaviour
 
         movementPerSecond = movementDirection * velocidade;
 
-        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
-        transform.position.y + (movementPerSecond.y * Time.deltaTime));
+        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
+        transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
 
 
 
@@ -135,8 +126,8 @@ public class particulasA : MonoBehaviour
         */
 
 
-        double newPosicaoX = transform.position.x + (movementPerSecond.x*Time.deltaTime);
-        double newPosicaoY = transform.position.y + movementPerSecond.y*Time.deltaTime;
+        double newPosicaoX = transform.position.x + (movementPerSecond.x*Time.smoothDeltaTime);
+        double newPosicaoY = transform.position.y + movementPerSecond.y*Time.smoothDeltaTime;
 
         bool newPosicaoValida = false;
         //verificar se a nova posicao está dentro dos limites
@@ -159,24 +150,15 @@ public class particulasA : MonoBehaviour
 
         if(newPosicaoValida){
             //Debug.Log("Moveu");
-           
-            
-            transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
-                                             transform.position.y + (movementPerSecond.y * Time.deltaTime));
+            transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
+                                             transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
         }
         if(newPosicaoValida==false)
         {
            //Debug.Log("mudou direcao");
-
-
-            transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.deltaTime),
-                                             transform.position.y  + (movementPerSecond.y * -1 * Time.deltaTime));
-
-        } 
-
-
-
-    
+            transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.smoothDeltaTime),
+                                             transform.position.y  + (movementPerSecond.y * -1 * Time.smoothDeltaTime));
+        }    
     }
 
 
@@ -190,4 +172,7 @@ public class particulasA : MonoBehaviour
     }
 
 
+    public void reposicao(){
+        controladorCamada.GetComponent<GeradorDeCamadas>().reposicaoParticula(nomeZona);
+    }
 }

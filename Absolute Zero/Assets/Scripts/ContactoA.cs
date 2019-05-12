@@ -27,7 +27,8 @@ public class ContactoA : MonoBehaviour
                     //     Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
                     //     GameObject tmpObj = Instantiate(A, position, Quaternion.identity);
                     //     // fim de controlo de particulas
-                        Destroy(gameObject);
+                    this.GetComponent<particulasA>().reposicao();
+                    Destroy(gameObject);
                     // }
                     // else{
                     //     gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);

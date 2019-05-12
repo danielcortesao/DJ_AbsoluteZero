@@ -29,6 +29,8 @@ public class particulasB : MonoBehaviour
     public double centroX,centroY;
     public double d1Dentro, d2Dentro;
     public double d1Fora, d2Fora;
+    public GameObject controladorCamada;
+    public string nomeZona;
 
 
 
@@ -74,14 +76,15 @@ public class particulasB : MonoBehaviour
         //fim de codigo para perseguir personagem
 
         //codigo para movimentr B
-        //MovB();
+        MovB();
         //fim de codigo para movimentar B
         // slow motion nas partículas
       
 
-        MovB();
+        //MovB();
+        /*
         float novoTam = (float)nivelTamanho*0.1f+0.3f;
-        rb.transform.localScale = new Vector3(novoTam,novoTam, 0);;
+        rb.transform.localScale = new Vector3(novoTam,novoTam, 0);;*/
         //fim de codigo para movimentar B
 
     }
@@ -126,7 +129,7 @@ public class particulasB : MonoBehaviour
 
         movementPerSecond = movementDirection * velocidade;
 
-        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
+        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
     }
 
