@@ -92,13 +92,11 @@ public class GeradorDeCamadas : MonoBehaviour {
 	void createA(double x, double y, int size, double centroX, double centroY, double d1Dentro, double d2Dentro, double d1Fora, double d2Fora){
 		Vector3 position = new Vector3((float)x,(float)y,0);
 		Quaternion rotation = Quaternion.Euler(0, 0, 0);
-
 		GameObject newA = Instantiate(particulaA, position, rotation, gameObject.transform);
-		newA.transform.localScale = new Vector3((float)((size)*0.1+0.3), (float)((size)*0.1+0.3), 0.1f);
+		newA.transform.localScale = new Vector3((float)size, (float)size, 0.1f);
 		newA.SetActive(true);
-
 		newA.GetComponent<particulasA>().nivelTamanho = size;	
-		newA.GetComponent<particulasA>().velocidade = 1;
+		newA.GetComponent<particulasA>().velocidade = 1/size;
 		newA.GetComponent<particulasA>().centroX = centroX;
 		newA.GetComponent<particulasA>().centroY = centroY;
 		newA.GetComponent<particulasA>().d1Dentro = d1Dentro;

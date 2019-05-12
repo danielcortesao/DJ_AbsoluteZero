@@ -10,11 +10,16 @@ public class particulasA : MonoBehaviour
     private float latestDirectionChangeTime;
     private readonly float directionChangeTime = 3f;
     public Vector2 movementDirection;
+<<<<<<< HEAD
 
     public GameObject personagem;
     public GameObject particulaA;
 
     public Vector2 movementPerSecond;
+=======
+    private Vector2 movementPerSecond;
+
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
 
     //vars de area de movimento da particula
     public double centroX,centroY;
@@ -39,6 +44,7 @@ public class particulasA : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        latestDirectionChangeTime = 0f; // para movB
         CalcuateNewMovementVector();
         lento = false;
         particulaA = GameObject.FindWithTag("ParticulasA");
@@ -47,6 +53,7 @@ public class particulasA : MonoBehaviour
     void Update()
     {
         MovA();
+<<<<<<< HEAD
 
 
 
@@ -67,24 +74,29 @@ public class particulasA : MonoBehaviour
 
        
 
+=======
+        float novoTam = (float)nivelTamanho*0.1f+0.3f;
+        rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
+
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
     }
 
     void MovA()
     {
          //if the changeTime was reached, calculate a new movement vector
-       /*  if (Time.time - latestDirectionChangeTime > directionChangeTime)
+         if (Time.time - latestDirectionChangeTime > directionChangeTime)
          {
              latestDirectionChangeTime = Time.time;
              CalcuateNewMovementVector();
          }
-        */
+
 
 
         //move enemy: 
         //implemementar condição para ficar dentro dos limites.
         
-        /*
-        
+
+
         Vector2 norte = new Vector2(0.0f, 30.0f);
         Vector2 sul = new Vector2(0.0f, -20.0f);
         Vector2 este = new Vector2(40.0f, 0.0f);
@@ -103,13 +115,10 @@ public class particulasA : MonoBehaviour
 
         movementPerSecond = movementDirection * velocidade;
 
-
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
 
 
-          
-        */
 
 
         //criar vetor de movimentação
@@ -139,7 +148,7 @@ public class particulasA : MonoBehaviour
         //Debug.Log(verificarFora);
 
         if(verificarFora <= 1.0){
-            Debug.Log("Fora Check");
+            //Debug.Log("Fora Check");
             if(d1Dentro == 0){
                 newPosicaoValida = true;
             }
@@ -153,12 +162,12 @@ public class particulasA : MonoBehaviour
         }
 
         if(newPosicaoValida){
-            Debug.Log("Moveu");
-
-
-
+            //Debug.Log("Moveu");
+           
+            
             transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
                                              transform.position.y + (movementPerSecond.y * Time.deltaTime));
+<<<<<<< HEAD
         }
         if(newPosicaoValida==false)
         {
@@ -169,8 +178,12 @@ public class particulasA : MonoBehaviour
                                              transform.position.y  + (movementPerSecond.y * -1 * Time.deltaTime));
 
         } 
+=======
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
 
+        }
 
+    
     }
 
 
@@ -181,7 +194,6 @@ public class particulasA : MonoBehaviour
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
         movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
         movementPerSecond = movementDirection * velocidade;
- 
     }
 
 

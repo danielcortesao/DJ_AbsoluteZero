@@ -108,9 +108,12 @@ public class particulasC : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+<<<<<<< HEAD
     private void Update()
     {
        
     }
 
+=======
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
 }

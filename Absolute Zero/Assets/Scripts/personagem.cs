@@ -61,24 +61,32 @@ public class personagem : MonoBehaviour
     // public Boundary2D boundary2d;
     public Rigidbody2D rb;
 
+<<<<<<< HEAD
     public bool pwAtivo;
 
     public bool lento;
 
+=======
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         nivelTamanho = 3;
         velocidade = 3;
+<<<<<<< HEAD
         pwAtivo = false;
         lento = false;
+=======
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        float novoTam = (float)nivelTamanho*0.1f+0.3f;
+        rb.transform.localScale = new Vector3(novoTam,novoTam, 0);;
+    }
 
     void FixedUpdate()
     {
@@ -92,6 +100,7 @@ public class personagem : MonoBehaviour
         //     Mathf.Clamp(rb.position.x, boundary2d.xMin, boundary2d.xMax),
         //     Mathf.Clamp(rb.position.y, boundary2d.yMin, boundary2d.yMax)
         // );
+<<<<<<< HEAD
 
 
         if(Input.GetKeyDown("l")){
@@ -102,5 +111,7 @@ public class personagem : MonoBehaviour
         }
 
 
+=======
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
     }
 }

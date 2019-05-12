@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
-using System.Collections;
 
 public class particulasB : MonoBehaviour
 {
@@ -75,10 +74,18 @@ public class particulasB : MonoBehaviour
         //fim de codigo para perseguir personagem
 
         //codigo para movimentr B
+<<<<<<< HEAD
         //MovB();
         //fim de codigo para movimentar B
         // slow motion nas partículas
       
+=======
+        MovB();
+        float novoTam = (float)nivelTamanho*0.1f+0.3f;
+        rb.transform.localScale = new Vector3(novoTam,novoTam, 0);;
+        //fim de codigo para movimentar B
+        
+>>>>>>> 134b53897790b001654111b53feb2d73c69ebb9f
     }
 
     void MovB()
@@ -190,17 +197,17 @@ public class particulasB : MonoBehaviour
                                                              //        Debug.Log(force);
 
 
-        //if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
-        //{
-        //    if (gameObject.transform.localScale.x >= target.transform.localScale.x)
-        //    { // se B for maior que personagem atrai personagem
-        //        rb.AddForce(-direction * force); // Adding the force to the player 
-        //    }
-        //    else
-        //    {// se B for menor que personagem é repelida 
-        //        rb.AddForce(direction * force); // Adding the force to the player 
-        //    }
-        //}
+        if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
+        {
+            if (gameObject.transform.localScale.x >= target.transform.localScale.x)
+            { // se B for maior que personagem atrai personagem
+                rb.AddForce(-direction * force); // Adding the force to the player 
+            }
+            else
+            {// se B for menor que personagem é repelida 
+                rb.AddForce(direction * force); // Adding the force to the player 
+            }
+        }
 
         // CAMPO MAGNETICOOOOO
         //else{
@@ -253,7 +260,6 @@ public class particulasB : MonoBehaviour
         filhos = CountTrue(chaves.plasma, chaves.gasoso,chaves.liquido, chaves.solido,particulasSA.sonar, particulasSA.magnetico, particulasSA.invisibildade, particulasSA.camaraLenta);
         return filhos;
     }
-
     public ArrayList arrayFilhosB(){
         if(chaves.plasma == true){filhosB.Add(("plasma"));}
         if(chaves.gasoso == true){filhosB.Add(("gasoso"));}
