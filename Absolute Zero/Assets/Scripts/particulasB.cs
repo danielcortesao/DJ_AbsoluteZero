@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
-using System.Collections;
 
 public class particulasB : MonoBehaviour
 {
@@ -69,14 +68,7 @@ public class particulasB : MonoBehaviour
         float novoTam = (float)nivelTamanho*0.1f+0.3f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);;
         //fim de codigo para movimentar B
-        // slow motion nas partículas
-        if (Input.GetKeyDown("l"))
-        {
-            //Time.timeScale = 0.1f;
-            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
-            rb.velocity *= 0.8f;
-        }
-
+        
     }
 
     void MovB()
@@ -227,7 +219,6 @@ public class particulasB : MonoBehaviour
         filhos = CountTrue(chaves.plasma, chaves.gasoso,chaves.liquido, chaves.solido,particulasSA.sonar, particulasSA.magnetico, particulasSA.invisibildade, particulasSA.camaraLenta);
         return filhos;
     }
-
     public ArrayList arrayFilhosB(){
         if(chaves.plasma == true){filhosB.Add(("plasma"));}
         if(chaves.gasoso == true){filhosB.Add(("gasoso"));}

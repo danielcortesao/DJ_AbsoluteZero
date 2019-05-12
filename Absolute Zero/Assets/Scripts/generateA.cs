@@ -31,7 +31,6 @@ public class generateA : MonoBehaviour
             // scale the object
             float size = Random.Range(0.0f, 1.1f) + 0.3f;
             tmpObj.transform.localScale = new Vector3(size,size, 0);
-            tmpObj.SetActive(true);
 
         }
 

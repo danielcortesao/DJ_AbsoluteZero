@@ -7,8 +7,6 @@ TagManager:
   - ParticulasA
   - ParticulasB
   - ParticulasC
-  - magnetico
-  - sons
   layers:
   - Default
   - TransparentFX

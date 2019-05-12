@@ -61,15 +61,12 @@ public class personagem : MonoBehaviour
     // public Boundary2D boundary2d;
     public Rigidbody2D rb;
 
-    public bool pwAtivo;
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         nivelTamanho = 3;
         velocidade = 3;
-        pwAtivo = false;
     }
 
     // Update is called once per frame
@@ -91,7 +88,5 @@ public class personagem : MonoBehaviour
         //     Mathf.Clamp(rb.position.x, boundary2d.xMin, boundary2d.xMax),
         //     Mathf.Clamp(rb.position.y, boundary2d.yMin, boundary2d.yMax)
         // );
-
-
     }
 }
