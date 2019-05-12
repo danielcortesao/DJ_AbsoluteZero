@@ -180,8 +180,10 @@ public class GeradorDeCamadas : MonoBehaviour {
 		x = x+58.5;
 		y = y-35.5;
 
-		//criar
+		//criar   
 		createA(x, y, 1, 58.5,-35.5, 0,0,28,37);
+		createA(65.2, -38.6, 1, 58.5,-35.5, 0,0,28,37);
+
 
 		raioH = UnityEngine.Random.Range(1, 38);
 		//raio verticar proporcinal com o obtido em raioH
@@ -203,7 +205,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		y = y-35.5;
 
 		createA(x, y, 5, 58.5,-35.5, 0,0,28,37);
-
+		createA(52.2, -42.3, 5, 58.5,-35.5, 0,0,28,37);
 	}
 
 	void gerarA15_LiqTut(){

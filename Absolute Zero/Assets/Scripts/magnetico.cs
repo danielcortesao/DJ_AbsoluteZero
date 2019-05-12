@@ -6,15 +6,12 @@ public class magnetico : MonoBehaviour
 {
 
     private GameObject mag;
-    private GameObject campo;
+    public GameObject campo;
     public float forceFactor;
     private bool aproximar = false;
     // Start is called before the first frame updat
     void Start()
     {
-        campo = GameObject.FindGameObjectWithTag("magnetico");
-        campo.SetActive(false);
-        Debug.Log(campo);
         mag = GameObject.FindGameObjectWithTag("Player");
     }
 

@@ -51,7 +51,7 @@ public class powerUps : MonoBehaviour
         lenta = this.GetComponent<personagem>().PSAActivas.camaraLenta;
         Sonar= this.GetComponent<personagem>().PSAActivas.sonar;
 
-
+        magnetico.SetActive(false);
 
     }
 
