@@ -29,9 +29,10 @@ public class generateA : MonoBehaviour
             GameObject tmpObj =  Instantiate(A, position, Quaternion.identity);
 
             // scale the object
-            float size = Random.Range(0.0f, 1.1f) + 0.3f;
-            tmpObj.transform.localScale = new Vector3(size,size, 0);
-
+            // float size = Random.Range(0.0f, 1.1f) + 0.3f;
+            // tmpObj.transform.localScale = new Vector3(size,size, 0);
+            tmpObj.GetComponent<particulasA>().nivelTamanho  = Random.Range(0, 11);
+            //gameObject.GetComponent<tmpObj>()nivelTamanho = 10;
         }
 
         
