@@ -13,18 +13,14 @@ public class powerUps : MonoBehaviour
     //public GameObject principal;
     public ParticleSystem sonar;
     public GameObject camera;
-
     public float speed = 1.0f;
-
 
     float m, b;
     bool isMagnetico = false;
     bool invisibilidade = false;
     public bool isLento = false;
     bool isSonar = false;
-
     int seconds;
-
     Transform positionPersonagem;
     Transform positionA;
 
@@ -35,11 +31,11 @@ public class powerUps : MonoBehaviour
     private bool esperar;
 
     bool invisivel, mag, lenta,Sonar;
-
+    public string nomeCamadaOn;
+    private float posicaoSonarX, posicaoSonarY;
 
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         timeRemaining = 15;
         timeCoolDown = 30;
@@ -52,63 +48,83 @@ public class powerUps : MonoBehaviour
         Sonar= this.GetComponent<personagem>().PSAActivas.sonar;
 
         magnetico.SetActive(false);
-
     }
 
 
 
-    void posicionarSonar(float x, float y, float z)
+    void posicionarSonar()
     {
+        float x = posicaoSonarX;
+        float y = posicaoSonarY;
         // Camera camera = GetComponent<Camera>();
         float yIntersecao;
         float xIntersecao;
         Vector3 p1 = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane));
         Vector3 p2 = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane));
-
-
-        m = (y - camera.transform.position.y) / (x - camera.transform.position.x);
-        Debug.Log(m);
-        b = camera.transform.position.y - m * camera.transform.position.x;
-
-        //Interseção das retas
-
-        yIntersecao = m * p2.x + b;
-        if (yIntersecao >= p1.y && yIntersecao <= p2.y)
-        {
-            if (x > camera.transform.position.x)
-            {
-                xIntersecao = p1.x;
+        
+        if(y>p1.y && y<p2.y && x<p1.x && x>p2.x){
+            yIntersecao = y;
+            xIntersecao = x;
+        }
+        else{
+            if(y == camera.transform.position.y){
+                if(x > camera.transform.position.x){
+                    xIntersecao = p1.x;
+                    yIntersecao = y;
+                }
+                else{
+                    xIntersecao = p2.x;
+                    yIntersecao = y;
+                }
             }
-            else
-            {
-                xIntersecao = p2.x;
+            else if(x == camera.transform.position.x){
+                if(y > camera.transform.position.y){
+                    xIntersecao = x;
+                    yIntersecao = p2.y;
+                }
+                else{
+                    xIntersecao = x;
+                    yIntersecao = p1.y;
+                }
+            }
+            else{
+                m = (y - camera.transform.position.y) / (x - camera.transform.position.x);
+                b = camera.transform.position.y - m * camera.transform.position.x;
+
+                //Interseção das retas
+
+                yIntersecao = m * p2.x + b;
+                if (yIntersecao >= p1.y && yIntersecao <= p2.y)
+                {
+                    if (x > camera.transform.position.x)
+                    {
+                        xIntersecao = p1.x;
+                    }
+                    else
+                    {
+                        xIntersecao = p2.x;
+                    }
+                }
+                else
+                {
+                    if(y >= p2.y){
+                        xIntersecao = (p2.y - b) / m;
+                        yIntersecao = p2.y;
+                    }
+                    else{
+                        xIntersecao = (p1.y - b) / m;
+                        yIntersecao = p1.y;
+                    }
+
+                        
+                    
+                    
+                }
 
             }
         }
-        else
-        {
-            if (x == camera.transform.position.x)
-            {
-                xIntersecao = camera.transform.position.x;
-            }
-            else
-            {
-                xIntersecao = (y - b) / m;
-            }
-            if (y > camera.transform.position.y)
-            {
-                yIntersecao = p1.y;
-            }
-            else
-            {
-                yIntersecao = p2.y;
-
-            }
-        }
-
-
-        sonar.transform.localPosition = new Vector3(xIntersecao, yIntersecao, z);
-      
+        sonar.transform.localPosition = new Vector3(xIntersecao, yIntersecao, (float)(camera.transform.position.z+9.5f));
+        
     }
 
 
@@ -122,24 +138,65 @@ public class powerUps : MonoBehaviour
         //--------------------- SONAR -------------------------
         if (Input.GetKeyDown("g"))
         {
+            if (this.GetComponent<personagem>().eventarioPSA.sonar>0 && !coolDown && !this.GetComponent<personagem>().pwAtivo){
+                
+                //verificar posicao
+                /*
+                    Camada Plasma Tut
+                        Chave Gasoso     ---  
+                        Transicao Gasoso --- -92.5   -63.7
 
-            if (this.GetComponent<personagem>().eventarioPSA.sonar>0 && !coolDown && !this.GetComponent<personagem>().pwAtivo)
-            {
+                    Camada Gasoso Tut
+                        Chave Plasma     ---  92     39.5
+                        Transicao Plasma ---  94.4   -77.3
+
+                    Camada Liquido Tut
+                        Chave Gasoso     ---  -95.5  -29
+                        Transicao Gasoso --- -77.7   37.7
+            
+
+                */
+                if(nomeCamadaOn == ("LiquidoTut")){
+                    if(this.GetComponent<personagem>().chaves.gasoso){
+                        posicaoSonarX =-77.7f;
+                        posicaoSonarY = 37.7f;
+                    }
+                    else{
+                        posicaoSonarX =-95.5f;
+                        posicaoSonarY =-29.0f;
+                    }
+                }
+                else if(nomeCamadaOn == ("GasosoTut")){
+                    if(this.GetComponent<personagem>().chaves.plasma){
+                        posicaoSonarX =94.4f;
+                        posicaoSonarY =-77.3f;
+                    }
+                    else{
+                        posicaoSonarX =92.0f;
+                        posicaoSonarY =39.5f;
+                    }
+                }
+                else if(nomeCamadaOn == ("PlasmaTut")){
+                    if(this.GetComponent<personagem>().chaves.gasoso){
+                        posicaoSonarX =-92.5f;
+                        posicaoSonarY =-63.7f;
+                    }
+                    else{
+                        posicaoSonarX =94.4f;
+                        posicaoSonarY =-77.3f;
+                    }
+                }
+
                 this.GetComponent<personagem>().pwAtivo = true;
                 this.GetComponent<personagem>().eventarioPSA.sonar--;
                 this.GetComponent<personagem>().PSAActivas.sonar = true;
-                posicionarSonar(-8.25f, -3.13f, -9.5f);
-            
                 sonar.gameObject.SetActive(true);
                 sonar.Play();
                 isSonar = true;
-
-
             }
             else{
                 Debug.Log("Nao ha sonar");
-             }
-
+            }
         }
         if (isSonar)
         {
@@ -147,8 +204,7 @@ public class powerUps : MonoBehaviour
             coolDown = true;
             if (timeRemaining > 0)
             {
-                Debug.Log("sonar");
-                posicionarSonar(-8.25f, -3.13f, -9.5f);
+                posicionarSonar();
             }
             else{
                 this.GetComponent<personagem>().pwAtivo = false;

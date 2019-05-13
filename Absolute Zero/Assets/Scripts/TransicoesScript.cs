@@ -10,10 +10,23 @@ public class TransicoesScript : MonoBehaviour {
 	public bool solido;
 	public bool keyCima;
 	private bool personagemOnTransicao;
+	public GameObject canvasMic;
+	public GameObject micInput;
+
+
+	private Camera m_MainCamera;
+	private Vector3 posicaoFinalCamera;
+	private Vector3 posicaoFinalJogador;
+	private bool inTransition;
+	public GameObject camadaInicio;
+	public GameObject camadaFim;
+
 
 	// Use this for initialization
 	void Start () {
 		personagemOnTransicao = false;
+		m_MainCamera = Camera.main;
+		inTransition = false;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +59,9 @@ public class TransicoesScript : MonoBehaviour {
 				mudaDeCamada();
 			}
 		}
+		if(inTransition){
+			transicaoCamada();
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -53,11 +69,65 @@ public class TransicoesScript : MonoBehaviour {
         if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = true;
         }
+        canvasMic.SetActive(true);
+        micInput.SetActive(true);
     }
 
     private void mudaDeCamada(){
     	Debug.Log("Muda de Camada");
+    	m_MainCamera.orthographic = false;
+    	int posicaoCamera = 70;
+    	if(gasoso){
+    		posicaoCamera = 30;
+    	}
+    	else if(liquido){
+    		posicaoCamera = -10;
+
+    	}
+    	else if(solido){
+    		posicaoCamera = -50;
+
+    	}
+    	posicaoFinalCamera = new Vector3(player.transform.position.x,player.transform.position.y,posicaoCamera);
+    	posicaoFinalJogador = new Vector3(player.transform.position.x,player.transform.position.y,posicaoCamera+10);
+    	m_MainCamera.gameObject.transform.position = Vector3.MoveTowards(player.transform.position, posicaoFinalCamera, 10 * Time.deltaTime);
+		player.transform.position = Vector3.MoveTowards(player.transform.position, posicaoFinalJogador, 10 * Time.deltaTime);
+		inTransition = true;
+		camadaFim.SetActive(true);
+		
     }
+
+
+    private void transicaoCamada(){
+    	Debug.Log(player.transform.position.z);
+		Debug.Log(posicaoFinalJogador.z);
+    	m_MainCamera.gameObject.transform.position = Vector3.MoveTowards(player.transform.position, posicaoFinalCamera, 10 *Time.deltaTime);
+		player.transform.position = Vector3.MoveTowards(player.transform.position, posicaoFinalJogador, 10 *Time.deltaTime);
+
+		if(player.transform.position.z == posicaoFinalJogador.z){
+			inTransition = false;
+			m_MainCamera.orthographic = true;
+			canvasMic.SetActive(false);
+        	micInput.SetActive(false);
+        	camadaInicio.SetActive(false);
+        	if(plasma){
+	    		player.GetComponent<powerUps>().nomeCamadaOn = "PlasmaTut";
+	    	}
+        	else if(gasoso){
+    			player.GetComponent<powerUps>().nomeCamadaOn = "GasosoTut";
+	    	}
+	    	else if(liquido){
+	    		player.GetComponent<powerUps>().nomeCamadaOn = "LiquidoTut";
+
+	    	}
+	    	else if(solido){
+	    		player.GetComponent<powerUps>().nomeCamadaOn = "Solido";
+	    	}
+	    	
+        	
+
+		}
+	}
 
 
 
@@ -65,6 +135,8 @@ public class TransicoesScript : MonoBehaviour {
     {
        	if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = false;
+        	canvasMic.SetActive(false);
+        	micInput.SetActive(false);
         }         
     }
 }

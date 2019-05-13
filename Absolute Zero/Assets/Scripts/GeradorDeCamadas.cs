@@ -425,6 +425,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		//criar
 		createB(x, y, UnityEngine.Random.Range(1, 5), 1, -63, 27.5, 0,0, 12, 14,"gerarB_M_GasTut");
 	}
+	
 	void gerarA15_GasTut(){
 		int raioH = UnityEngine.Random.Range(15, 24);
 		int raioV = (raioH*17)/23;
