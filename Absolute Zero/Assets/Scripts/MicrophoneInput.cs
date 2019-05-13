@@ -43,6 +43,7 @@ public class MicrophoneInput : MonoBehaviour {
 	}
 
 	void Update(){
+		//http://hyperphysics.phy-astr.gsu.edu/hbase/Music/vowel.html
         //float volume = GetAveragedVolume();
 		float averagedFrequency = GetAveragedFrequency();
 	//->	Debug.Log("averagedFrequency: " + averagedFrequency);
