@@ -23,6 +23,7 @@ public class ContactoB : MonoBehaviour
                     int totalFilhos = gameObject.GetComponent<particulasB>().qtdChaves() + gameObject.GetComponent<particulasB>().qtdPSA();
                     Debug.Log("totalFilhos:" + totalFilhos);
                     criaFilhos(gameObject.GetComponent<particulasB>().chaves, gameObject.GetComponent<particulasB>().particulasSA);
+                    this.GetComponent<particulasB>().reposicao();
                     Destroy(gameObject);
                 }
                 else

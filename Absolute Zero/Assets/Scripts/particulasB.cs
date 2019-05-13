@@ -19,7 +19,7 @@ public class particulasB : MonoBehaviour
 
 
     private float latestDirectionChangeTime;
-    private readonly float directionChangeTime = 3f;
+    private readonly float directionChangeTime = 5f;
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
     private ArrayList filhosB = new ArrayList();
@@ -63,7 +63,7 @@ public class particulasB : MonoBehaviour
         rb_target = target.GetComponent<Rigidbody2D>();
 
         latestDirectionChangeTime = 0f; // para movB
-        calcuateNewMovementVector();
+        CalcuateNewMovementVector();
 
         personagem = GameObject.FindGameObjectWithTag("Player");
     }
@@ -93,50 +93,90 @@ public class particulasB : MonoBehaviour
     {
 
         //if the changeTime was reached, calculate a new movement vector
-        /*if (Time.time - latestDirectionChangeTime > directionChangeTime)
+        if (Time.time - latestDirectionChangeTime > directionChangeTime)
         {
             latestDirectionChangeTime = Time.time;
-            calcuateNewMovementVector();
+            CalcuateNewMovementVector();
         }
-        */
 
-        // //if the changeTime was reached, calculate a new movement vector
-        // if (Time.time - latestDirectionChangeTime > directionChangeTime)
-        // {
-        //     latestDirectionChangeTime = Time.time;
-        //     calcuateNewMovementVector();
-        // }
+
+
 
 
 
         //move enemy: 
         //implemementar condição para ficar dentro dos limites.
-        Vector2 norte = new Vector2(0.0f, 30.0f);
-        Vector2 sul = new Vector2(0.0f, -20.0f);
-        Vector2 este = new Vector2(40.0f, 0.0f);
-        Vector2 oeste = new Vector2(-40.0f, 0.0f);
-            
-        
+        /* 
+         Vector2 norte = new Vector2(0.0f, 30.0f);
+         Vector2 sul = new Vector2(0.0f, -20.0f);
+         Vector2 este = new Vector2(40.0f, 0.0f);
+         Vector2 oeste = new Vector2(-40.0f, 0.0f);
 
-        if (transform.position.y >= norte.y)
-            movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), -1.0f).normalized;
-        if (transform.position.y <= sul.y)
-            movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), 1.0f).normalized;
-        if (transform.position.x >= este.x)
-            movementDirection = new Vector2(-1.0f, Random.Range(-1.0f, 1.0f)).normalized;
-        if (transform.position.x <= oeste.x)
-            movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
 
-        movementPerSecond = movementDirection * velocidade;
 
-        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
-        transform.position.y + (movementPerSecond.y * Time.deltaTime));
+         if (transform.position.y >= norte.y)
+             movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), -1.0f).normalized;
+         if (transform.position.y <= sul.y)
+             movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), 1.0f).normalized;
+         if (transform.position.x >= este.x)
+             movementDirection = new Vector2(-1.0f, Random.Range(-1.0f, 1.0f)).normalized;
+         if (transform.position.x <= oeste.x)
+             movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
+
+         movementPerSecond = movementDirection * velocidade;
+
+         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
+         transform.position.y + (movementPerSecond.y * Time.deltaTime));
+
+         */
+
+        double newPosicaoX = transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime);
+        double newPosicaoY = transform.position.y + movementPerSecond.y * Time.smoothDeltaTime;
+
+        bool newPosicaoValida = false;
+        //verificar se a nova posicao está dentro dos limites
+        double verificarFora = Mathf.Pow((float)(newPosicaoX - centroX), 2) / Mathf.Pow((float)d2Fora, 2) + Mathf.Pow((float)(newPosicaoY - centroY), 2) / Mathf.Pow((float)d1Fora, 2);
+        //Debug.Log(verificarFora);
+
+        if (verificarFora <= 1.0)
+        {
+            //Debug.Log("Fora Check");
+            if (d1Dentro == 0)
+            {
+                newPosicaoValida = true;
+            }
+            else
+            {
+                double verificarDentro = Mathf.Pow((float)(newPosicaoX - centroX), 2) / Mathf.Pow((float)d2Dentro, 2) + Mathf.Pow((float)(newPosicaoY - centroY), 2) / Mathf.Pow((float)d1Dentro, 2);
+                if (verificarFora <= 1.0)
+                {
+                    newPosicaoValida = true;
+                }
+            }
+
+        }
+
+        if (newPosicaoValida)
+        {
+            //Debug.Log("Moveu");
+            transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
+                                             transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
+        }
+        if (newPosicaoValida == false)
+        {
+            //Debug.Log("mudou direcao");
+            // transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.smoothDeltaTime),
+            //                                 transform.position.y  + (movementPerSecond.y * -1 * Time.smoothDeltaTime));
+            CalcuateNewMovementVector();
+           
+        }
+
     }
 
     
 
 
-    void calcuateNewMovementVector()
+    void CalcuateNewMovementVector()
     {
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
         movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
@@ -198,7 +238,7 @@ public class particulasB : MonoBehaviour
                                                              //        Debug.Log(force);
 
 
-        if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
+        if ((personagem.GetComponent<personagem>().PSAActivas.magnetico))
         {
             if (gameObject.transform.localScale.x >= target.transform.localScale.x)
             { // se B for maior que personagem atrai personagem
@@ -288,6 +328,11 @@ public class particulasB : MonoBehaviour
     public static int CountTrue(params bool[] args)
     {
     return args.Count(t => t);
+    }
+
+    public void reposicao()
+    {
+        controladorCamada.GetComponent<GeradorDeCamadas>().reposicaoParticula(nomeZona);
     }
 
 }

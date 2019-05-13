@@ -8,7 +8,7 @@ public class particulasA : MonoBehaviour
     public Rigidbody2D rb;
 
     private float latestDirectionChangeTime;
-    private readonly float directionChangeTime = 3f;
+    private readonly float directionChangeTime = 10f;
     public Vector2 movementDirection;
 
 
@@ -83,7 +83,7 @@ public class particulasA : MonoBehaviour
         //implemementar condição para ficar dentro dos limites.
         
 
-
+        /*
         Vector2 norte = new Vector2(0.0f, 30.0f);
         Vector2 sul = new Vector2(0.0f, -20.0f);
         Vector2 este = new Vector2(40.0f, 0.0f);
@@ -106,7 +106,7 @@ public class particulasA : MonoBehaviour
         transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
 
 
-
+        */
 
         //criar vetor de movimentação
         /*
@@ -156,8 +156,9 @@ public class particulasA : MonoBehaviour
         if(newPosicaoValida==false)
         {
            //Debug.Log("mudou direcao");
-            transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.smoothDeltaTime),
-                                             transform.position.y  + (movementPerSecond.y * -1 * Time.smoothDeltaTime));
+           // transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.smoothDeltaTime),
+            //                                 transform.position.y  + (movementPerSecond.y * -1 * Time.smoothDeltaTime));
+            CalcuateNewMovementVector();
         }    
     }
 
