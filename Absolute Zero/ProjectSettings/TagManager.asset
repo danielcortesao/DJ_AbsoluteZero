@@ -8,6 +8,8 @@ TagManager:
   - ParticulasB
   - ParticulasC
   - magnetico
+  - GasosoTut
+  - PlasmaTut
   layers:
   - Default
   - TransparentFX

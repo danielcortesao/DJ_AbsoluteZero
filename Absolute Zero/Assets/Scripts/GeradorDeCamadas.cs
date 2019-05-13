@@ -25,6 +25,42 @@ public class GeradorDeCamadas : MonoBehaviour {
 				gerarB_CG_LiqTut();
 			}
 		}
+		else if(camada.Equals("GasosoTut")){
+			//primeiras particulas
+			UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
+			int i, numBM = 8, numA15 = 20, numA511 = 30, numBS = 40, numBCPMP = 10;
+			for(i = 0;i<numBM;i++){
+				gerarB_M_GasTut();
+			}
+			for(i = 0;i<numA15;i++){
+				gerarA15_GasTut();
+			}
+			for(i = 0;i<numA511;i++){
+				gerarA511_GasTut();
+			}
+			for(i = 0;i<numBS;i++){
+				gerarB_S_GasTut();
+			}
+			for(i = 0;i<numBCPMP;i++){
+				gerarB_Cp_M_P_GasTut();
+			}
+		}
+		else if(camada.Equals("PlasmaTut")){
+			//primeiras particulas
+			UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
+			int i, numBC= 10, numBI = 20, numBCG = 40;
+			for(i = 0;i<numBC;i++){
+				gerarB_C_PlasmaTut();
+			}
+			for(i = 0;i<numBI;i++){
+				gerarB_I_PlasmaTut();
+			}
+			for(i = 0;i<numBCG;i++){
+				gerarB_Cg_PlasmaTut();
+			}
+		}
+
+
 	}
 	
 	// Update is called once per frame
@@ -459,8 +495,8 @@ public class GeradorDeCamadas : MonoBehaviour {
 		createB(x, y, UnityEngine.Random.Range(1, 5), 1, -63, 27.5, 34,46, 47, 59, "gerarB_S_GasTut");
 	}
 	void gerarB_Cp_M_P_GasTut(){
-		int raioH = UnityEngine.Random.Range(1, 64);
-		int raioV = (raioH*63)/41;
+		int raioH = UnityEngine.Random.Range(1, 62);
+		int raioV = (raioH*38)/61;
 		//Y=(1-(X^2/raioH^2))*raioV^2
 		double x = UnityEngine.Random.Range(0, raioH);
 		double y = Math.Sqrt((1- (Math.Pow(x, 2)/Math.Pow(raioH, 2)))*Math.Pow(raioV, 2));
@@ -480,7 +516,6 @@ public class GeradorDeCamadas : MonoBehaviour {
 		//criar
 		createB(x, y, UnityEngine.Random.Range(1, 5), 1, 92, 39.5, 0,0, 41, 63,"gerarB_Cp_M_P_GasTut");
 	}
-
 
 	//________________________________________________________________________________________________
 	//________________________________________________________________________________________________
