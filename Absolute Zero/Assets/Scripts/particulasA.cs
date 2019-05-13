@@ -83,9 +83,14 @@ public class particulasA : MonoBehaviour
 
         //move enemy: 
         //implemementar condição para ficar dentro dos limites.
-        
+        Scene currentScene = SceneManager.GetActiveScene();
 
-        /*
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Main")
+        {
+        
         Vector2 norte = new Vector2(0.0f, 30.0f);
         Vector2 sul = new Vector2(0.0f, -20.0f);
         Vector2 este = new Vector2(40.0f, 0.0f);
@@ -107,8 +112,8 @@ public class particulasA : MonoBehaviour
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
         transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
 
-
-        */
+        }
+        
 
         //criar vetor de movimentação
         /*
@@ -127,41 +132,43 @@ public class particulasA : MonoBehaviour
     -------------------------------
         */
 
+        if (sceneName == "Scene_Mundo")
+        {
+            double newPosicaoX = transform.position.x + (movementPerSecond.x*Time.smoothDeltaTime);
+            double newPosicaoY = transform.position.y + movementPerSecond.y*Time.smoothDeltaTime;
 
-        double newPosicaoX = transform.position.x + (movementPerSecond.x*Time.smoothDeltaTime);
-        double newPosicaoY = transform.position.y + movementPerSecond.y*Time.smoothDeltaTime;
+            bool newPosicaoValida = false;
+            //verificar se a nova posicao está dentro dos limites
+            double verificarFora = Mathf.Pow((float)(newPosicaoX-centroX),2)/Mathf.Pow((float)d2Fora,2) + Mathf.Pow((float)(newPosicaoY-centroY),2)/Mathf.Pow((float)d1Fora,2);
+            //Debug.Log(verificarFora);
 
-        bool newPosicaoValida = false;
-        //verificar se a nova posicao está dentro dos limites
-        double verificarFora = Mathf.Pow((float)(newPosicaoX-centroX),2)/Mathf.Pow((float)d2Fora,2) + Mathf.Pow((float)(newPosicaoY-centroY),2)/Mathf.Pow((float)d1Fora,2);
-        //Debug.Log(verificarFora);
-
-        if(verificarFora <= 1.0){
-            //Debug.Log("Fora Check");
-            if(d1Dentro == 0){
-                newPosicaoValida = true;
-            }
-            else{
-                double verificarDentro = Mathf.Pow((float)(newPosicaoX-centroX),2)/Mathf.Pow((float)d2Dentro,2) + Mathf.Pow((float)(newPosicaoY-centroY),2)/Mathf.Pow((float)d1Dentro,2);
-                if(verificarFora <= 1.0){
+            if(verificarFora <= 1.0){
+                //Debug.Log("Fora Check");
+                if(d1Dentro == 0){
                     newPosicaoValida = true;
                 }
+                else{
+                    double verificarDentro = Mathf.Pow((float)(newPosicaoX-centroX),2)/Mathf.Pow((float)d2Dentro,2) + Mathf.Pow((float)(newPosicaoY-centroY),2)/Mathf.Pow((float)d1Dentro,2);
+                    if(verificarFora <= 1.0){
+                        newPosicaoValida = true;
+                    }
+                }
+
             }
 
+            if(newPosicaoValida){
+                //Debug.Log("Moveu");
+                transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
+                                                transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
+            }
+            if(newPosicaoValida==false)
+            {
+            //Debug.Log("mudou direcao");
+            // transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.smoothDeltaTime),
+                //                                 transform.position.y  + (movementPerSecond.y * -1 * Time.smoothDeltaTime));
+                CalcuateNewMovementVector();
+            }    
         }
-
-        if(newPosicaoValida){
-            //Debug.Log("Moveu");
-            transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
-                                             transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
-        }
-        if(newPosicaoValida==false)
-        {
-           //Debug.Log("mudou direcao");
-           // transform.position = new Vector2(transform.position.x  + (movementPerSecond.x * -1 * Time.smoothDeltaTime),
-            //                                 transform.position.y  + (movementPerSecond.y * -1 * Time.smoothDeltaTime));
-            CalcuateNewMovementVector();
-        }    
     }
 
 
