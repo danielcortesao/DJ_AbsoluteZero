@@ -4,8 +4,10 @@ using System.Collections.Generic; // So we can use List<>
 
 [RequireComponent(typeof(AudioSource))]
 public class MicrophoneInput : MonoBehaviour {
+	public bool vozCima;
+	public bool vozBaixo;
 	public float minThreshold = 0;
-	public int defaultFrequency = 120; //i:80 a:185
+	public int defaultFrequency = 130;
 	public float sensibilityFrequency = 30.0f;
 	public float marginFrequency = 40.0f;
 	public float minVolume = 0.3f;
@@ -43,6 +45,7 @@ public class MicrophoneInput : MonoBehaviour {
 	}
 
 	void Update(){
+		//http://hyperphysics.phy-astr.gsu.edu/hbase/Music/vowel.html
         //float volume = GetAveragedVolume();
 		float averagedFrequency = GetAveragedFrequency();
 	//->	Debug.Log("averagedFrequency: " + averagedFrequency);
@@ -50,19 +53,23 @@ public class MicrophoneInput : MonoBehaviour {
         
 		ColorBlock cb = handlerFreq.colors;
         if(averagedFrequency > defaultFrequency + sensibilityFrequency){
-            //Debug.Log("CIMA--GetAveragedFrequency" + averagedFrequency);
+            //Debug.Log("BAIXO--GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.red;
 			handlerFreq.colors = cb;
+			vozBaixo = true;
         }
         else if(averagedFrequency < defaultFrequency - sensibilityFrequency){
-            //Debug.Log("BAIXO-GetAveragedFrequency" + averagedFrequency);
+            //Debug.Log("CIMA-GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.red;
 			handlerFreq.colors = cb;
+			vozCima = true;
         }
         else{
             //Debug.Log ("-----GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.white;
 			handlerFreq.colors = cb;
+			vozCima = false;
+			vozBaixo = false;
         }
 		//GetFps();
 	}
