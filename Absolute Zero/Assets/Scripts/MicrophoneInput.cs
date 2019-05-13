@@ -5,7 +5,7 @@ using System.Collections.Generic; // So we can use List<>
 [RequireComponent(typeof(AudioSource))]
 public class MicrophoneInput : MonoBehaviour {
 	public float minThreshold = 0;
-	public int defaultFrequency = 120; //i:80 a:185
+	public int defaultFrequency = 130;
 	public float sensibilityFrequency = 30.0f;
 	public float marginFrequency = 40.0f;
 	public float minVolume = 0.3f;
