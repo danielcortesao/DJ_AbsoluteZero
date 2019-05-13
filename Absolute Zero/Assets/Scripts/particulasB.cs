@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class particulasB : MonoBehaviour
 {
@@ -332,7 +333,17 @@ public class particulasB : MonoBehaviour
 
     public void reposicao()
     {
-        controladorCamada.GetComponent<GeradorDeCamadas>().reposicaoParticula(nomeZona);
+
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Scene_Mundo")
+        {
+            controladorCamada.GetComponent<GeradorDeCamadas>().reposicaoParticula(nomeZona);
+        }
     }
 
 }

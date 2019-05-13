@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class particulasA : MonoBehaviour
 {
     public int nivelTamanho;
@@ -174,6 +176,17 @@ public class particulasA : MonoBehaviour
 
 
     public void reposicao(){
-        controladorCamada.GetComponent<GeradorDeCamadas>().reposicaoParticula(nomeZona);
+
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Scene_Mundo")
+        {
+            controladorCamada.GetComponent<GeradorDeCamadas>().reposicaoParticula(nomeZona);
+        }
+       
     }
 }
