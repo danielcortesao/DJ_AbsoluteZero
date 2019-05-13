@@ -4,6 +4,8 @@ using System.Collections.Generic; // So we can use List<>
 
 [RequireComponent(typeof(AudioSource))]
 public class MicrophoneInput : MonoBehaviour {
+	public bool vozCima;
+	public bool vozBaixo;
 	public float minThreshold = 0;
 	public int defaultFrequency = 130;
 	public float sensibilityFrequency = 30.0f;
@@ -51,19 +53,23 @@ public class MicrophoneInput : MonoBehaviour {
         
 		ColorBlock cb = handlerFreq.colors;
         if(averagedFrequency > defaultFrequency + sensibilityFrequency){
-            //Debug.Log("CIMA--GetAveragedFrequency" + averagedFrequency);
+            //Debug.Log("BAIXO--GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.red;
 			handlerFreq.colors = cb;
+			vozBaixo = true;
         }
         else if(averagedFrequency < defaultFrequency - sensibilityFrequency){
-            //Debug.Log("BAIXO-GetAveragedFrequency" + averagedFrequency);
+            //Debug.Log("CIMA-GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.red;
 			handlerFreq.colors = cb;
+			vozCima = true;
         }
         else{
             //Debug.Log ("-----GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.white;
 			handlerFreq.colors = cb;
+			vozCima = false;
+			vozBaixo = false;
         }
 		//GetFps();
 	}
