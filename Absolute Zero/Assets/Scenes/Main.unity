@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384d807f3b5f34c9eb149b71f4d61498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vozCima: 0
+  vozBaixo: 0
   minThreshold: 0
   defaultFrequency: 130
   sensibilityFrequency: 30
@@ -5707,7 +5709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1451130988
@@ -5788,7 +5790,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1782396734}
   m_FillRect: {fileID: 581935318}
   m_HandleRect: {fileID: 1782396733}
-  m_Direction: 2
+  m_Direction: 3
   m_MinValue: 30
   m_MaxValue: 230
   m_WholeNumbers: 0
