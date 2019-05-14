@@ -229,7 +229,6 @@ public class particulasB : MonoBehaviour
             contacto = false;
             timeLeft = 10.0f;
         }
-        
     }
 
     void forcaGravitica()
@@ -242,7 +241,7 @@ public class particulasB : MonoBehaviour
         float force = G * ((mass1 * mass2) / (dist * dist)); // The force that should be applied
                                                              //        Debug.Log(force);
 
-
+        //só fazer a certa distancia do utilizador ??
         if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
         {
             if (gameObject.transform.localScale.x >= target.transform.localScale.x)
@@ -254,7 +253,6 @@ public class particulasB : MonoBehaviour
                 rb.AddForce(direction * force); // Adding the force to the player 
             }
         }
-
         // CAMPO MAGNETICOOOOO
         //else{
         //    Debug.Log("MAGNETICO");
