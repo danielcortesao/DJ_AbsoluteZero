@@ -10,6 +10,9 @@ TagManager:
   - magnetico
   - GasosoTut
   - PlasmaTut
+  - sliderFrequencia
+  - apanhar
+  - sons
   layers:
   - Default
   - TransparentFX

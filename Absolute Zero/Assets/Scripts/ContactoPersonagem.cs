@@ -8,9 +8,17 @@ public class ContactoPersonagem : MonoBehaviour
     private float deltaTime = 0.5f;
     private GameObject[] allObjectsC;
 
+ 
 
+    public AudioSource[]audioSource;
     private Rigidbody2D rb;
     public GameObject criaParticulas;
+
+
+    private void Start()
+    {
+        audioSource = GameObject.FindGameObjectWithTag("sons").GetComponentsInChildren<AudioSource>(); 
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {   //Correr apenas se passou 1 segundo
@@ -71,7 +79,7 @@ public class ContactoPersonagem : MonoBehaviour
                 //se está activa, as personagem ganha essa chave / PSA
                 if(other.gameObject.GetComponent<particulasC>().ativa == true)
                     {
-
+                    audioSource[2].Play();
                         Debug.Log("ganha chave/PSA");
                         if(other.gameObject.GetComponent<particulasC>().chaves.plasma == true){
                             gameObject.GetComponent<personagem>().chaves.plasma = true;}
