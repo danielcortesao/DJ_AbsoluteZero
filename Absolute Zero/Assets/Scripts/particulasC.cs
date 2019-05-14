@@ -20,7 +20,6 @@ public class particulasC : MonoBehaviour
     //     chaves = c;
     // }
     public void activaChaves(string chave, bool a){
-        Debug.Log("1activa" + a);
         this.ativa = a;
         switch (chave)
         {   
@@ -63,7 +62,6 @@ public class particulasC : MonoBehaviour
     // }
         public void activaPSA(string psa, bool a){
         this.ativa = a;
-        Debug.Log("2activa" + psa + ", "+ a);
         switch (psa)
         {
             case "sonar":

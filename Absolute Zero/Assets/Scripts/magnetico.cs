@@ -21,10 +21,13 @@ public class magnetico : MonoBehaviour
 
         if (campo.active)
         {
-           if (this.GetComponent<Renderer>().bounds.Intersects(campo.GetComponent<Renderer>().bounds) )
-          {
-               
-                if (this.GetComponent<particulasB>().nivelTamanho <= mag.GetComponent<personagem>().nivelTamanho)
+            Debug.Log("active");
+            if (this.GetComponent<Renderer>().bounds.Intersects(campo.GetComponent<Renderer>().bounds) )
+            {
+                Debug.Log("bounds");
+
+               /*
+                if (this.GetComponent<particulasB>().nivelTamanho > mag.GetComponent<personagem>().nivelTamanho)
                 {
                     GetComponent<Rigidbody2D>().AddForce((mag.transform.position - transform.position) * forceFactor * Time.deltaTime);
                 }
@@ -32,12 +35,18 @@ public class magnetico : MonoBehaviour
                     GetComponent<Rigidbody2D>().AddForce((transform.position - mag.transform.position) * forceFactor * Time.deltaTime);
 
                 }
+                */
+                if (this.transform.localScale.x > mag.transform.localScale.x)
+                {
+                    Debug.Log("Atrai");
+                    GetComponent<Rigidbody2D>().AddForce((mag.transform.position - transform.position) * forceFactor * Time.deltaTime);
+                }
+                else{
+                    Debug.Log("Empurra");
+                    GetComponent<Rigidbody2D>().AddForce((transform.position - mag.transform.position) * forceFactor * Time.deltaTime);
 
-
-
+                }
            }
-
-
         }
 
 

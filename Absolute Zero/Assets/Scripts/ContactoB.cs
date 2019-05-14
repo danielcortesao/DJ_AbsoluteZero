@@ -54,16 +54,22 @@ public class ContactoB : MonoBehaviour
         // istantiate an object of the assigned public variable gameObect with coordinates ranging betwen min and max.
         //Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
         if(c == "plasma" || c == "gasoso" || c == "liquido" || c == "solido"){
-            Debug.Log("1criaFilhoB" + c);
             GameObject tmpObj =  Instantiate(criaParticulas, rb.position, Quaternion.identity);
-            criaParticulas.GetComponent<particulasC>().activaChaves(c,true);
+            tmpObj.transform.parent = gameObject.transform.parent.transform;
+            tmpObj.transform.localPosition = new Vector3(tmpObj.transform.position.x, tmpObj.transform.position.y, 0);
+
+            tmpObj.GetComponent<particulasC>().activaChaves(c,true);
+            tmpObj.GetComponent<particulasC>().activaPSA("null",true);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
         }
         else if(c == "sonar" || c == "magnetico" || c == "invisibildade" || c == "camaraLenta"){
-            Debug.Log("1criaFilhoB" + c);
             GameObject tmpObj =  Instantiate(criaParticulas, rb.position, Quaternion.identity);
-            criaParticulas.GetComponent<particulasC>().activaPSA(c,true);
+            tmpObj.transform.parent = gameObject.transform.parent.transform;
+            tmpObj.transform.localPosition = new Vector3(tmpObj.transform.position.x, tmpObj.transform.position.y, 0);
+            
+            tmpObj.GetComponent<particulasC>().activaPSA(c,true);
+            tmpObj.GetComponent<particulasC>().activaChaves("null",true);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
         }

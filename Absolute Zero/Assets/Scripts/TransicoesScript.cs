@@ -68,9 +68,9 @@ public class TransicoesScript : MonoBehaviour {
     {
         if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = true;
+        	canvasMic.SetActive(true);
+        	micInput.SetActive(true);
         }
-        canvasMic.SetActive(true);
-        micInput.SetActive(true);
     }
 
     private void mudaDeCamada(){
@@ -92,6 +92,20 @@ public class TransicoesScript : MonoBehaviour {
     	posicaoFinalJogador = new Vector3(player.transform.position.x,player.transform.position.y,posicaoCamera+10);
     	m_MainCamera.gameObject.transform.position = Vector3.MoveTowards(player.transform.position, posicaoFinalCamera, 10 * Time.deltaTime);
 		player.transform.position = Vector3.MoveTowards(player.transform.position, posicaoFinalJogador, 10 * Time.deltaTime);
+		
+		if(plasma){
+	    	player.GetComponent<personagem>().chaves.plasma = false;
+	    }
+        else if(gasoso){
+    		player.GetComponent<personagem>().chaves.gasoso = false;
+	    }
+	    else if(liquido){
+	    	player.GetComponent<personagem>().chaves.liquido = false;
+    	}
+    	else if(solido){
+    		player.GetComponent<personagem>().chaves.solido = false;
+    	}
+
 		inTransition = true;
 		camadaFim.SetActive(true);
 		

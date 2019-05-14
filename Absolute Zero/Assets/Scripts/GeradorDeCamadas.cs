@@ -180,7 +180,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		newA.SetActive(true);
 
 		newA.GetComponent<particulasA>().nivelTamanho = size;	
-		newA.GetComponent<particulasA>().velocidade = (float)(1.0/(float)size);
+		newA.GetComponent<particulasA>().velocidade = (float)(5.0*((float)(10-size+1)/10.0f));
 		newA.GetComponent<particulasA>().centroX = centroX;
 		newA.GetComponent<particulasA>().centroY = centroY;
 		newA.GetComponent<particulasA>().d1Dentro = d1Dentro;
@@ -193,6 +193,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 	}
 
 	void createB(double x, double y, int size, int type, double centroX, double centroY, double d1Dentro, double d2Dentro, double d1Fora, double d2Fora, string nomeZona){
+		size = UnityEngine.Random.Range(1, 11);
 		Vector3 position = new Vector3((float)x,(float)y,0);
 		Quaternion rotation = Quaternion.Euler(0, 0, 0);
 		GameObject newB = Instantiate(particulaB, position, rotation, gameObject.transform);
@@ -283,7 +284,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 
         newB.GetComponent<particulasB>().nivelTamanho = size;
 
-		newB.GetComponent<particulasB>().velocidade = (float)(1.0/(float)size);
+		newB.GetComponent<particulasB>().velocidade = (float)(7.0*((float)(10-size+1)/10.0f));
 
 		newB.GetComponent<particulasB>().centroX = centroX;
 		newB.GetComponent<particulasB>().centroY = centroY;

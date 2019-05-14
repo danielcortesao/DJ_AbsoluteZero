@@ -243,7 +243,7 @@ public class particulasB : MonoBehaviour
                                                              //        Debug.Log(force);
 
 
-        if ((personagem.GetComponent<personagem>().PSAActivas.magnetico))
+        if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
         {
             if (gameObject.transform.localScale.x >= target.transform.localScale.x)
             { // se B for maior que personagem atrai personagem

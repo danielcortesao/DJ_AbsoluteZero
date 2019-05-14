@@ -88,6 +88,7 @@ public class powerUps : MonoBehaviour
                 }
             }
             else{
+
                 m = (y - camera.transform.position.y) / (x - camera.transform.position.x);
                 b = camera.transform.position.y - m * camera.transform.position.x;
 
@@ -99,10 +100,12 @@ public class powerUps : MonoBehaviour
                     if (x > camera.transform.position.x)
                     {
                         xIntersecao = p1.x;
+                        yIntersecao = m * p1.x + b;
                     }
                     else
                     {
                         xIntersecao = p2.x;
+                        yIntersecao = m * p1.x + b;
                     }
                 }
                 else
