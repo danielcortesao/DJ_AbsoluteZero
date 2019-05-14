@@ -16,13 +16,12 @@ public class Sons : MonoBehaviour {
     private float timeRemaining;
 
     public int timeToDecrease = 2;
-    GameObject personagem;
+    public GameObject personagem;
     // Use this for initialization
     void Start () {
 
         timeRemaining = 15;
-        audioSource = GameObject.FindGameObjectWithTag("sons").GetComponentsInChildren<AudioSource>();
-        personagem = GameObject.FindGameObjectWithTag("Player");
+        audioSource = this.GetComponentsInChildren<AudioSource>();
         audioSource[0].Play();
 
 

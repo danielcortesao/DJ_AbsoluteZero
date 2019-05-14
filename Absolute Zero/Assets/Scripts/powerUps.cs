@@ -215,7 +215,6 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.sonar = false;
                 timeRemaining = 15;
                 isSonar = false;
-                isSonar = false;
                 esperar = true;
             }
         }
@@ -307,17 +306,6 @@ public class powerUps : MonoBehaviour
             }
 
         }
-
-        if(coolDown){
-            timeCoolDown -= Time.deltaTime;
-            if(timeCoolDown<=0){
-                timeCoolDown = 30;
-                coolDown = false;
-            }
-        }
-
-
-
         //           CAMARA LENTA
 
 
@@ -357,6 +345,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.camaraLenta = false;
                 timeRemaining = 15;
                 isLento = false;
+                esperar = true;
             }
 
         }

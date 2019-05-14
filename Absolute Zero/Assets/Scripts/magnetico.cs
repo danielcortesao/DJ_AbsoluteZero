@@ -35,13 +35,10 @@ public class magnetico : MonoBehaviour
                 */
                 if (this.transform.localScale.x <= mag.transform.localScale.x)
                 {
-                    Debug.Log("Atrai");
                     GetComponent<Rigidbody2D>().AddForce((mag.transform.position - transform.position) * forceFactor * Time.deltaTime);
                 }
                 else{
-                    Debug.Log("Empurra");
                     GetComponent<Rigidbody2D>().AddForce((transform.position - mag.transform.position) * forceFactor * Time.deltaTime);
-
                 }
            }
         }
