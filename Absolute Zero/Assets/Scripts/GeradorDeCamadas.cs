@@ -196,7 +196,89 @@ public class GeradorDeCamadas : MonoBehaviour {
 		GameObject newB = Instantiate(particulaB, position, rotation, gameObject.transform);
 		newB.transform.localScale = new Vector3((float)((size*0.1)+0.3), (float)((size*0.1)+0.3), 0.1f);
 		newB.SetActive(true);
-		newB.GetComponent<particulasB>().nivelTamanho = size;
+
+        // camada liquida tuturial
+        if (nomeZona == "gerarB_S_LiqTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = true;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = false;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+
+            newB.GetComponent<particulasB>().arrayFilhosB();
+        }
+
+        else if (nomeZona == "gerarB_CG_LiqTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = false;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = false;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+
+            newB.GetComponent<particulasB>().chaves.gasoso = true;
+        }
+
+        //camada gasosa tuturial
+
+        else if (nomeZona == "gerarB_M_GasTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = false;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = true;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+        }
+
+
+        else if (nomeZona == "gerarB_S_GasTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = true;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = false;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+        }
+
+        else if (nomeZona == "gerarB_Cp_M_P_GasTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = true;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = true;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+
+            newB.GetComponent<particulasB>().chaves.plasma = true;
+        }
+
+        //camada plasma tuturial
+
+        else if (nomeZona == "gerarB_C_PlasmaTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = false;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = false;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = true;
+        }
+
+        else if (nomeZona == "gerarB_I_PlasmaTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = false;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = true;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = false;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+        }
+
+        else if (nomeZona == "gerarB_Cg_PlasmaTut")
+        {
+            newB.GetComponent<particulasB>().particulasSA.sonar = false;
+            newB.GetComponent<particulasB>().particulasSA.invisibildade = false;
+            newB.GetComponent<particulasB>().particulasSA.magnetico = false;
+            newB.GetComponent<particulasB>().particulasSA.camaraLenta = false;
+
+            newB.GetComponent<particulasB>().chaves.gasoso = true;
+        }
+
+        //fim de por chaves e ppowerups
+
+
+        newB.GetComponent<particulasB>().nivelTamanho = size;
 
 		newB.GetComponent<particulasB>().velocidade = (float)(1.0/(float)size);
 
