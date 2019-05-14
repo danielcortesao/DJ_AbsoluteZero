@@ -117,25 +117,25 @@ public class particulasB : MonoBehaviour
 
 
 
-         if (transform.position.y >= norte.y)
+         if (transform.localPosition.y >= norte.y)
              movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), -1.0f).normalized;
-         if (transform.position.y <= sul.y)
+         if (transform.localPosition.y <= sul.y)
              movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), 1.0f).normalized;
-         if (transform.position.x >= este.x)
+         if (transform.localPosition.x >= este.x)
              movementDirection = new Vector2(-1.0f, Random.Range(-1.0f, 1.0f)).normalized;
-         if (transform.position.x <= oeste.x)
+         if (transform.localPosition.x <= oeste.x)
              movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
 
          movementPerSecond = movementDirection * velocidade;
 
-         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
-         transform.position.y + (movementPerSecond.y * Time.deltaTime));
+         transform.localPosition = new Vector2(transform.localPosition.x + (movementPerSecond.x * Time.smoothDeltaTime),
+         transform.localPosition.y + (movementPerSecond.y * Time.deltaTime));
         }
 
         if (sceneName == "Scene_Mundo")
         {
-            double newPosicaoX = transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime);
-            double newPosicaoY = transform.position.y + movementPerSecond.y * Time.smoothDeltaTime;
+            double newPosicaoX = transform.localPosition.x + (movementPerSecond.x * Time.smoothDeltaTime);
+            double newPosicaoY = transform.localPosition.y + movementPerSecond.y * Time.smoothDeltaTime;
 
             bool newPosicaoValida = false;
             //verificar se a nova posicao está dentro dos limites
@@ -163,8 +163,8 @@ public class particulasB : MonoBehaviour
             if (newPosicaoValida)
             {
                 //Debug.Log("Moveu");
-                transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
-                                                transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
+                transform.localPosition = new Vector2(transform.localPosition.x + (movementPerSecond.x * Time.smoothDeltaTime),
+                                                transform.localPosition.y + (movementPerSecond.y * Time.smoothDeltaTime));
             }
             if (newPosicaoValida == false)
             {

@@ -176,7 +176,9 @@ public class GeradorDeCamadas : MonoBehaviour {
 		Quaternion rotation = Quaternion.Euler(0, 0, 0);
 		GameObject newA = Instantiate(particulaA, position, rotation, gameObject.transform);
 		newA.transform.localScale = new Vector3((float)((size*0.1)+0.3), (float)((size*0.1)+0.3), 0.1f);
+		newA.transform.localPosition = position;
 		newA.SetActive(true);
+
 		newA.GetComponent<particulasA>().nivelTamanho = size;	
 		newA.GetComponent<particulasA>().velocidade = (float)(1.0/(float)size);
 		newA.GetComponent<particulasA>().centroX = centroX;
@@ -194,6 +196,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		Vector3 position = new Vector3((float)x,(float)y,0);
 		Quaternion rotation = Quaternion.Euler(0, 0, 0);
 		GameObject newB = Instantiate(particulaB, position, rotation, gameObject.transform);
+		newB.transform.localPosition = position;
 		newB.transform.localScale = new Vector3((float)((size*0.1)+0.3), (float)((size*0.1)+0.3), 0.1f);
 		newB.SetActive(true);
 

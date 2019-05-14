@@ -91,26 +91,26 @@ public class particulasA : MonoBehaviour
         if (sceneName == "Main")
         {
         
-        Vector2 norte = new Vector2(0.0f, 30.0f);
-        Vector2 sul = new Vector2(0.0f, -20.0f);
-        Vector2 este = new Vector2(40.0f, 0.0f);
-        Vector2 oeste = new Vector2(-40.0f, 0.0f);
+            Vector2 norte = new Vector2(0.0f, 30.0f);
+            Vector2 sul = new Vector2(0.0f, -20.0f);
+            Vector2 este = new Vector2(40.0f, 0.0f);
+            Vector2 oeste = new Vector2(-40.0f, 0.0f);
 
 
 
-        if (transform.position.y >= norte.y)
-            movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), -1.0f).normalized;
-        if (transform.position.y <= sul.y)
-            movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), 1.0f).normalized;
-        if (transform.position.x >= este.x)
-            movementDirection = new Vector2(-1.0f, Random.Range(-1.0f, 1.0f)).normalized;
-        if (transform.position.x <= oeste.x)
-            movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
+            if (transform.localPosition.y >= norte.y)
+                movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), -1.0f).normalized;
+            if (transform.localPosition.y <= sul.y)
+                movementDirection = new Vector2(Random.Range(-1.0f, 1.0f), 1.0f).normalized;
+            if (transform.localPosition.x >= este.x)
+                movementDirection = new Vector2(-1.0f, Random.Range(-1.0f, 1.0f)).normalized;
+            if (transform.localPosition.x <= oeste.x)
+                movementDirection = new Vector2(1.0f, Random.Range(-1.0f, 1.0f)).normalized;
 
-        movementPerSecond = movementDirection * velocidade;
+            movementPerSecond = movementDirection * velocidade;
 
-        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
-        transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
+            transform.localPosition = new Vector2(transform.localPosition.x + (movementPerSecond.x * Time.smoothDeltaTime),
+            transform.localPosition.y + (movementPerSecond.y * Time.smoothDeltaTime));
 
         }
         
@@ -134,8 +134,8 @@ public class particulasA : MonoBehaviour
 
         if (sceneName == "Scene_Mundo")
         {
-            double newPosicaoX = transform.position.x + (movementPerSecond.x*Time.smoothDeltaTime);
-            double newPosicaoY = transform.position.y + movementPerSecond.y*Time.smoothDeltaTime;
+            double newPosicaoX = transform.localPosition.x + (movementPerSecond.x*Time.smoothDeltaTime);
+            double newPosicaoY = transform.localPosition.y + movementPerSecond.y*Time.smoothDeltaTime;
 
             bool newPosicaoValida = false;
             //verificar se a nova posicao está dentro dos limites
@@ -158,8 +158,10 @@ public class particulasA : MonoBehaviour
 
             if(newPosicaoValida){
                 //Debug.Log("Moveu");
-                transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.smoothDeltaTime),
-                                                transform.position.y + (movementPerSecond.y * Time.smoothDeltaTime));
+                transform.localPosition = new Vector3(transform.localPosition.x + (movementPerSecond.x * Time.smoothDeltaTime),
+                                                transform.localPosition.y + (movementPerSecond.y * Time.smoothDeltaTime),
+                                                0.0f
+                                                );
             }
             if(newPosicaoValida==false)
             {
