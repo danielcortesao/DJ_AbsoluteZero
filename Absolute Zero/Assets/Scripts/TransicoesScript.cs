@@ -31,7 +31,8 @@ public class TransicoesScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.UpArrow) && keyCima && personagemOnTransicao){
+
+		if (keyCima && (Input.GetKeyDown(KeyCode.UpArrow) || micInput.GetComponent<MicrophoneInput>().vozCima) && personagemOnTransicao){
 			if(player.GetComponent<personagem>().chaves.plasma && plasma){
 				mudaDeCamada();
 			}
@@ -45,7 +46,7 @@ public class TransicoesScript : MonoBehaviour {
 				mudaDeCamada();
 			}
 		}
-		else if (Input.GetKeyDown(KeyCode.DownArrow) && !keyCima && personagemOnTransicao){
+		else if (!keyCima && (Input.GetKeyDown(KeyCode.DownArrow) || micInput.GetComponent<MicrophoneInput>().vozBaixo) && personagemOnTransicao){
 			if(player.GetComponent<personagem>().chaves.plasma && plasma){
 				mudaDeCamada();
 			}
@@ -68,7 +69,7 @@ public class TransicoesScript : MonoBehaviour {
     {
         if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = true;
-        	canvasMic.SetActive(true);
+        	//canvasMic.SetActive(true);
         	micInput.SetActive(true);
         }
     }
@@ -121,7 +122,7 @@ public class TransicoesScript : MonoBehaviour {
 		if(player.transform.position.z == posicaoFinalJogador.z){
 			inTransition = false;
 			m_MainCamera.orthographic = true;
-			canvasMic.SetActive(false);
+			//canvasMic.SetActive(false);
         	micInput.SetActive(false);
         	camadaInicio.SetActive(false);
         	if(plasma){
@@ -149,7 +150,7 @@ public class TransicoesScript : MonoBehaviour {
     {
        	if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = false;
-        	canvasMic.SetActive(false);
+        	//canvasMic.SetActive(false);
         	micInput.SetActive(false);
         }         
     }

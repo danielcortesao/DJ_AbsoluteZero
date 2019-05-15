@@ -71,8 +71,6 @@ public class personagem : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         nivelTamanho = 3;
-        velocidade = 5;
-
         pwAtivo = false;
         lento = false;
         gameObject.transform.localScale += new Vector3(0.6f, 0.6f, 1f);
