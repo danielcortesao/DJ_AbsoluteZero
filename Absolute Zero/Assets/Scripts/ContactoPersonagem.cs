@@ -18,6 +18,10 @@ public class ContactoPersonagem : MonoBehaviour
     public GameObject caixaTexto;
     public Text texto;
 
+    public GameObject[] powerUpsOnPersonagem;
+    public GameObject chaveGasosoOnPersonagem;
+    public GameObject chaveLiquidoOnPersonagem;
+    public GameObject chavePlasmaOnPersonagem;
 
     public GameObject ChavePrefab;
     public GameObject PowerUpPrefab;
@@ -54,6 +58,14 @@ public class ContactoPersonagem : MonoBehaviour
         ajudaInvisibilidade = false;
         ajudaMicro = false;
         botaoAjuda.onClick.AddListener(carregaAjuda);
+        chaveGasosoOnPersonagem.SetActive(false);
+        chaveLiquidoOnPersonagem.SetActive(false);
+        chavePlasmaOnPersonagem.SetActive(false);
+
+        powerUpsOnPersonagem = GameObject.FindGameObjectsWithTag("PowerUpsOnChar");
+        foreach(GameObject powerUp in powerUpsOnPersonagem){
+            powerUp.SetActive(false);
+        }
 
     }
 
@@ -98,15 +110,14 @@ public class ContactoPersonagem : MonoBehaviour
                 }
                 else
                 {   
-
                     //persoangem perde particula C de forma aleatoria
                     if(arrayFilhos().Count > 0){
+                        gameObject.GetComponent<personagem>().numeroPowerUps--;
                         int index = Random.Range(0, arrayFilhos().Count);
                         string str = (string)arrayFilhos()[index];
                         print(str);
                         removeEventario((string)arrayFilhos()[index]);
                         destroiFilho(gameObject, str);
-                        this.GetComponent<personagem>().numeroPowerUps--;
                     }
                 }
                 timeLastImpact = Time.time;
@@ -139,17 +150,22 @@ public class ContactoPersonagem : MonoBehaviour
                             Time.timeScale = 0.0f;
                             ajudaGasoso = true;
                         }
+
+                        chaveGasosoOnPersonagem.SetActive(true);
                         Destroy(other.gameObject);
                     }
                     else if(other.gameObject.GetComponent<particulasC>().chaves.liquido == true && !gameObject.GetComponent<personagem>().chaves.liquido){
                         gameObject.GetComponent<personagem>().chaves.liquido = true;
+
+                        chaveLiquidoOnPersonagem.SetActive(true);
                         Destroy(other.gameObject);
                     }
                     else if(other.gameObject.GetComponent<particulasC>().chaves.solido == true && !gameObject.GetComponent<personagem>().chaves.solido){
                         gameObject.GetComponent<personagem>().chaves.solido = true;
+                        chavePlasmaOnPersonagem.SetActive(true);
                         Destroy(other.gameObject);
                     }
-                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.sonar == true && gameObject.GetComponent<personagem>().numeroPowerUps<5){
+                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.sonar == true && gameObject.GetComponent<personagem>().numeroPowerUps<8){
                         gameObject.GetComponent<personagem>().eventarioPSA.sonar += 1;
                         gameObject.GetComponent<personagem>().numeroPowerUps+=1;
                         if (!ajudaSonar)
@@ -165,9 +181,10 @@ public class ContactoPersonagem : MonoBehaviour
                                 Time.timeScale = 0.0f;
                                 ajudaSonar = true;
                         }
+                        addPowerUp("sonar");
                         Destroy(other.gameObject);
                     }
-                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.magnetico == true  && gameObject.GetComponent<personagem>().numeroPowerUps<5){
+                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.magnetico == true  && gameObject.GetComponent<personagem>().numeroPowerUps<8){
 
                         gameObject.GetComponent<personagem>().eventarioPSA.magnetico += 1;
                         gameObject.GetComponent<personagem>().numeroPowerUps+=1;
@@ -184,9 +201,10 @@ public class ContactoPersonagem : MonoBehaviour
                                 Time.timeScale = 0.0f;
                                 ajudaMagnetico = true;
                         }
+                        addPowerUp("magnetico");
                         Destroy(other.gameObject);
                     }
-                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.invisibildade == true  && gameObject.GetComponent<personagem>().numeroPowerUps<5){
+                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.invisibildade == true  && gameObject.GetComponent<personagem>().numeroPowerUps<8){
                         gameObject.GetComponent<personagem>().eventarioPSA.invisibildade += 1;
                         gameObject.GetComponent<personagem>().numeroPowerUps+=1;
                         if (!ajudaInvisibilidade)
@@ -202,9 +220,10 @@ public class ContactoPersonagem : MonoBehaviour
                                 Time.timeScale = 0.0f;
                                 ajudaInvisibilidade = true;
                         }
+                        addPowerUp("invisibildade");
                         Destroy(other.gameObject);
                     }
-                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.camaraLenta == true  && gameObject.GetComponent<personagem>().numeroPowerUps<5){
+                    else if(other.gameObject.GetComponent<particulasC>().particulasSA.camaraLenta == true  && gameObject.GetComponent<personagem>().numeroPowerUps<8){
                             gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta += 1;
                             gameObject.GetComponent<personagem>().numeroPowerUps+=1;
                             if (!ajudaLento)
@@ -220,6 +239,7 @@ public class ContactoPersonagem : MonoBehaviour
                                 Time.timeScale = 0.0f;
                                 ajudaLento = true;
                             }
+                            addPowerUp("lento");
                             Destroy(other.gameObject);
                     }
 
@@ -290,7 +310,7 @@ public class ContactoPersonagem : MonoBehaviour
             else{ // laranja
                 tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLento;
             }   
-
+            removePowerUp(c);
             //criaParticulas.GetComponent<particulasC>().activaPSA(c,false);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
@@ -299,11 +319,17 @@ public class ContactoPersonagem : MonoBehaviour
     }
     private void removeEventario(string s){
         if(s == "plasma"){
-            gameObject.GetComponent<personagem>().chaves.plasma = false;}
+            gameObject.GetComponent<personagem>().chaves.plasma = false;
+            chavePlasmaOnPersonagem.SetActive(false);
+        }
         else if(s == "gasoso"){
-            gameObject.GetComponent<personagem>().chaves.gasoso = false;}
+            gameObject.GetComponent<personagem>().chaves.gasoso = false;
+            chaveGasosoOnPersonagem.SetActive(false);
+        }
         else if(s == "liquido"){
-            gameObject.GetComponent<personagem>().chaves.liquido = false;}
+            gameObject.GetComponent<personagem>().chaves.liquido = false;
+            chaveLiquidoOnPersonagem.SetActive(false);
+        }
         else if(s == "solido"){
             gameObject.GetComponent<personagem>().chaves.solido = false;}
 
@@ -340,6 +366,62 @@ public class ContactoPersonagem : MonoBehaviour
         caixaTexto.SetActive(false);
         Time.timeScale = 1.0f;
         parado = false;
+    }
+
+
+     public void addPowerUp(string nomePowerUp){
+        if(nomePowerUp == "sonar"){
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].SetActive(true);
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].GetComponent<SpriteRenderer>().sprite = spriteSonar;
+        }
+        else if(nomePowerUp == "magnetico"){
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].SetActive(true);
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].GetComponent<SpriteRenderer>().sprite = spriteMagnetico;
+        }
+        else if(nomePowerUp == "invisibildade"){
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].SetActive(true);
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].GetComponent<SpriteRenderer>().sprite = spriteInvisivel;
+        }
+        else{
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].SetActive(true);
+            powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps-1].GetComponent<SpriteRenderer>().sprite = spriteLento;
+        }
+    }
+
+    public void removePowerUp(string nomePowerUp){
+        //Debug.Log(lala == this.GetComponent<SpriteRenderer>().sprite);  
+
+        int i, powerUpRemove;
+        i=gameObject.GetComponent<personagem>().numeroPowerUps;
+        if(nomePowerUp == "sonar"){  
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+                i--;
+            }
+        }
+        else if(nomePowerUp == "magnetico"){
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+                i--;
+            }
+        }
+        else if(nomePowerUp == "invisibildade"){
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+                i--;
+            }
+        }
+        else{
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+                i--;
+            }
+        }
+
+        powerUpRemove = i;
+
+        for(i=powerUpRemove;i<gameObject.GetComponent<personagem>().numeroPowerUps;i++){
+            powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite = powerUpsOnPersonagem[i+1].GetComponent<SpriteRenderer>().sprite;
+        }
+
+
+        powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);
     }
   
 
