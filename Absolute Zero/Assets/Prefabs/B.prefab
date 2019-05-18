@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5b7602d2dec9c8e4abb790de492c5615, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.78845596, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e18194910b27f5544a6516e9acdd882a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -151,6 +151,8 @@ MonoBehaviour:
   d2Dentro: 0
   d1Fora: 0
   d2Fora: 0
+  controladorCamada: {fileID: 0}
+  nomeZona: 
   personagem: {fileID: 0}
 --- !u!114 &1493649286123614468
 MonoBehaviour:
@@ -164,10 +166,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3780a8465c78e45eda12e412e0405f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  criaParticulas: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933,
-    type: 3}
-  C: {fileID: 8390895515757063403, guid: 9a12029662353440cad87124b4002933, type: 3}
+  ChavePrefab: {fileID: 0}
+  PowerUpPrefab: {fileID: 0}
   B: {fileID: 8390895515757063403}
+  spriteSonar: {fileID: 0}
+  spriteMagnetico: {fileID: 0}
+  spriteInvisivel: {fileID: 0}
+  spriteLento: {fileID: 0}
+  spriteGasoso: {fileID: 0}
+  spriteLiquido: {fileID: 0}
+  spritePlasma: {fileID: 0}
 --- !u!58 &167018542031991892
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -196,4 +204,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d494272d32e498c8c6cb0cb9373056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  campo: {fileID: 0}
   forceFactor: 50

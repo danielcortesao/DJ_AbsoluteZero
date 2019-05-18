@@ -463,6 +463,48 @@ PrefabInstance:
       propertyPath: personagem
       value: 
       objectReference: {fileID: 1171032987}
+    - target: {fileID: 7628878278162589947, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e18194910b27f5544a6516e9acdd882a,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: ChavePrefab
+      value: 
+      objectReference: {fileID: 2745437398220665752, guid: 93dee6a3c05221f40abf6a8e72bd56f1,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: PowerUpPrefab
+      value: 
+      objectReference: {fileID: 7160676582325614320, guid: 7f3b676cf95be084baae39583f5a8694,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spriteSonar
+      value: 
+      objectReference: {fileID: 21300000, guid: 22bcff72de93a3842abd6a28668fb358,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spriteMagnetico
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e34bbeb989c0f941bb01bec704607e2,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spriteInvisivel
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b3ed7aac8840f04c81a11ecd58dba98,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spriteLento
+      value: 
+      objectReference: {fileID: 21300000, guid: 6493d035bfc14f84cb1e0bff2e5b1c18,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f76835410a76e46bbd8e23dd96167d, type: 3}
 --- !u!1 &288542090 stripped
@@ -1545,16 +1587,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1735350815351490559, guid: 3d6f787ebb7e9dd469886aeb2dbc87ee,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7860399953945568781, guid: 3d6f787ebb7e9dd469886aeb2dbc87ee,
         type: 3}
       propertyPath: personagem
       value: 
       objectReference: {fileID: 1171032987}
+    - target: {fileID: 1735350815351490559, guid: 3d6f787ebb7e9dd469886aeb2dbc87ee,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d6f787ebb7e9dd469886aeb2dbc87ee, type: 3}
 --- !u!1 &799901586
@@ -2314,6 +2356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nivelTamanho: 0
+  numeroPowerUps: 0
   chaves:
     plasma: 0
     gasoso: 0
@@ -3128,72 +3171,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607653194}
   m_CullTransparentMesh: 0
---- !u!1 &1633698590
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1633698593}
-  - component: {fileID: 1633698592}
-  - component: {fileID: 1633698591}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1633698591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633698590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1633698592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633698590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1633698593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633698590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1771892494
 GameObject:
   m_ObjectHideFlags: 0

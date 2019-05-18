@@ -47,6 +47,7 @@ public class EventarioPSA
 public class personagem : MonoBehaviour
 {
     public int nivelTamanho;
+    public int numeroPowerUps;
     // public int nivelTamanho
     // {
     //     get {return (int)(tamanho*10); }

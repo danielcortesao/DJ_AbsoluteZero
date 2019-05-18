@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class ContactoB : MonoBehaviour
 {
-    public GameObject criaParticulas;
-    public GameObject C;
+    public GameObject ChavePrefab;
+    public GameObject PowerUpPrefab;
     public GameObject B; // para o controlo de particulas
     private float timeLastImpact = -0.4f;
     private Rigidbody2D rb;
     private float deltaTime = 0.5f;
+
+
+    public Sprite spriteSonar;
+    public Sprite spriteMagnetico;
+    public Sprite spriteInvisivel;
+    public Sprite spriteLento;
+
+    public Sprite spriteGasoso;
+    public Sprite spriteLiquido;
+    public Sprite spritePlasma;
+
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player")){
@@ -54,23 +66,59 @@ public class ContactoB : MonoBehaviour
         // istantiate an object of the assigned public variable gameObect with coordinates ranging betwen min and max.
         //Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
         if(c == "plasma" || c == "gasoso" || c == "liquido" || c == "solido"){
-            GameObject tmpObj =  Instantiate(criaParticulas, rb.position, Quaternion.identity);
+            GameObject tmpObj =  Instantiate(ChavePrefab, rb.position, Quaternion.identity);
             tmpObj.transform.parent = gameObject.transform.parent.transform;
             tmpObj.transform.localPosition = new Vector3(tmpObj.transform.position.x, tmpObj.transform.position.y, 0);
 
             tmpObj.GetComponent<particulasC>().activaChaves(c,true);
             tmpObj.GetComponent<particulasC>().activaPSA("null",true);
+
+
+
+            if(c=="plasma"){ //vermelho 
+            	tmpObj.GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+            }
+            else if(c=="gasoso"){ // verde
+            	tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
+            }
+            else if(c=="liquido"){ // AZUL
+            	tmpObj.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1, 1);
+            }
+            else{ // cinza
+            	//tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);
+            }
+
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
+
+
         }
         else if(c == "sonar" || c == "magnetico" || c == "invisibildade" || c == "camaraLenta"){
-            GameObject tmpObj =  Instantiate(criaParticulas, rb.position, Quaternion.identity);
+            GameObject tmpObj =  Instantiate(PowerUpPrefab, rb.position, Quaternion.identity);
             tmpObj.transform.parent = gameObject.transform.parent.transform;
             tmpObj.transform.localPosition = new Vector3(tmpObj.transform.position.x, tmpObj.transform.position.y, 0);
             
             tmpObj.GetComponent<particulasC>().activaPSA(c,true);
             tmpObj.GetComponent<particulasC>().activaChaves("null",true);
             //Destroi filhos passados 5 segundos
+
+            if(c=="sonar"){ //branco 
+            	//tmpObj.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+            	//Sprite spriteAdd = Resources.Load<Sprite>("Assets/imgs/ParticulasImgs/powerUp1.png");
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteSonar;
+            }
+            else if(c=="magnetico"){ // roxo
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteMagnetico;
+            }
+            else if(c=="invisibildade"){ // preto
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteInvisivel;
+            }
+            else{ // laranja
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLento;
+            }	
+
+
+
             Destroy(tmpObj,5.0f);
         }
     }
