@@ -36,11 +36,9 @@ public class ContactoPersonagem : MonoBehaviour
     public bool ajudaLento;
     public bool ajudaInvisibilidade;
     public bool ajudaMicro;
-    //private bool paradoGasoso;
-    //public bool paradoMagnetico;
-    //public bool paradoSonar;
-    //public bool paradoLento;
-    //public bool paradoInvisibilidade;
+
+
+    public Button botaoAjuda;
 
     private bool parado;
 
@@ -55,6 +53,7 @@ public class ContactoPersonagem : MonoBehaviour
         ajudaLento = false;
         ajudaInvisibilidade = false;
         ajudaMicro = false;
+        botaoAjuda.onClick.AddListener(carregaAjuda);
 
     }
 
@@ -324,15 +323,24 @@ public class ContactoPersonagem : MonoBehaviour
     {
         if(parado){
             texto.text = frase;
-            if (Input.GetKeyDown("space"))
+
+            /*if (Input.GetKeyDown("space"))
             {
                 caixaTexto.SetActive(false);
                 Time.timeScale = 1.0f;
                 parado = false;
-            }
+            }*/
         }
     }
 
+
+     void carregaAjuda(){
+        Debug.Log("You have clicked the button!");
+
+        caixaTexto.SetActive(false);
+        Time.timeScale = 1.0f;
+        parado = false;
+    }
   
 
 
