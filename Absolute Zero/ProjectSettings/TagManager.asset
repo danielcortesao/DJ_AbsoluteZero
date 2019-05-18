@@ -13,6 +13,7 @@ TagManager:
   - sliderFrequencia
   - apanhar
   - sons
+  - caixaTexto
   layers:
   - Default
   - TransparentFX

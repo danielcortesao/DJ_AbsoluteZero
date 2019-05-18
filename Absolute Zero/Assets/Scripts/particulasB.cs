@@ -72,7 +72,7 @@ public class particulasB : MonoBehaviour
     void Update()
     {
         //codigo para  personagem();
-        forcaGravitica();
+        //forcaGravitica();
         ResetContacto();
         //fim de codigo para perseguir personagem
 

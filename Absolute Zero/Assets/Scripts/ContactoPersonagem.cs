@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class ContactoPersonagem : MonoBehaviour
 {
@@ -14,10 +15,36 @@ public class ContactoPersonagem : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject criaParticulas;
 
+    public GameObject caixaTexto;
+    public Text texto;
+
+
+    public bool ajudaGasoso;
+    public bool ajudaMagnetico;
+    public bool ajudaSonar;
+    public bool ajudaLento;
+    public bool ajudaInvisibilidade;
+    public bool ajudaMicro;
+    //private bool paradoGasoso;
+    //public bool paradoMagnetico;
+    //public bool paradoSonar;
+    //public bool paradoLento;
+    //public bool paradoInvisibilidade;
+
+    private bool parado;
+
+    private string frase;
 
     private void Start()
     {
-        audioSource = GameObject.FindGameObjectWithTag("sons").GetComponentsInChildren<AudioSource>(); 
+        audioSource = GameObject.FindGameObjectWithTag("sons").GetComponentsInChildren<AudioSource>();
+        ajudaGasoso = false;
+        ajudaMagnetico = false;
+        ajudaSonar = false;
+        ajudaLento = false;
+        ajudaInvisibilidade = false;
+        ajudaMicro = false;
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -79,25 +106,109 @@ public class ContactoPersonagem : MonoBehaviour
                 //se está activa, as personagem ganha essa chave / PSA
                 if(other.gameObject.GetComponent<particulasC>().ativa == true)
                     {
+                    //Som para amanha power up
                     audioSource[2].Play();
                         Debug.Log("ganha chave/PSA");
-                        if(other.gameObject.GetComponent<particulasC>().chaves.plasma == true){
-                            gameObject.GetComponent<personagem>().chaves.plasma = true;}
-                        else if(other.gameObject.GetComponent<particulasC>().chaves.gasoso == true){
-                            gameObject.GetComponent<personagem>().chaves.gasoso = true;}
+                    if (other.gameObject.GetComponent<particulasC>().chaves.plasma == true)
+                    {
+                        gameObject.GetComponent<personagem>().chaves.plasma = true;
+                    }
+                    else if (other.gameObject.GetComponent<particulasC>().chaves.gasoso == true)
+                    {
+
+                        gameObject.GetComponent<personagem>().chaves.gasoso = true;
+                        if (!ajudaGasoso)
+                        {
+                            caixaTexto.SetActive(true);
+                            parado = true;
+                            frase = "Ganhou uma chave";
+                            Time.timeScale = 0.0f;
+                            if (Input.GetKeyDown("space"))
+                            {
+                                Time.timeScale = 1.0f;
+                            }
+                            Debug.Log("ENTREI");
+                            Time.timeScale = 0.0f;
+                            ajudaGasoso = true;
+                        }
+                        else{
+                            Debug.Log("NAO ENTREI");
+                        }
+                    }
                         else if(other.gameObject.GetComponent<particulasC>().chaves.liquido == true){
                             gameObject.GetComponent<personagem>().chaves.liquido = true;}
                         else if(other.gameObject.GetComponent<particulasC>().chaves.solido == true){
                             gameObject.GetComponent<personagem>().chaves.solido = true;}
 
                         else if(other.gameObject.GetComponent<particulasC>().particulasSA.sonar == true){
-                            gameObject.GetComponent<personagem>().eventarioPSA.sonar += 1;}
+                            gameObject.GetComponent<personagem>().eventarioPSA.sonar += 1;
+                            if (!ajudaSonar)
+                            {
+                                caixaTexto.SetActive(true);
+                                frase = "Ganhou um Power Up!"+ '\n'+" Para o usar pressione a tecla A.";
+                                parado = true;
+                                Time.timeScale = 0.0f;
+                                if (Input.GetKeyDown("space"))
+                                {
+                                    Time.timeScale = 1.0f;
+                                }
+                                Debug.Log("ENTREI");
+                                Time.timeScale = 0.0f;
+                                ajudaSonar = true;
+                            }
+                    }
                         else if(other.gameObject.GetComponent<particulasC>().particulasSA.magnetico == true){
-                            gameObject.GetComponent<personagem>().eventarioPSA.magnetico += 1;}
+
+                            gameObject.GetComponent<personagem>().eventarioPSA.magnetico += 1;
+                            if (!ajudaMagnetico)
+                            {
+                                caixaTexto.SetActive(true);
+                                frase = "Ganhou um Power Up! " + '\n' + " Para o usar pressione a tecla S.";
+                                parado = true;
+                                Time.timeScale = 0.0f;
+                                if (Input.GetKeyDown("space"))
+                                {
+                                    Time.timeScale = 1.0f;
+                                }
+                                Debug.Log("ENTREI");
+                                Time.timeScale = 0.0f;
+                                ajudaMagnetico = true;
+                            }
+                    }
                         else if(other.gameObject.GetComponent<particulasC>().particulasSA.invisibildade == true){
-                            gameObject.GetComponent<personagem>().eventarioPSA.invisibildade += 1;}
+                            gameObject.GetComponent<personagem>().eventarioPSA.invisibildade += 1;
+                            if (!ajudaInvisibilidade)
+                            {
+                                caixaTexto.SetActive(true);
+                                frase = "Ganhou um Power Up!" + '\n' + "  Para o usar pressione a tecla D.";
+                                parado = true;
+                                Time.timeScale = 0.0f;
+                                if (Input.GetKeyDown("space"))
+                                {
+                                    Time.timeScale = 1.0f;
+                                }
+                                Debug.Log("ENTREI");
+                                Time.timeScale = 0.0f;
+                                ajudaInvisibilidade = true;
+                            }
+                    }
                         else if(other.gameObject.GetComponent<particulasC>().particulasSA.camaraLenta == true){
-                            gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta += 1;}
+                            gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta += 1;
+                            if (!ajudaLento)
+                            {
+                                caixaTexto.SetActive(true);
+                                frase = "Ganhou um Power Up! " + '\n' + " Para o usar pressione a tecla F.";
+                                parado = true;
+                                Time.timeScale = 0.0f;
+                                if (Input.GetKeyDown("space"))
+                                {
+                                    Time.timeScale = 1.0f;
+                                }
+                                Debug.Log("ENTREI");
+                                Time.timeScale = 0.0f;
+                                ajudaLento = true;
+                            }
+                    }
 
                         // descativa todas as particulas C
                         allObjectsC = GameObject.FindGameObjectsWithTag("ParticulasC");
@@ -170,6 +281,21 @@ public class ContactoPersonagem : MonoBehaviour
 
     }
 
+   
+    private void Update()
+    {
+        if(parado){
+            texto.text = frase;
+            if (Input.GetKeyDown("space"))
+            {
+                caixaTexto.SetActive(false);
+                Time.timeScale = 1.0f;
+                parado = false;
+            }
+        }
+    }
+
+  
 
 
 }

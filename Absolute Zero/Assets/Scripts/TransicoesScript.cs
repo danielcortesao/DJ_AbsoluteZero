@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TransicoesScript : MonoBehaviour {
 	public GameObject player;
@@ -21,12 +22,22 @@ public class TransicoesScript : MonoBehaviour {
 	public GameObject camadaInicio;
 	public GameObject camadaFim;
 
+    public Text texto;
+
+    private bool micro;
+    private bool parado;
+
+    public GameObject caixaTexto;
+
 
 	// Use this for initialization
 	void Start () {
 		personagemOnTransicao = false;
 		m_MainCamera = Camera.main;
 		inTransition = false;
+        micro = false;
+        parado = false;
+
 	}
 	
 	// Update is called once per frame
@@ -34,7 +45,7 @@ public class TransicoesScript : MonoBehaviour {
 
 		if (keyCima && (Input.GetKeyDown(KeyCode.UpArrow) || micInput.GetComponent<MicrophoneInput>().vozCima) && personagemOnTransicao){
 			if(player.GetComponent<personagem>().chaves.plasma && plasma){
-				mudaDeCamada();
+                mudaDeCamada();
 			}
 			else if(player.GetComponent<personagem>().chaves.solido && solido){
 				mudaDeCamada();
@@ -63,6 +74,16 @@ public class TransicoesScript : MonoBehaviour {
 		if(inTransition){
 			transicaoCamada();
 		}
+
+        if(parado){
+            texto.text = "Faça um som grave ou agudo"+'\n'+" para transitar de camada.";
+            if (Input.GetKeyDown("space"))
+            {
+                caixaTexto.SetActive(false);
+                Time.timeScale = 1.0f;
+                parado = false;
+            }
+        }
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -71,6 +92,15 @@ public class TransicoesScript : MonoBehaviour {
         	personagemOnTransicao = true;
         	//canvasMic.SetActive(true);
         	micInput.SetActive(true);
+            if(!player.GetComponent<ContactoPersonagem>().ajudaMicro)
+            {
+                Time.timeScale = 0.0f;
+                player.GetComponent<ContactoPersonagem>().ajudaMicro = true;
+                caixaTexto.SetActive(true);
+                parado = true;
+
+            }
+
         }
     }
 

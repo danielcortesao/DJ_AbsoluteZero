@@ -86,6 +86,7 @@ public class Sons : MonoBehaviour {
         {
             if (personagem.GetComponent<personagem>().eventarioPSA.sonar == 0)
             {
+                audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
             }
            
@@ -96,6 +97,7 @@ public class Sons : MonoBehaviour {
         {
             if (personagem.GetComponent<personagem>().eventarioPSA.magnetico == 0)
             {
+                audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
             }
            /* else
@@ -109,6 +111,7 @@ public class Sons : MonoBehaviour {
         {
             if (personagem.GetComponent<personagem>().eventarioPSA.invisibildade == 0)
             {
+                audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
             }
 
@@ -118,6 +121,7 @@ public class Sons : MonoBehaviour {
         {
             if (personagem.GetComponent<personagem>().eventarioPSA.camaraLenta == 0)
             {
+                audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
             }
 
