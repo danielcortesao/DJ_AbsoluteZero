@@ -22,6 +22,9 @@ public class TransicoesScript : MonoBehaviour {
 	public GameObject camadaInicio;
 	public GameObject camadaFim;
 
+
+
+    public Button botao;
     public Text texto;
 
     private bool micro;
@@ -38,10 +41,11 @@ public class TransicoesScript : MonoBehaviour {
         micro = false;
         parado = false;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 		if (keyCima && (Input.GetKeyDown(KeyCode.UpArrow) || micInput.GetComponent<MicrophoneInput>().vozCima) && personagemOnTransicao){
 			if(player.GetComponent<personagem>().chaves.plasma && plasma){
@@ -75,15 +79,7 @@ public class TransicoesScript : MonoBehaviour {
 			transicaoCamada();
 		}
 
-        if(parado){
-            texto.text = "Faça um som grave ou agudo"+'\n'+" para transitar de camada.";
-            if (Input.GetKeyDown("space"))
-            {
-                caixaTexto.SetActive(false);
-                Time.timeScale = 1.0f;
-                parado = false;
-            }
-        }
+       
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -94,6 +90,8 @@ public class TransicoesScript : MonoBehaviour {
         	micInput.SetActive(true);
             if(!player.GetComponent<ContactoPersonagem>().ajudaMicro)
             {
+                texto.text = "Faça um som grave ou agudo" + '\n' + " para transitar de camada.";
+
                 Time.timeScale = 0.0f;
                 player.GetComponent<ContactoPersonagem>().ajudaMicro = true;
                 caixaTexto.SetActive(true);
