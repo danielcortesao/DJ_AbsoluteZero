@@ -139,7 +139,7 @@ public class powerUps : MonoBehaviour
     {
     
         //--------------------- SONAR -------------------------
-        if (Input.GetKeyDown("g"))
+        if (Input.GetKeyDown("a"))
         {
             if (this.GetComponent<personagem>().eventarioPSA.sonar>0 && !coolDown && !this.GetComponent<personagem>().pwAtivo){
                 
@@ -192,6 +192,7 @@ public class powerUps : MonoBehaviour
 
                 this.GetComponent<personagem>().pwAtivo = true;
                 this.GetComponent<personagem>().eventarioPSA.sonar--;
+                this.GetComponent<personagem>().numeroPowerUps--;
                 this.GetComponent<personagem>().PSAActivas.sonar = true;
                 sonar.gameObject.SetActive(true);
                 sonar.Play();
@@ -222,7 +223,7 @@ public class powerUps : MonoBehaviour
        
 
         //--------------------- CAMPO MAGNÉTICO -----------------------
-        if (Input.GetKeyDown("h"))
+        if (Input.GetKeyDown("s"))
         {
             if(this.GetComponent<personagem>().eventarioPSA.magnetico>0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
             
@@ -231,6 +232,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().pwAtivo = true;
                 this.GetComponent<personagem>().eventarioPSA.magnetico--;
                 this.GetComponent<personagem>().PSAActivas.magnetico = true;
+                this.GetComponent<personagem>().numeroPowerUps--;
                 magnetico.SetActive(true);
                 isMagnetico = true;
                 Debug.Log("Campo magnetico");
@@ -263,7 +265,7 @@ public class powerUps : MonoBehaviour
 
 
         //------------------- INVISIBILIDADE -------------------------
-        if (Input.GetKeyDown("j"))
+        if (Input.GetKeyDown("d"))
         {
             Debug.Log("invisibildade");
             if (this.GetComponent<personagem>().eventarioPSA.invisibildade > 0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
@@ -272,6 +274,7 @@ public class powerUps : MonoBehaviour
                 Debug.Log("Entrei na invisibilidade");
                 this.GetComponent<personagem>().PSAActivas.invisibildade = true;
                 this.GetComponent<personagem>().eventarioPSA.invisibildade--;
+                this.GetComponent<personagem>().numeroPowerUps--;
                 invisibilidade = true;
             }
             else{
@@ -309,7 +312,7 @@ public class powerUps : MonoBehaviour
         //           CAMARA LENTA
 
 
-        if (Input.GetKeyDown("l"))
+        if (Input.GetKeyDown("f"))
         {
             Debug.Log("camara lenta");
             if (this.GetComponent<personagem>().eventarioPSA.camaraLenta > 0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
@@ -317,6 +320,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().pwAtivo = true;
                 Debug.Log("Entrei na camara lenta");
                 this.GetComponent<personagem>().PSAActivas.camaraLenta = true;
+                this.GetComponent<personagem>().numeroPowerUps--;
                 this.GetComponent<personagem>().eventarioPSA.camaraLenta--;
                 isLento = true;
             }

@@ -33,7 +33,6 @@ public class ContactoB : MonoBehaviour
                     Debug.Log(gameObject.GetComponent<Rigidbody2D>());
                     //Particula B desintegra-se e Cria Chaves
                     int totalFilhos = gameObject.GetComponent<particulasB>().qtdChaves() + gameObject.GetComponent<particulasB>().qtdPSA();
-                    Debug.Log("totalFilhos:" + totalFilhos);
                     criaFilhos(gameObject.GetComponent<particulasB>().chaves, gameObject.GetComponent<particulasB>().particulasSA);
                     this.GetComponent<particulasB>().reposicao();
                     Destroy(gameObject);

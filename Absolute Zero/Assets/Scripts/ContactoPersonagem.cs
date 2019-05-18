@@ -19,6 +19,17 @@ public class ContactoPersonagem : MonoBehaviour
     public Text texto;
 
 
+    public GameObject ChavePrefab;
+    public GameObject PowerUpPrefab;
+    public Sprite spriteSonar;
+    public Sprite spriteMagnetico;
+    public Sprite spriteInvisivel;
+    public Sprite spriteLento;
+    public Sprite spriteGasoso;
+    public Sprite spriteLiquido;
+    public Sprite spritePlasma;
+
+
     public bool ajudaGasoso;
     public bool ajudaMagnetico;
     public bool ajudaSonar;
@@ -87,15 +98,17 @@ public class ContactoPersonagem : MonoBehaviour
                     //Não acontece nada ao player
                 }
                 else
-                {   //persoangem perde particula C de forma aleatoria
+                {   
+
+                    //persoangem perde particula C de forma aleatoria
                     if(arrayFilhos().Count > 0){
                         int index = Random.Range(0, arrayFilhos().Count);
-                        print(index);
                         string str = (string)arrayFilhos()[index];
                         print(str);
                         removeEventario((string)arrayFilhos()[index]);
                         destroiFilho(gameObject, str);
-                        }
+                        this.GetComponent<personagem>().numeroPowerUps--;
+                    }
                 }
                 timeLastImpact = Time.time;
             }
@@ -243,15 +256,42 @@ public class ContactoPersonagem : MonoBehaviour
         // istantiate an object of the assigned public variable gameObect with coordinates ranging betwen min and max.
         //Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
         if(c == "plasma" || c == "gasoso" || c == "liquido" || c == "solido"){
-            GameObject tmpObj =  Instantiate(criaParticulas, rb.position, Quaternion.identity);
+            GameObject tmpObj =  Instantiate(ChavePrefab, rb.position, Quaternion.identity);
             tmpObj.gameObject.GetComponent<particulasC>().activaChaves(c,false);
+            if(c=="plasma"){ //vermelho 
+                tmpObj.GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+            }
+            else if(c=="gasoso"){ // verde
+                tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
+            }
+            else if(c=="liquido"){ // AZUL
+                tmpObj.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1, 1);
+            }
+            else{ // cinza
+                //tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);
+            }
             //criaParticulas.GetComponent<particulasC>().activaChaves(c,false);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
         }
         else if(c == "sonar" || c == "magnetico" || c == "invisibildade" || c == "camaraLenta"){
-            GameObject tmpObj =  Instantiate(criaParticulas, rb.position, Quaternion.identity);
+            GameObject tmpObj =  Instantiate(PowerUpPrefab, rb.position, Quaternion.identity);
             tmpObj.gameObject.GetComponent<particulasC>().activaChaves(c,false);
+            if(c=="sonar"){ //branco 
+                //tmpObj.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+                //Sprite spriteAdd = Resources.Load<Sprite>("Assets/imgs/ParticulasImgs/powerUp1.png");
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spriteSonar;
+            }
+            else if(c=="magnetico"){ // roxo
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spriteMagnetico;
+            }
+            else if(c=="invisibildade"){ // preto
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spriteInvisivel;
+            }
+            else{ // laranja
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLento;
+            }   
+
             //criaParticulas.GetComponent<particulasC>().activaPSA(c,false);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
@@ -259,7 +299,6 @@ public class ContactoPersonagem : MonoBehaviour
         
     }
     private void removeEventario(string s){
-        Debug.Log("removeEventario: " + s);
         if(s == "plasma"){
             gameObject.GetComponent<personagem>().chaves.plasma = false;}
         else if(s == "gasoso"){
