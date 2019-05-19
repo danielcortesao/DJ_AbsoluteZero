@@ -8,9 +8,7 @@ public class ContactoPersonagem : MonoBehaviour
     private float timeLastImpact = -0.4f;
     private float deltaTime = 0.5f;
     private GameObject[] allObjectsC;
-
- 
-
+    
     public AudioSource[]audioSource;
     private Rigidbody2D rb;
     public GameObject criaParticulas;
@@ -25,6 +23,7 @@ public class ContactoPersonagem : MonoBehaviour
 
     public GameObject ChavePrefab;
     public GameObject PowerUpPrefab;
+    public GameObject groupPowerUp;
     public Sprite spriteSonar;
     public Sprite spriteMagnetico;
     public Sprite spriteInvisivel;
@@ -421,8 +420,24 @@ public class ContactoPersonagem : MonoBehaviour
             powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite = powerUpsOnPersonagem[i+1].GetComponent<SpriteRenderer>().sprite;
         }
 
-        Debug.Log(gameObject.GetComponent<personagem>().numeroPowerUps);
+
         powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);
+    }
+
+    public void powerUpsDesativados(){
+        int i;
+        for(i=0;i<8;i++){
+            powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().color = new Color((float)0.5,(float)0.5,(float)0.5,(float)0.5);
+            groupPowerUp.GetComponent<Rotate>().enabled =false;
+        }
+    }
+
+    public void powerUpsAtivados(){
+        int i;
+        for(i=0;i<8;i++){
+            powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+            groupPowerUp.GetComponent<Rotate>().enabled = true;
+        }
     }
   
 

@@ -45,7 +45,6 @@ public class ContactoB : MonoBehaviour
             }
             //Destroy(other.gameObject);
         }
-
     }
 
     void criaFilhos(Chaves chaves, ParticulasSA particulasSA){

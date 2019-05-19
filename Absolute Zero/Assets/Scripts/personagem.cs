@@ -65,8 +65,6 @@ public class personagem : MonoBehaviour
     public bool pwAtivo;
     public bool lento;
 
-    public Sprite lala;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -74,16 +72,15 @@ public class personagem : MonoBehaviour
         nivelTamanho = 3;
         pwAtivo = false;
         lento = false;
-        gameObject.transform.localScale += new Vector3(0.6f, 0.6f, 1f);
+        gameObject.transform.localScale += new Vector3(0.8f, 0.8f, 1f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float novoTam = (float)nivelTamanho*0.1f+0.3f;
+        float novoTam = (float)nivelTamanho*0.1f+0.6f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
-        Debug.Log(lala == this.GetComponent<SpriteRenderer>().sprite);
     }
 
     void FixedUpdate()

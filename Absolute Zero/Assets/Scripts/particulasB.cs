@@ -248,7 +248,6 @@ public class particulasB : MonoBehaviour
         if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
         {
             if(dist<20){
-                Debug.Log("Adicionou Forca");
                 /*
                 if(isWithForce){
                     rb.AddForce(-vetorDaForca * valueForca);
@@ -257,24 +256,24 @@ public class particulasB : MonoBehaviour
                 if (gameObject.transform.localScale.x >= target.transform.localScale.x)
                 { // se B for maior que personagem atrai personagem
 
-                    rb.AddForce(-direction * force); // Adding the force to the player 
+                    rb.AddForce(-direction * force * (float)0.6); // Adding the force to the player 
                     if(isWithForce){
-                        vetorDaForca = vetorDaForca + (-direction*force);
+                        vetorDaForca = vetorDaForca + (-direction*force * (float)0.6);
                     }
                     else{
-                        vetorDaForca = -direction*force;
+                        vetorDaForca = -direction*force * (float)0.6;
                     }
                     isWithForce = true;
 
                 }
                 else
                 {// se B for menor que personagem é repelida 
-                    rb.AddForce(direction * force); // Adding the force to the player 
+                    rb.AddForce(direction * force * (float)0.6); // Adding the force to the player 
                     if(isWithForce){
-                        vetorDaForca = vetorDaForca + (direction*force);
+                        vetorDaForca = vetorDaForca + (direction*force * (float)0.6);
                     }
                     else{
-                        vetorDaForca = direction*force;
+                        vetorDaForca = direction*force * (float)0.6;
                     }
                     isWithForce = true;
                 }   

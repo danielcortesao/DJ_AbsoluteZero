@@ -8,6 +8,8 @@ public class powerUps : MonoBehaviour
     // Use this for initialization
     public Rigidbody2D rb;
     public GameObject magnetico;
+
+    public GameObject chavesGrupo, powerUpsGrupo;
     //public GameObject particulaA;
 
     //public GameObject principal;
@@ -28,7 +30,6 @@ public class powerUps : MonoBehaviour
     private float timeCoolDown;
 
     private bool coolDown;
-    private bool esperar;
 
     bool invisivel, mag, lenta,Sonar;
     public string nomeCamadaOn;
@@ -195,6 +196,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().numeroPowerUps--;
                 this.GetComponent<ContactoPersonagem>().removePowerUp("sonar");
                 this.GetComponent<personagem>().PSAActivas.sonar = true;
+                this.GetComponent<ContactoPersonagem>().powerUpsDesativados();
                 sonar.gameObject.SetActive(true);
                 sonar.Play();
                 isSonar = true;
@@ -217,7 +219,6 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.sonar = false;
                 timeRemaining = 15;
                 isSonar = false;
-                esperar = true;
             }
         }
 
@@ -235,6 +236,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.magnetico = true;
                 this.GetComponent<personagem>().numeroPowerUps--;
                 this.GetComponent<ContactoPersonagem>().removePowerUp("magnetico");
+                this.GetComponent<ContactoPersonagem>().powerUpsDesativados();
                 magnetico.SetActive(true);
                 isMagnetico = true;
                 Debug.Log("Campo magnetico");
@@ -261,7 +263,6 @@ public class powerUps : MonoBehaviour
                 magnetico.SetActive(false);
                 this.GetComponent<personagem>().PSAActivas.magnetico = false;
                 isMagnetico = false;
-                esperar = true;
             }
         }
 
@@ -278,7 +279,10 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().eventarioPSA.invisibildade--;
                 this.GetComponent<personagem>().numeroPowerUps--;
                 this.GetComponent<ContactoPersonagem>().removePowerUp("invisibilidade");
+                this.GetComponent<ContactoPersonagem>().powerUpsDesativados();
                 invisibilidade = true;
+                chavesGrupo.SetActive(false);
+                powerUpsGrupo.SetActive(false);
             }
             else{
                 Debug.Log("nao existe invisibilidade");
@@ -296,19 +300,20 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<Collider2D>().enabled = false;
                 this.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
                 Debug.Log("Invisibilidade");
-                Debug.Log(timeRemaining);
             }
             else
             {
                 this.GetComponent<personagem>().pwAtivo = false;
-                Debug.Log("ja nao estou invisivel");
                 this.GetComponent<personagem>().PSAActivas.invisibildade = false;
+
+                chavesGrupo.SetActive(true);
+                powerUpsGrupo.SetActive(true);
+
                 timeRemaining = 15;
                 rb.isKinematic = false;
                 this.GetComponent<Collider2D>().enabled = true;
                 this.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 invisibilidade = false;
-                esperar = true;
             }
 
         }
@@ -325,6 +330,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.camaraLenta = true;
                 this.GetComponent<personagem>().numeroPowerUps--;
                 this.GetComponent<ContactoPersonagem>().removePowerUp("lento");
+                this.GetComponent<ContactoPersonagem>().powerUpsDesativados();
                 this.GetComponent<personagem>().eventarioPSA.camaraLenta--;
                 isLento = true;
             }
@@ -353,7 +359,6 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.camaraLenta = false;
                 timeRemaining = 15;
                 isLento = false;
-                esperar = true;
             }
 
         }
@@ -365,6 +370,7 @@ public class powerUps : MonoBehaviour
             {
                 timeCoolDown = 30;
                 coolDown = false;
+                this.GetComponent<ContactoPersonagem>().powerUpsAtivados();
             }
         }
 

@@ -88,7 +88,7 @@ public class TransicoesScript : MonoBehaviour {
     {
         if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = true;
-        	//canvasMic.SetActive(true);
+        	canvasMic.SetActive(true);
         	micInput.SetActive(true);
             if(!player.GetComponent<ContactoPersonagem>().ajudaMicro)
             {
@@ -157,7 +157,7 @@ public class TransicoesScript : MonoBehaviour {
 		if(player.transform.position.z == posicaoFinalJogador.z){
 			inTransition = false;
 			m_MainCamera.orthographic = true;
-			//canvasMic.SetActive(false);
+			canvasMic.SetActive(false);
         	micInput.SetActive(false);
         	camadaInicio.SetActive(false);
         	if(plasma){
@@ -185,7 +185,7 @@ public class TransicoesScript : MonoBehaviour {
     {
        	if(other.gameObject.CompareTag("Player")){
         	personagemOnTransicao = false;
-        	//canvasMic.SetActive(false);
+        	canvasMic.SetActive(false);
         	micInput.SetActive(false);
         }         
     }
