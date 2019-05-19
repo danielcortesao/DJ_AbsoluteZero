@@ -11,9 +11,13 @@ public class TransicoesScript : MonoBehaviour {
 	public bool solido;
 	public bool keyCima;
 	private bool personagemOnTransicao;
+
 	public GameObject canvasMic;
 	public GameObject micInput;
 
+	public Sprite spriteGasoso;
+	public Sprite spriteLiquido;
+	public Sprite spritePlasma;
 
 	private Camera m_MainCamera;
 	private Vector3 posicaoFinalCamera;
@@ -21,8 +25,6 @@ public class TransicoesScript : MonoBehaviour {
 	private bool inTransition;
 	public GameObject camadaInicio;
 	public GameObject camadaFim;
-
-
 
     public Button botao;
     public Text texto;
@@ -103,7 +105,6 @@ public class TransicoesScript : MonoBehaviour {
     }
 
     private void mudaDeCamada(){
-    	Debug.Log("Muda de Camada");
     	m_MainCamera.orthographic = false;
     	int posicaoCamera = 70;
     	if(gasoso){
@@ -124,12 +125,18 @@ public class TransicoesScript : MonoBehaviour {
 		
 		if(plasma){
 	    	player.GetComponent<personagem>().chaves.plasma = false;
+        	player.GetComponent<ContactoPersonagem>().chavePlasmaOnPersonagem.SetActive(false);
+        	player.GetComponent<SpriteRenderer>().sprite = spritePlasma;
 	    }
         else if(gasoso){
     		player.GetComponent<personagem>().chaves.gasoso = false;
+	    	player.GetComponent<ContactoPersonagem>().chaveGasosoOnPersonagem.SetActive(false);
+	    	player.GetComponent<SpriteRenderer>().sprite = spriteGasoso;
 	    }
 	    else if(liquido){
 	    	player.GetComponent<personagem>().chaves.liquido = false;
+        	player.GetComponent<ContactoPersonagem>().chaveLiquidoOnPersonagem.SetActive(false);
+        	player.GetComponent<SpriteRenderer>().sprite = spriteLiquido;
     	}
     	else if(solido){
     		player.GetComponent<personagem>().chaves.solido = false;

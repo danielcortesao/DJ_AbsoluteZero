@@ -75,13 +75,13 @@ public class ContactoB : MonoBehaviour
 
 
             if(c=="plasma"){ //vermelho 
-            	tmpObj.GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spritePlasma;
             }
             else if(c=="gasoso"){ // verde
-            	tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteGasoso;
             }
             else if(c=="liquido"){ // AZUL
-            	tmpObj.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1, 1);
+            	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLiquido;
             }
             else{ // cinza
             	//tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);

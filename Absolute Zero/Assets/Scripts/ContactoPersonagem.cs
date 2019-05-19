@@ -131,6 +131,7 @@ public class ContactoPersonagem : MonoBehaviour
                     if (other.gameObject.GetComponent<particulasC>().chaves.plasma == true && !gameObject.GetComponent<personagem>().chaves.plasma)
                     {
                         gameObject.GetComponent<personagem>().chaves.plasma = true;
+                        chaveLiquidoOnPersonagem.SetActive(true);
                         Destroy(other.gameObject);
                     }
                     else if (other.gameObject.GetComponent<particulasC>().chaves.gasoso == true && !gameObject.GetComponent<personagem>().chaves.gasoso)
@@ -278,13 +279,13 @@ public class ContactoPersonagem : MonoBehaviour
             GameObject tmpObj =  Instantiate(ChavePrefab, rb.position, Quaternion.identity);
             tmpObj.gameObject.GetComponent<particulasC>().activaChaves(c,false);
             if(c=="plasma"){ //vermelho 
-                tmpObj.GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spritePlasma;
             }
             else if(c=="gasoso"){ // verde
-                tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spriteGasoso;
             }
             else if(c=="liquido"){ // AZUL
-                tmpObj.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1, 1);
+                tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLiquido;
             }
             else{ // cinza
                 //tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);

@@ -164,6 +164,9 @@ MonoBehaviour:
   keyCima: 0
   canvasMic: {fileID: 0}
   micInput: {fileID: 0}
+  spriteGasoso: {fileID: 0}
+  spriteLiquido: {fileID: 0}
+  spritePlasma: {fileID: 0}
   camadaInicio: {fileID: 0}
   camadaFim: {fileID: 0}
   botao: {fileID: 0}
@@ -316,6 +319,9 @@ MonoBehaviour:
   keyCima: 0
   canvasMic: {fileID: 735608416}
   micInput: {fileID: 2143205468}
+  spriteGasoso: {fileID: 0}
+  spriteLiquido: {fileID: 0}
+  spritePlasma: {fileID: 0}
   camadaInicio: {fileID: 893882527}
   camadaFim: {fileID: 1600658578}
   botao: {fileID: 0}
@@ -572,6 +578,24 @@ PrefabInstance:
       propertyPath: spriteLento
       value: 
       objectReference: {fileID: 21300000, guid: 6493d035bfc14f84cb1e0bff2e5b1c18,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spritePlasma
+      value: 
+      objectReference: {fileID: 21300000, guid: 607ddcaa257c27f4f9d261a596708014,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spriteGasoso
+      value: 
+      objectReference: {fileID: 21300000, guid: 5797724e41fb2a8478070a29932477ba,
+        type: 3}
+    - target: {fileID: 1493649286123614468, guid: a0f76835410a76e46bbd8e23dd96167d,
+        type: 3}
+      propertyPath: spriteLiquido
+      value: 
+      objectReference: {fileID: 21300000, guid: 5a6fd9d5146c6e2468c70a64aac5c7b3,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f76835410a76e46bbd8e23dd96167d, type: 3}
@@ -934,7 +958,7 @@ Transform:
   m_GameObject: {fileID: 464402852}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: -3.2, y: -3.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: -3, z: 1}
   m_Children: []
   m_Father: {fileID: 678527371}
   m_RootOrder: 1
@@ -975,8 +999,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1274960033
   m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 988a6250f03dfd34080579c29835fa51, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d61e99fd3af29e34d8a1fcafb760f99a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2234,6 +2258,9 @@ MonoBehaviour:
   keyCima: 1
   canvasMic: {fileID: 735608416}
   micInput: {fileID: 2143205468}
+  spriteGasoso: {fileID: 0}
+  spriteLiquido: {fileID: 0}
+  spritePlasma: {fileID: 0}
   camadaInicio: {fileID: 1600658578}
   camadaFim: {fileID: 893882527}
   botao: {fileID: 0}
@@ -2764,6 +2791,9 @@ MonoBehaviour:
   keyCima: 1
   canvasMic: {fileID: 735608416}
   micInput: {fileID: 2143205468}
+  spriteGasoso: {fileID: 0}
+  spriteLiquido: {fileID: 0}
+  spritePlasma: {fileID: 0}
   camadaInicio: {fileID: 1462221153}
   camadaFim: {fileID: 1600658578}
   botao: {fileID: 0}
@@ -2953,10 +2983,10 @@ MonoBehaviour:
     liquido: 0
     solido: 0
   eventarioPSA:
-    sonar: 2
-    magnetico: 2
-    invisibildade: 2
-    camaraLenta: 2
+    sonar: 0
+    magnetico: 0
+    invisibildade: 0
+    camaraLenta: 0
   PSAActivas:
     sonar: 0
     magnetico: 0
@@ -2983,7 +3013,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
 --- !u!50 &1171032990
 Rigidbody2D:
   serializedVersion: 4
@@ -3114,9 +3144,9 @@ MonoBehaviour:
   spriteMagnetico: {fileID: 21300000, guid: 6e34bbeb989c0f941bb01bec704607e2, type: 3}
   spriteInvisivel: {fileID: 21300000, guid: 5b3ed7aac8840f04c81a11ecd58dba98, type: 3}
   spriteLento: {fileID: 21300000, guid: 6493d035bfc14f84cb1e0bff2e5b1c18, type: 3}
-  spriteGasoso: {fileID: 0}
-  spriteLiquido: {fileID: 0}
-  spritePlasma: {fileID: 0}
+  spriteGasoso: {fileID: 21300000, guid: 5797724e41fb2a8478070a29932477ba, type: 3}
+  spriteLiquido: {fileID: 21300000, guid: 5a6fd9d5146c6e2468c70a64aac5c7b3, type: 3}
+  spritePlasma: {fileID: 21300000, guid: 607ddcaa257c27f4f9d261a596708014, type: 3}
   ajudaGasoso: 0
   ajudaMagnetico: 0
   ajudaSonar: 0
@@ -3169,7 +3199,7 @@ Transform:
   m_GameObject: {fileID: 1174301040}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 4.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 678527371}
   m_RootOrder: 0
@@ -3210,8 +3240,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1274960033
   m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 988a6250f03dfd34080579c29835fa51, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9b56bf48e189df941a5844abd5d3a5d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4042,7 +4072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709337515}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.2}
+  m_LocalPosition: {x: 0.06, y: -0.02, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1295972259}
@@ -8904,7 +8934,7 @@ Transform:
   m_GameObject: {fileID: 1962565644}
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 3.2, y: -3.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 678527371}
   m_RootOrder: 2
@@ -8945,8 +8975,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1274960033
   m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 988a6250f03dfd34080579c29835fa51, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 28a29ea4958017e4ab7ab53587a20308, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
