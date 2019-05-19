@@ -421,7 +421,7 @@ public class ContactoPersonagem : MonoBehaviour
             powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite = powerUpsOnPersonagem[i+1].GetComponent<SpriteRenderer>().sprite;
         }
 
-
+        Debug.Log(gameObject.GetComponent<personagem>().numeroPowerUps);
         powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);
     }
   

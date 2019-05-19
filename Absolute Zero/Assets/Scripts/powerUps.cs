@@ -193,6 +193,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().pwAtivo = true;
                 this.GetComponent<personagem>().eventarioPSA.sonar--;
                 this.GetComponent<personagem>().numeroPowerUps--;
+                this.GetComponent<ContactoPersonagem>().removePowerUp("sonar");
                 this.GetComponent<personagem>().PSAActivas.sonar = true;
                 sonar.gameObject.SetActive(true);
                 sonar.Play();
@@ -233,6 +234,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().eventarioPSA.magnetico--;
                 this.GetComponent<personagem>().PSAActivas.magnetico = true;
                 this.GetComponent<personagem>().numeroPowerUps--;
+                this.GetComponent<ContactoPersonagem>().removePowerUp("magnetico");
                 magnetico.SetActive(true);
                 isMagnetico = true;
                 Debug.Log("Campo magnetico");
@@ -275,6 +277,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.invisibildade = true;
                 this.GetComponent<personagem>().eventarioPSA.invisibildade--;
                 this.GetComponent<personagem>().numeroPowerUps--;
+                this.GetComponent<ContactoPersonagem>().removePowerUp("invisibilidade");
                 invisibilidade = true;
             }
             else{
@@ -321,6 +324,7 @@ public class powerUps : MonoBehaviour
                 Debug.Log("Entrei na camara lenta");
                 this.GetComponent<personagem>().PSAActivas.camaraLenta = true;
                 this.GetComponent<personagem>().numeroPowerUps--;
+                this.GetComponent<ContactoPersonagem>().removePowerUp("lento");
                 this.GetComponent<personagem>().eventarioPSA.camaraLenta--;
                 isLento = true;
             }
