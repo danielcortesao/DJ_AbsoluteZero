@@ -36,7 +36,9 @@ public class particulasB : MonoBehaviour
 
 
     //Vars para campo magnetico
-    private float forceFactor = 20.0f;
+    private bool isWithForce;
+    private Vector2 vetorDaForca;
+    private float valueForca;
 
 
     public GameObject personagem;
@@ -67,12 +69,13 @@ public class particulasB : MonoBehaviour
         CalcuateNewMovementVector();
 
         personagem = GameObject.FindGameObjectWithTag("Player");
+        isWithForce = false;
     }
 
     void Update()
     {
         //codigo para  personagem();
-        //forcaGravitica();
+        forcaGravitica();
         ResetContacto();
         //fim de codigo para perseguir personagem
 
@@ -241,50 +244,57 @@ public class particulasB : MonoBehaviour
         float force = G * ((mass1 * mass2) / (dist * dist)); // The force that should be applied
                                                              //        Debug.Log(force);
 
-        //só fazer a certa distancia do utilizador ??
+        //só fazer a certa distancia do utilizador
         if (!(personagem.GetComponent<personagem>().PSAActivas.magnetico))
         {
-            if (gameObject.transform.localScale.x >= target.transform.localScale.x)
-            { // se B for maior que personagem atrai personagem
-                rb.AddForce(-direction * force); // Adding the force to the player 
+            if(dist<20){
+                Debug.Log("Adicionou Forca");
+                /*
+                if(isWithForce){
+                    rb.AddForce(-vetorDaForca * valueForca);
+                    isWithForce = false;
+                }*/
+                if (gameObject.transform.localScale.x >= target.transform.localScale.x)
+                { // se B for maior que personagem atrai personagem
+
+                    rb.AddForce(-direction * force); // Adding the force to the player 
+                    if(isWithForce){
+                        vetorDaForca = vetorDaForca + (-direction*force);
+                    }
+                    else{
+                        vetorDaForca = -direction*force;
+                    }
+                    isWithForce = true;
+
+                }
+                else
+                {// se B for menor que personagem é repelida 
+                    rb.AddForce(direction * force); // Adding the force to the player 
+                    if(isWithForce){
+                        vetorDaForca = vetorDaForca + (direction*force);
+                    }
+                    else{
+                        vetorDaForca = direction*force;
+                    }
+                    isWithForce = true;
+                }   
             }
-            else
-            {// se B for menor que personagem é repelida 
-                rb.AddForce(direction * force); // Adding the force to the player 
+            else if(dist > 30){
+                 if(isWithForce){
+                    rb.AddForce(-vetorDaForca);
+                    isWithForce = false;
+                }
             }
         }
-        // CAMPO MAGNETICOOOOO
-        //else{
-        //    Debug.Log("MAGNETICO");
-        //    if (gameObject.transform.localScale.x >= target.transform.localScale.x)
-        //    { // se B for maior que personagem atrai personagem
-        //        Debug.Log("menor que a personagem");
-        //        rb.AddForce((personagem.transform.position - transform.position) * forceFactor * Time.smoothDeltaTime);
-        //    }
-        //    else
-        //    {// se B for menor que personagem é repelida 
-        //     // Adding the force to the player 
-        //        rb.AddForce((transform.position - personagem.transform.position) * forceFactor * Time.smoothDeltaTime);
-        //    }
-        //}
+        else {
+            if(isWithForce){
+                rb.AddForce(-vetorDaForca);
+                isWithForce = false;
+            }
+        }
 
 
-
-        // if (contacto == false)
-        // {
-           
-
-        //     if (gameObject.transform.localScale.x >= target.transform.localScale.x) // se B for maior que persongame vai perseguir
-        //         if (Vector2.Distance(transform.position, target.position) < ChaseDistance) // B persegue desde que este no seu aclance
-        //             if (Vector2.Distance(transform.position, target.position) > 0.5)  //para de perseguir  esta distancia
-        //             {
-        //                 if (Vector2.Distance(transform.position, target.position) <= 1)
-        //                     contacto = true;
-
-        //                 transform.position = Vector2.MoveTowards(transform.position, target.position, velocidade * Time.deltaTime);
-        //             }
-            
-        // }
+       
 
     }
 
