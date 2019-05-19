@@ -131,7 +131,7 @@ public class ContactoPersonagem : MonoBehaviour
                     if (other.gameObject.GetComponent<particulasC>().chaves.plasma == true && !gameObject.GetComponent<personagem>().chaves.plasma)
                     {
                         gameObject.GetComponent<personagem>().chaves.plasma = true;
-                        chaveLiquidoOnPersonagem.SetActive(true);
+                        chavePlasmaOnPersonagem.SetActive(true);
                         Destroy(other.gameObject);
                     }
                     else if (other.gameObject.GetComponent<particulasC>().chaves.gasoso == true && !gameObject.GetComponent<personagem>().chaves.gasoso)
