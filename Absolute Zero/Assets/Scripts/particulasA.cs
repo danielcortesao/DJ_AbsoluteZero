@@ -13,7 +13,6 @@ public class particulasA : MonoBehaviour
     private readonly float directionChangeTime = 10f;
     public Vector2 movementDirection;
 
-
     public GameObject personagem;
     public GameObject particulaA;
 

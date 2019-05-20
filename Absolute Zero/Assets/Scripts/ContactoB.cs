@@ -48,18 +48,72 @@ public class ContactoB : MonoBehaviour
     }
 
     void criaFilhos(Chaves chaves, ParticulasSA particulasSA){
-        if(chaves.plasma == true){criaFilhoB("plasma");}
-        if(chaves.gasoso == true){criaFilhoB("gasoso");}
-        if(chaves.liquido == true){criaFilhoB("liquido");}
-        if(chaves.solido == true){criaFilhoB("solido");}
+        //x' = x cos θ − y sin θ
+        //y' = x sin θ + y cos θ
 
-        if(particulasSA.sonar == true){criaFilhoB("sonar");}
-        if(particulasSA.magnetico == true){criaFilhoB("magnetico");}
-        if(particulasSA.invisibildade == true){criaFilhoB("invisibildade");}
-        if(particulasSA.camaraLenta == true){criaFilhoB("camaraLenta");}
+        Vector2 directionForce = new Vector2(1,0);
+
+        GameObject[] listaIrmao = new GameObject[3];
+        int numIrmaos=0;
+        if(chaves.plasma == true){
+            GameObject newFilho = criaFilhoB("plasma",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+        if(chaves.gasoso == true){
+            GameObject newFilho = criaFilhoB("gasoso",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+        if(chaves.liquido == true){
+            GameObject newFilho = criaFilhoB("liquido",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+        if(chaves.solido == true){
+            GameObject newFilho = criaFilhoB("solido",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+
+        if(particulasSA.sonar == true){
+            GameObject newFilho = criaFilhoB("sonar",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+        if(particulasSA.magnetico == true){
+            GameObject newFilho = criaFilhoB("magnetico",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+        if(particulasSA.invisibildade == true){
+            GameObject newFilho = criaFilhoB("invisibildade",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+        if(particulasSA.camaraLenta == true){
+            GameObject newFilho = criaFilhoB("camaraLenta",directionForce);
+            listaIrmao[numIrmaos]= newFilho;
+            directionForce = new Vector2(directionForce.x * Mathf.Cos(Mathf.PI /2) - directionForce.y * Mathf.Sin(Mathf.PI /2) ,directionForce.x * Mathf.Sin(Mathf.PI /2) + directionForce.y * Mathf.Cos(Mathf.PI /2) );
+            numIrmaos++;
+        }
+
+        for(int i =0;i< numIrmaos;i++){
+            listaIrmao[i].GetComponent<particulasC>().numIrmaos = numIrmaos;
+            listaIrmao[i].GetComponent<particulasC>().irmaos = listaIrmao;
+        }
+
+
     }
 
-    public void criaFilhoB(string c){
+    public GameObject criaFilhoB(string c, Vector2 directionForce){
         rb = GetComponent<Rigidbody2D>();
         // istantiate an object of the assigned public variable gameObect with coordinates ranging betwen min and max.
         //Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Z);
@@ -86,8 +140,10 @@ public class ContactoB : MonoBehaviour
             	//tmpObj.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);
             }
 
+            tmpObj.GetComponent<Rigidbody2D>().AddForce(directionForce * (float)200);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
+            return tmpObj;
 
 
         }
@@ -114,11 +170,14 @@ public class ContactoB : MonoBehaviour
             else{ // laranja
             	tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLento;
             }	
+            tmpObj.GetComponent<Rigidbody2D>().AddForce(directionForce * (float)200);
 
 
 
             Destroy(tmpObj,5.0f);
+            return tmpObj;
         }
+        return null;
     }
     
     // void  criaChave(string c){//DEPRECATED

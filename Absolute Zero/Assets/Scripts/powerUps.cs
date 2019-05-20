@@ -140,7 +140,7 @@ public class powerUps : MonoBehaviour
     {
     
         //--------------------- SONAR -------------------------
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown("1"))
         {
             if (this.GetComponent<personagem>().eventarioPSA.sonar>0 && !coolDown && !this.GetComponent<personagem>().pwAtivo){
                 
@@ -225,7 +225,7 @@ public class powerUps : MonoBehaviour
        
 
         //--------------------- CAMPO MAGNÉTICO -----------------------
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("2"))
         {
             if(this.GetComponent<personagem>().eventarioPSA.magnetico>0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
             
@@ -268,7 +268,7 @@ public class powerUps : MonoBehaviour
 
 
         //------------------- INVISIBILIDADE -------------------------
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("3"))
         {
             Debug.Log("invisibildade");
             if (this.GetComponent<personagem>().eventarioPSA.invisibildade > 0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
@@ -320,7 +320,7 @@ public class powerUps : MonoBehaviour
         //           CAMARA LENTA
 
 
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("4"))
         {
             Debug.Log("camara lenta");
             if (this.GetComponent<personagem>().eventarioPSA.camaraLenta > 0 && !coolDown && !(this.GetComponent<personagem>().pwAtivo))
@@ -359,6 +359,7 @@ public class powerUps : MonoBehaviour
                 this.GetComponent<personagem>().PSAActivas.camaraLenta = false;
                 timeRemaining = 15;
                 isLento = false;
+                Time.timeScale = 1.0f;
             }
 
         }

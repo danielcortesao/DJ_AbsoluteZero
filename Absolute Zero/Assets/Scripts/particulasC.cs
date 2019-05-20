@@ -9,6 +9,8 @@ public class particulasC : MonoBehaviour
     public Chaves chaves;
     public ParticulasSA particulasSA;
     public Rigidbody2D rb;
+    public GameObject[] irmaos;
+    public int numIrmaos;
 
     //Constructores particulas C
     public particulasC(){

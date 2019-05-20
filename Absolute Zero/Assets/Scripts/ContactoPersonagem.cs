@@ -131,12 +131,26 @@ public class ContactoPersonagem : MonoBehaviour
                     {
                         gameObject.GetComponent<personagem>().chaves.plasma = true;
                         chavePlasmaOnPersonagem.SetActive(true);
+
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                         Destroy(other.gameObject);
                     }
                     else if (other.gameObject.GetComponent<particulasC>().chaves.gasoso == true && !gameObject.GetComponent<personagem>().chaves.gasoso)
                     {
 
                         gameObject.GetComponent<personagem>().chaves.gasoso = true;
+
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                         if (!ajudaGasoso)
                         {
                             caixaTexto.SetActive(true);
@@ -158,16 +172,37 @@ public class ContactoPersonagem : MonoBehaviour
                         gameObject.GetComponent<personagem>().chaves.liquido = true;
 
                         chaveLiquidoOnPersonagem.SetActive(true);
+
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                         Destroy(other.gameObject);
                     }
                     else if(other.gameObject.GetComponent<particulasC>().chaves.solido == true && !gameObject.GetComponent<personagem>().chaves.solido){
                         gameObject.GetComponent<personagem>().chaves.solido = true;
                         chavePlasmaOnPersonagem.SetActive(true);
+
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                         Destroy(other.gameObject);
                     }
                     else if(other.gameObject.GetComponent<particulasC>().particulasSA.sonar == true && gameObject.GetComponent<personagem>().numeroPowerUps<8){
                         gameObject.GetComponent<personagem>().eventarioPSA.sonar += 1;
                         gameObject.GetComponent<personagem>().numeroPowerUps+=1;
+
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                         if (!ajudaSonar)
                         {
                                 caixaTexto.SetActive(true);
@@ -188,6 +223,13 @@ public class ContactoPersonagem : MonoBehaviour
 
                         gameObject.GetComponent<personagem>().eventarioPSA.magnetico += 1;
                         gameObject.GetComponent<personagem>().numeroPowerUps+=1;
+
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                         if (!ajudaMagnetico)
                         {
                                 caixaTexto.SetActive(true);
@@ -207,6 +249,13 @@ public class ContactoPersonagem : MonoBehaviour
                     else if(other.gameObject.GetComponent<particulasC>().particulasSA.invisibildade == true  && gameObject.GetComponent<personagem>().numeroPowerUps<8){
                         gameObject.GetComponent<personagem>().eventarioPSA.invisibildade += 1;
                         gameObject.GetComponent<personagem>().numeroPowerUps+=1;
+                        // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
+
                         if (!ajudaInvisibilidade)
                         {
                                 caixaTexto.SetActive(true);
@@ -226,6 +275,12 @@ public class ContactoPersonagem : MonoBehaviour
                     else if(other.gameObject.GetComponent<particulasC>().particulasSA.camaraLenta == true  && gameObject.GetComponent<personagem>().numeroPowerUps<8){
                             gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta += 1;
                             gameObject.GetComponent<personagem>().numeroPowerUps+=1;
+                            // descativa todas as particulas C
+                            allObjectsC = other.gameObject.GetComponent<particulasC>().irmaos;
+
+                            for(int j = 0; j< other.gameObject.GetComponent<particulasC>().numIrmaos; j++){
+                                    other.gameObject.GetComponent<particulasC>().irmaos[j].GetComponent<particulasC>().ativa = false;
+                            }
                             if (!ajudaLento)
                             {
                                 caixaTexto.SetActive(true);
@@ -241,14 +296,7 @@ public class ContactoPersonagem : MonoBehaviour
                             }
                             addPowerUp("lento");
                             Destroy(other.gameObject);
-                    }
-
-                    // descativa todas as particulas C
-                    allObjectsC = GameObject.FindGameObjectsWithTag("ParticulasC");
-                    foreach(GameObject go in allObjectsC){
-                        go.gameObject.GetComponent<particulasC>().ativa = false;
-                    }
-                    
+                    }                    
                 }
                 timeLastImpact = Time.time;
 
@@ -367,7 +415,6 @@ public class ContactoPersonagem : MonoBehaviour
         Time.timeScale = 1.0f;
         parado = false;
     }
-
 
      public void addPowerUp(string nomePowerUp){
         if(nomePowerUp == "sonar"){
