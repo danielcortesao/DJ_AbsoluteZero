@@ -14,7 +14,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 			//primeiras particulas
 			UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
 			gerarStart_LiqTut();
-			int i, numA15 = 30, numBS = 40, numBCG = 20;
+			int i, numA15 = 60, numBS = 80, numBCG = 40;
 			for(i = 0;i<numA15;i++){
 				gerarA15_LiqTut();
 			}
@@ -28,7 +28,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		else if(camada.Equals("GasosoTut")){
 			//primeiras particulas
 			UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
-			int i, numBM = 8, numA15 = 20, numA511 = 30, numBS = 40, numBCPMP = 10;
+			int i, numBM = 10, numA15 = 20, numA511 = 30, numBS = 40, numBCPMP = 40;
 			for(i = 0;i<numBM;i++){
 				gerarB_M_GasTut();
 			}
@@ -48,7 +48,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		else if(camada.Equals("PlasmaTut")){
 			//primeiras particulas
 			UnityEngine.Random.InitState((int)System.DateTime.Now.Ticks);
-			int i, numBC= 10, numBI = 20, numBCG = 40;
+			int i, numBC= 20, numBI = 20, numBCG = 40;
 			for(i = 0;i<numBC;i++){
 				gerarB_C_PlasmaTut();
 			}

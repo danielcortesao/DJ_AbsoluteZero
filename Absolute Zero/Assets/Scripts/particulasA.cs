@@ -65,7 +65,7 @@ public class particulasA : MonoBehaviour
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }*/
         
-        float novoTam = (float)nivelTamanho*0.1f+0.3f;
+        float novoTam = (float)nivelTamanho*0.3f+0.3f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
     }
 

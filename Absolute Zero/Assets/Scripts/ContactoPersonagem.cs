@@ -44,8 +44,10 @@ public class ContactoPersonagem : MonoBehaviour
     public Button botaoAjuda;
 
     private bool parado;
-
     private string frase;
+
+
+    int tamanhoNextLevel;
 
     private void Start()
     {
@@ -65,7 +67,7 @@ public class ContactoPersonagem : MonoBehaviour
         foreach(GameObject powerUp in powerUpsOnPersonagem){
             powerUp.SetActive(false);
         }
-
+        tamanhoNextLevel = 0;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -73,13 +75,38 @@ public class ContactoPersonagem : MonoBehaviour
         if(Time.time >= timeLastImpact + deltaTime){
 
             if(other.gameObject.CompareTag("ParticulasA")){
-                Debug.Log(other.gameObject.name);
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
-                    if(gameObject.GetComponent<personagem>().nivelTamanho < 9){
-                        gameObject.GetComponent<personagem>().nivelTamanho +=1;
+                    int diferenca = this.gameObject.GetComponent<personagem>().nivelTamanho - other.gameObject.GetComponent<particulasA>().nivelTamanho;
+                    if(diferenca == 2){
+                        tamanhoNextLevel += 50;
                     }
+                    else if(diferenca == 3){
+                        tamanhoNextLevel += 30;
+                    }
+                    else if(diferenca == 4){
+                        tamanhoNextLevel += 25;
+                    }
+                    else if(diferenca == 5){
+                        tamanhoNextLevel += 20;
+                    }
+                    else if(diferenca == 6){
+                        tamanhoNextLevel += 15;
+                    }
+                    else if(diferenca == 7){
+                        tamanhoNextLevel += 5;
+                    }
+                    else if(diferenca == 8){
+                        tamanhoNextLevel += 2;
+                    }
+
+
+                    if(gameObject.GetComponent<personagem>().nivelTamanho < 9 && tamanhoNextLevel>=100){
+                        gameObject.GetComponent<personagem>().nivelTamanho +=1;
+                        diferenca =0;
+                    }
+
                     // if(gameObject.transform.localScale.x < 1.3f) { 
                     //     gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                     // }
