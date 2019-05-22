@@ -78,7 +78,7 @@ public class ContactoPersonagem : MonoBehaviour
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
-                    int diferenca = this.gameObject.GetComponent<personagem>().nivelTamanho - other.gameObject.GetComponent<particulasA>().nivelTamanho;
+                    int diferenca = gameObject.GetComponent<personagem>().nivelTamanho - other.gameObject.GetComponent<particulasA>().nivelTamanho;
                     if(diferenca == 2){
                         tamanhoNextLevel += 50;
                     }
@@ -100,13 +100,19 @@ public class ContactoPersonagem : MonoBehaviour
                     else if(diferenca == 8){
                         tamanhoNextLevel += 2;
                     }
+                    Debug.Log(tamanhoNextLevel);
+                    Debug.Log(diferenca);
 
 
                     if(gameObject.GetComponent<personagem>().nivelTamanho < 9 && tamanhoNextLevel>=100){
                         gameObject.GetComponent<personagem>().nivelTamanho +=1;
-                        diferenca =0;
+                        tamanhoNextLevel = 0;
                     }
-
+                        /*
+                        if(gameObject.GetComponent<personagem>().nivelTamanho < 9){
+                            gameObject.GetComponent<personagem>().nivelTamanho +=1;
+                        }
+                        */
                     // if(gameObject.transform.localScale.x < 1.3f) { 
                     //     gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                     // }
@@ -466,7 +472,7 @@ public class ContactoPersonagem : MonoBehaviour
     public void removePowerUp(string nomePowerUp){
         //Debug.Log(lala == this.GetComponent<SpriteRenderer>().sprite);  
 
-     /*   int i, powerUpRemove;
+        int i, powerUpRemove;
         i=gameObject.GetComponent<personagem>().numeroPowerUps;
         if(nomePowerUp == "sonar"){  
             while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
@@ -496,7 +502,7 @@ public class ContactoPersonagem : MonoBehaviour
         }
 
 
-        powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);*/
+        powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);
     }
 
     public void powerUpsDesativados(){

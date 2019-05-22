@@ -2825,7 +2825,7 @@ MonoBehaviour:
   eventarioPSA:
     sonar: 0
     magnetico: 0
-    invisibildade: 1
+    invisibildade: 0
     camaraLenta: 0
   PSAActivas:
     sonar: 0
