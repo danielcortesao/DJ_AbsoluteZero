@@ -27,6 +27,10 @@ public class Sons : MonoBehaviour {
         audioSource = this.GetComponentsInChildren<AudioSource>();
         audioSource[0].Play();
 
+        foreach(AudioSource sound in audioSource){
+            Debug.Log(sound);
+        }
+
 
 
     }
@@ -50,6 +54,7 @@ public class Sons : MonoBehaviour {
             }
 
         }
+
         if(teclaSonar){
             timeRemaining -= Time.deltaTime;
             if (timeRemaining <=0)

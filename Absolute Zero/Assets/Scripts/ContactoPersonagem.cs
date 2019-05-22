@@ -480,17 +480,17 @@ public class ContactoPersonagem : MonoBehaviour
             }
         }
         else if(nomePowerUp == "magnetico"){
-            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteMagnetico){
                 i--;
             }
         }
         else if(nomePowerUp == "invisibildade"){
-            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteInvisivel){
                 i--;
             }
         }
         else{
-            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
+            while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteLento){
                 i--;
             }
         }
