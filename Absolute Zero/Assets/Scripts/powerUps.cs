@@ -351,7 +351,6 @@ public class powerUps : MonoBehaviour
                 Time.timeScale = 0.5f;
                 Debug.Log("CAMARA LENTA");
                 //rb.velocity= new Vector3(0, 100, 0);
-                Debug.Log(timeRemaining);
             }
             else
             {

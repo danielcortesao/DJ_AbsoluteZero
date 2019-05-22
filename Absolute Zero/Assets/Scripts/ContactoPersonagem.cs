@@ -138,6 +138,7 @@ public class ContactoPersonagem : MonoBehaviour
                 {   
                     //persoangem perde particula C de forma aleatoria
                     if(arrayFilhos().Count > 0){
+                        audioSource[6].Play();
                         gameObject.GetComponent<personagem>().numeroPowerUps--;
                         int index = Random.Range(0, arrayFilhos().Count);
                         string str = (string)arrayFilhos()[index];
@@ -182,7 +183,7 @@ public class ContactoPersonagem : MonoBehaviour
                         {
                             caixaTexto.SetActive(true);
                             parado = true;
-                            frase = "Ganhou uma chave";
+                            frase = "Ganhaste uma chave!"+'\n'+"Esta dá-te acesso a uma nova dimensão.";
                             Time.timeScale = 0.0f;
                             if (Input.GetKeyDown("space"))
                             {
@@ -233,7 +234,7 @@ public class ContactoPersonagem : MonoBehaviour
                         if (!ajudaSonar)
                         {
                                 caixaTexto.SetActive(true);
-                                frase = "Ganhou um Power Up!"+ '\n'+" Para o usar pressione a tecla A.";
+                                frase = "Ganhaste uma partícula sub-atómica!" + '\n'+" Para usares pressiona a tecla 1.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
                                 if (Input.GetKeyDown("space"))
@@ -260,7 +261,7 @@ public class ContactoPersonagem : MonoBehaviour
                         if (!ajudaMagnetico)
                         {
                                 caixaTexto.SetActive(true);
-                                frase = "Ganhou um Power Up! " + '\n' + " Para o usar pressione a tecla S.";
+                                frase = "Ganhaste uma partícula sub-atómica!" + '\n' + " Para usares pressiona a tecla 2.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
                                 if (Input.GetKeyDown("space"))
@@ -286,7 +287,7 @@ public class ContactoPersonagem : MonoBehaviour
                         if (!ajudaInvisibilidade)
                         {
                                 caixaTexto.SetActive(true);
-                                frase = "Ganhou um Power Up!" + '\n' + "  Para o usar pressione a tecla D.";
+                                frase = "Ganhaste uma partícula sub-atómica!" + '\n' + "  Para usares pressiona a tecla 3.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
                                 if (Input.GetKeyDown("space"))
@@ -311,7 +312,7 @@ public class ContactoPersonagem : MonoBehaviour
                             if (!ajudaLento)
                             {
                                 caixaTexto.SetActive(true);
-                                frase = "Ganhou um Power Up! " + '\n' + " Para o usar pressione a tecla F.";
+                                frase = "Ganhaste uma partícula sub-atómica! " + '\n' + " Para usares pressiona a tecla 4.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
                                 if (Input.GetKeyDown("space"))
@@ -465,7 +466,7 @@ public class ContactoPersonagem : MonoBehaviour
     public void removePowerUp(string nomePowerUp){
         //Debug.Log(lala == this.GetComponent<SpriteRenderer>().sprite);  
 
-        int i, powerUpRemove;
+     /*   int i, powerUpRemove;
         i=gameObject.GetComponent<personagem>().numeroPowerUps;
         if(nomePowerUp == "sonar"){  
             while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteSonar){
@@ -495,7 +496,7 @@ public class ContactoPersonagem : MonoBehaviour
         }
 
 
-        powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);
+        powerUpsOnPersonagem[gameObject.GetComponent<personagem>().numeroPowerUps].SetActive(false);*/
     }
 
     public void powerUpsDesativados(){
