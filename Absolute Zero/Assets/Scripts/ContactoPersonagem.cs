@@ -145,7 +145,7 @@ public class ContactoPersonagem : MonoBehaviour
                     //persoangem perde particula C de forma aleatoria
                     if(arrayFilhos().Count > 0){
                         audioSource[6].Play();
-                        gameObject.GetComponent<personagem>().numeroPowerUps--;
+                        //gameObject.GetComponent<personagem>().numeroPowerUps--;
                         int index = Random.Range(0, arrayFilhos().Count);
                         string str = (string)arrayFilhos()[index];
                         print(str);
@@ -389,7 +389,7 @@ public class ContactoPersonagem : MonoBehaviour
             else if(c=="invisibildade"){ // preto
                 tmpObj.GetComponent<SpriteRenderer>().sprite = spriteInvisivel;
             }
-            else{ // laranja
+            else if (c == "camaraLenta"){ // laranja
                 tmpObj.GetComponent<SpriteRenderer>().sprite = spriteLento;
             }   
             removePowerUp(c);
@@ -416,13 +416,19 @@ public class ContactoPersonagem : MonoBehaviour
             gameObject.GetComponent<personagem>().chaves.solido = false;}
 
         else if(s == "sonar"){
-            gameObject.GetComponent<personagem>().eventarioPSA.sonar -= 1;}
+            gameObject.GetComponent<personagem>().eventarioPSA.sonar -= 1;
+            gameObject.GetComponent<personagem>().numeroPowerUps--;}
         else if(s == "magnetico"){
-            gameObject.GetComponent<personagem>().eventarioPSA.magnetico -= 1;}
+            gameObject.GetComponent<personagem>().eventarioPSA.magnetico -= 1;
+            gameObject.GetComponent<personagem>().numeroPowerUps--;}
         else if(s == "invisibildade"){
-            gameObject.GetComponent<personagem>().eventarioPSA.invisibildade -= 1;}
+            gameObject.GetComponent<personagem>().eventarioPSA.invisibildade -= 1;
+            gameObject.GetComponent<personagem>().numeroPowerUps--;
+        }
         else if(s == "camaraLenta"){
-            gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta -= 1;}
+            gameObject.GetComponent<personagem>().eventarioPSA.camaraLenta -= 1;
+            gameObject.GetComponent<personagem>().numeroPowerUps--;
+        }
 
     }
 
