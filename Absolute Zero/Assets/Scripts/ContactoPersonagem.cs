@@ -15,6 +15,13 @@ public class ContactoPersonagem : MonoBehaviour
 
     public GameObject caixaTexto;
     public Text texto;
+    public GameObject imgTutMov;
+    public GameObject imgTutSonar;
+    public GameObject imgTutMagnetico;
+    public GameObject imgTutInvisivel;
+    public GameObject imgTutLento;
+    public GameObject imgTutChave;
+    public GameObject imgTutTransicao;
 
     public GameObject[] powerUpsOnPersonagem;
     public GameObject chaveGasosoOnPersonagem;
@@ -32,7 +39,7 @@ public class ContactoPersonagem : MonoBehaviour
     public Sprite spriteLiquido;
     public Sprite spritePlasma;
 
-
+    public bool ajudaMov;
     public bool ajudaGasoso;
     public bool ajudaMagnetico;
     public bool ajudaSonar;
@@ -52,6 +59,8 @@ public class ContactoPersonagem : MonoBehaviour
     private void Start()
     {
         audioSource = GameObject.FindGameObjectWithTag("sons").GetComponentsInChildren<AudioSource>();
+
+        ajudaMov = false;
         ajudaGasoso = false;
         ajudaMagnetico = false;
         ajudaSonar = false;
@@ -68,6 +77,21 @@ public class ContactoPersonagem : MonoBehaviour
             powerUp.SetActive(false);
         }
         tamanhoNextLevel = 0;
+
+        if (!ajudaMov)
+        {
+            caixaTexto.SetActive(true);
+            imgTutMov.SetActive(true);
+            parado = true;
+            frase = "Para deslocar a personagem use as" + '\n' +"teclas das setas, WASD ou o rato.";
+            Time.timeScale = 0.0f;
+            if (Input.GetKeyDown("space"))
+            {
+                Time.timeScale = 1.0f;
+            }
+            Time.timeScale = 0.0f;
+            ajudaMov = true;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -188,6 +212,7 @@ public class ContactoPersonagem : MonoBehaviour
                         if (!ajudaGasoso)
                         {
                             caixaTexto.SetActive(true);
+                            imgTutChave.SetActive(true);
                             parado = true;
                             frase = "Ganhaste uma chave!"+'\n'+"Esta dá-te acesso a uma nova dimensão.";
                             Time.timeScale = 0.0f;
@@ -239,16 +264,19 @@ public class ContactoPersonagem : MonoBehaviour
                             }
                         if (!ajudaSonar)
                         {
-                                caixaTexto.SetActive(true);
-                                frase = "Ganhaste uma partícula sub-atómica!" + '\n'+" Para usares pressiona a tecla 1.";
-                                parado = true;
-                                Time.timeScale = 0.0f;
-                                if (Input.GetKeyDown("space"))
-                                {
-                                    Time.timeScale = 1.0f;
-                                }
-                                Time.timeScale = 0.0f;
-                                ajudaSonar = true;
+                            caixaTexto.SetActive(true);
+                            frase = "Ganhaste uma partícula sub-atómica!" + '\n'+" Para usares pressiona a tecla 1.";
+                            texto.text = frase;
+                            imgTutSonar.SetActive(true);
+
+                            parado = true;
+                            Time.timeScale = 0.0f;
+                            if (Input.GetKeyDown("space"))
+                            {
+                                Time.timeScale = 1.0f;
+                            }
+                            Time.timeScale = 0.0f;
+                            ajudaSonar = true;
                         }
                         addPowerUp("sonar");
                         Destroy(other.gameObject);
@@ -267,6 +295,7 @@ public class ContactoPersonagem : MonoBehaviour
                         if (!ajudaMagnetico)
                         {
                                 caixaTexto.SetActive(true);
+                                imgTutMagnetico.SetActive(true);
                                 frase = "Ganhaste uma partícula sub-atómica!" + '\n' + " Para usares pressiona a tecla 2.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
@@ -293,6 +322,7 @@ public class ContactoPersonagem : MonoBehaviour
                         if (!ajudaInvisibilidade)
                         {
                                 caixaTexto.SetActive(true);
+                                imgTutInvisivel.SetActive(true);
                                 frase = "Ganhaste uma partícula sub-atómica!" + '\n' + "  Para usares pressiona a tecla 3.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
@@ -318,6 +348,7 @@ public class ContactoPersonagem : MonoBehaviour
                             if (!ajudaLento)
                             {
                                 caixaTexto.SetActive(true);
+                                imgTutInvisivel.SetActive(true);
                                 frase = "Ganhaste uma partícula sub-atómica! " + '\n' + " Para usares pressiona a tecla 4.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
@@ -437,6 +468,7 @@ public class ContactoPersonagem : MonoBehaviour
     {
         if(parado){
             texto.text = frase;
+            //img = GetComponent<Image>();
 
             /*if (Input.GetKeyDown("space"))
             {
@@ -452,6 +484,15 @@ public class ContactoPersonagem : MonoBehaviour
         Debug.Log("You have clicked the button!");
 
         caixaTexto.SetActive(false);
+        imgTutSonar.SetActive(false);
+        imgTutMagnetico.SetActive(false);
+        imgTutInvisivel.SetActive(false);
+        imgTutLento.SetActive(false);
+        imgTutMov.SetActive(false);
+        imgTutChave.SetActive(false);
+        imgTutTransicao.SetActive(false);
+        
+
         Time.timeScale = 1.0f;
         parado = false;
     }

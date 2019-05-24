@@ -28,6 +28,7 @@ public class TransicoesScript : MonoBehaviour {
 
     public Button botao;
     public Text texto;
+    public GameObject imgTutTransicao;
 
     private bool micro;
     private bool parado;
@@ -90,15 +91,18 @@ public class TransicoesScript : MonoBehaviour {
         	personagemOnTransicao = true;
         	canvasMic.SetActive(true);
         	micInput.SetActive(true);
-            if(!player.GetComponent<ContactoPersonagem>().ajudaMicro)
+            if (player.GetComponent<personagem>().chaves.gasoso)
             {
-                texto.text = "Faça um som grave ou agudo" + '\n' + " para transitar de camada.";
+                if (!player.GetComponent<ContactoPersonagem>().ajudaMicro)
+                {
+                    texto.text = "Faça um som grave ou agudo" + '\n' + " para transitar de camada.";
+                    imgTutTransicao.SetActive(true);
+                    Time.timeScale = 0.0f;
+                    player.GetComponent<ContactoPersonagem>().ajudaMicro = true;
+                    caixaTexto.SetActive(true);
+                    parado = true;
 
-                Time.timeScale = 0.0f;
-                player.GetComponent<ContactoPersonagem>().ajudaMicro = true;
-                caixaTexto.SetActive(true);
-                parado = true;
-
+                }
             }
 
         }
