@@ -400,7 +400,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		x = x+58.5;
 		y = y-35.5;
 
-		createA(x, y, UnityEngine.Random.Range(1, 10), 58.5,-35.5, 28,37,48,64,"gerarA15_LiqTut");
+		createA(x, y, UnityEngine.Random.Range(1, 11), 58.5,-35.5, 28,37,48,64,"gerarA15_LiqTut");
 	}
 
 	void gerarB_S_LiqTut(){
@@ -421,7 +421,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		//translate Centro
 		x = x+58.5;
 		y = y-35.5;
-		createB(x, y, UnityEngine.Random.Range(1, 10),1, 58.5,-35.5, 48,64,66,81,"gerarB_S_LiqTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11),1, 58.5,-35.5, 48,64,66,81,"gerarB_S_LiqTut");
 	}
 
 
@@ -443,7 +443,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		//translate Centro
 		x = x-95.5;
 		y = y-29;
-		createB(x, y, UnityEngine.Random.Range(1, 10),1, -95.5,-29, 0,0,32,40,"gerarB_CG_LiqTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11),1, -95.5,-29, 0,0,32,40,"gerarB_CG_LiqTut");
 	}
 	//________________________________________________________________________________________________
 	//________________________________________________________________________________________________
@@ -509,7 +509,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		y = y+27.5;
 
 		//criar
-		createB(x, y, UnityEngine.Random.Range(1, 10), 1, -63, 27.5, 0,0, 12, 14,"gerarB_M_GasTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11), 1, -63, 27.5, 0,0, 12, 14,"gerarB_M_GasTut");
 	}
 	
 	void gerarA15_GasTut(){
@@ -556,7 +556,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		y = y+27.5;
 
 		//criar
-		createA(x, y, UnityEngine.Random.Range(5, 10), -63, 27.5, 17,23, 34, 46,"gerarA511_GasTut");
+		createA(x, y, UnityEngine.Random.Range(5, 11), -63, 27.5, 17,23, 34, 46,"gerarA511_GasTut");
 	}
 	void gerarB_S_GasTut(){
 		int raioH = UnityEngine.Random.Range(47, 60);
@@ -579,7 +579,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		y = y+27.5;
 
 		//criar
-		createB(x, y, UnityEngine.Random.Range(1, 10), 1, -63, 27.5, 34,46, 47, 59, "gerarB_S_GasTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11), 1, -63, 27.5, 34,46, 47, 59, "gerarB_S_GasTut");
 	}
 	void gerarB_Cp_M_P_GasTut(){
 		int raioH = UnityEngine.Random.Range(1, 62);
@@ -601,7 +601,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		x = x+92;
 		y = y+39.5;
 		//criar
-		createB(x, y, UnityEngine.Random.Range(1, 10), 1, 92, 39.5, 0,0, 41, 63,"gerarB_Cp_M_P_GasTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11), 1, 92, 39.5, 0,0, 41, 63,"gerarB_Cp_M_P_GasTut");
 	}
 
 	//________________________________________________________________________________________________
@@ -658,7 +658,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		x = x+68;
 		y = y-50;
 		//criar
-		createB(x, y, UnityEngine.Random.Range(1, 10), 1, 68, -50, 0, 0, 14, 18, "gerarB_C_PlasmaTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11), 1, 68, -50, 0, 0, 14, 18, "gerarB_C_PlasmaTut");
 	}
 
 	void gerarB_I_PlasmaTut(){
@@ -681,7 +681,7 @@ public class GeradorDeCamadas : MonoBehaviour {
 		x = x+68;
 		y = y-50;
 		//criar
-		createB(x, y, UnityEngine.Random.Range(1, 10), 1, 68, -50, 14, 18, 32, 38,"gerarB_I_PlasmaTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11), 1, 68, -50, 14, 18, 32, 38,"gerarB_I_PlasmaTut");
 	}
 	void gerarB_Cg_PlasmaTut(){
 		int raioH = UnityEngine.Random.Range(33, 59);
@@ -703,6 +703,6 @@ public class GeradorDeCamadas : MonoBehaviour {
 		x = x+68;
 		y = y-50;
 		//criar
-		createB(x, y, UnityEngine.Random.Range(1, 10), 1, 68, -50, 32, 38, 48, 58, "gerarB_Cg_PlasmaTut");
+		createB(x, y, UnityEngine.Random.Range(1, 11), 1, 68, -50, 32, 38, 48, 58, "gerarB_Cg_PlasmaTut");
 	}
 }
