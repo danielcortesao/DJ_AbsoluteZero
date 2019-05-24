@@ -119,7 +119,7 @@ public class ContactoPersonagem : MonoBehaviour
                 }
                 else
                 {//Se Player < outro objecto
-                    if(gameObject.GetComponent<personagem>().nivelTamanho > 2){
+                    if(gameObject.GetComponent<personagem>().nivelTamanho > 1){
                         gameObject.GetComponent<personagem>().nivelTamanho -=1;
                     }
 
