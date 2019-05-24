@@ -489,7 +489,7 @@ public class ContactoPersonagem : MonoBehaviour
                 i--;
             }
         }
-        else{
+        else if(nomePowerUp == "camaraLenta"){
             while(powerUpsOnPersonagem[i].GetComponent<SpriteRenderer>().sprite != spriteLento){
                 i--;
             }

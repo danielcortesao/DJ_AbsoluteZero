@@ -62,13 +62,17 @@ public class powerUps : MonoBehaviour
         float xIntersecao;
         Vector3 p1 = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane));
         Vector3 p2 = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane));
-        
-        if(y>p1.y && y<p2.y && x<p1.x && x>p2.x){
+
+        //Quando esta dentro do viewport
+        if (y>p1.y && y<p2.y && x<p1.x && x>p2.x){
             yIntersecao = y;
             xIntersecao = x;
+            Debug.Log("0 vieport");
         }
+        //Quando esta fora do viewport
         else{
             if(y == camera.transform.position.y){
+                Debug.Log("1 vieport");
                 if(x > camera.transform.position.x){
                     xIntersecao = p1.x;
                     yIntersecao = y;
@@ -79,7 +83,8 @@ public class powerUps : MonoBehaviour
                 }
             }
             else if(x == camera.transform.position.x){
-                if(y > camera.transform.position.y){
+                Debug.Log("2 vieport");
+                if (y > camera.transform.position.y){
                     xIntersecao = x;
                     yIntersecao = p2.y;
                 }
@@ -89,7 +94,7 @@ public class powerUps : MonoBehaviour
                 }
             }
             else{
-
+                Debug.Log("3 vieport");
                 m = (y - camera.transform.position.y) / (x - camera.transform.position.x);
                 b = camera.transform.position.y - m * camera.transform.position.x;
 
@@ -131,7 +136,48 @@ public class powerUps : MonoBehaviour
         
     }
 
-
+    void envocaSonar()
+    {
+        if (nomeCamadaOn == ("LiquidoTut"))
+        {
+            if (this.GetComponent<personagem>().chaves.gasoso)
+            {
+                posicaoSonarX = -77.7f;
+                posicaoSonarY = 37.7f;
+            }
+            else
+            {
+                posicaoSonarX = -95.5f;
+                posicaoSonarY = -29.0f;
+            }
+        }
+        else if (nomeCamadaOn == ("GasosoTut"))
+        {
+            if (this.GetComponent<personagem>().chaves.plasma)
+            {
+                posicaoSonarX = 94.4f;
+                posicaoSonarY = -77.3f;
+            }
+            else
+            {
+                posicaoSonarX = 92.0f;
+                posicaoSonarY = 39.5f;
+            }
+        }
+        else if (nomeCamadaOn == ("PlasmaTut"))
+        {
+            if (this.GetComponent<personagem>().chaves.gasoso)
+            {
+                posicaoSonarX = -92.5f;
+                posicaoSonarY = -63.7f;
+            }
+            else
+            {
+                posicaoSonarX = 94.4f;
+                posicaoSonarY = -77.3f;
+            }
+        }
+    }
 
 
 
@@ -143,7 +189,7 @@ public class powerUps : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             if (this.GetComponent<personagem>().eventarioPSA.sonar>0 && !coolDown && !this.GetComponent<personagem>().pwAtivo){
-                
+
                 //verificar posicao
                 /*
                     Camada Plasma Tut
@@ -158,38 +204,10 @@ public class powerUps : MonoBehaviour
                         Chave Gasoso     ---  -95.5  -29
                         Transicao Gasoso --- -77.7   37.7
             
-
+                
                 */
-                if(nomeCamadaOn == ("LiquidoTut")){
-                    if(this.GetComponent<personagem>().chaves.gasoso){
-                        posicaoSonarX =-77.7f;
-                        posicaoSonarY = 37.7f;
-                    }
-                    else{
-                        posicaoSonarX =-95.5f;
-                        posicaoSonarY =-29.0f;
-                    }
-                }
-                else if(nomeCamadaOn == ("GasosoTut")){
-                    if(this.GetComponent<personagem>().chaves.plasma){
-                        posicaoSonarX =94.4f;
-                        posicaoSonarY =-77.3f;
-                    }
-                    else{
-                        posicaoSonarX =92.0f;
-                        posicaoSonarY =39.5f;
-                    }
-                }
-                else if(nomeCamadaOn == ("PlasmaTut")){
-                    if(this.GetComponent<personagem>().chaves.gasoso){
-                        posicaoSonarX =-92.5f;
-                        posicaoSonarY =-63.7f;
-                    }
-                    else{
-                        posicaoSonarX =94.4f;
-                        posicaoSonarY =-77.3f;
-                    }
-                }
+                envocaSonar();
+                
 
                 this.GetComponent<personagem>().pwAtivo = true;
                 this.GetComponent<personagem>().eventarioPSA.sonar--;
@@ -211,6 +229,7 @@ public class powerUps : MonoBehaviour
             coolDown = true;
             if (timeRemaining > 0)
             {
+                envocaSonar();
                 posicionarSonar();
             }
             else{
