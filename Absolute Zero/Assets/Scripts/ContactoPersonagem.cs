@@ -78,41 +78,41 @@ public class ContactoPersonagem : MonoBehaviour
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
-                    int diferenca = gameObject.GetComponent<personagem>().nivelTamanho - other.gameObject.GetComponent<particulasA>().nivelTamanho;
-                    if(diferenca == 2){
-                        tamanhoNextLevel += 50;
-                    }
-                    else if(diferenca == 3){
-                        tamanhoNextLevel += 30;
-                    }
-                    else if(diferenca == 4){
-                        tamanhoNextLevel += 25;
-                    }
-                    else if(diferenca == 5){
-                        tamanhoNextLevel += 20;
-                    }
-                    else if(diferenca == 6){
-                        tamanhoNextLevel += 15;
-                    }
-                    else if(diferenca == 7){
-                        tamanhoNextLevel += 5;
-                    }
-                    else if(diferenca == 8){
-                        tamanhoNextLevel += 2;
-                    }
-                    Debug.Log(tamanhoNextLevel);
-                    Debug.Log(diferenca);
+                    // int diferenca = gameObject.GetComponent<personagem>().nivelTamanho - other.gameObject.GetComponent<particulasA>().nivelTamanho;
+                    // if(diferenca == 2){
+                    //     tamanhoNextLevel += 50;
+                    // }
+                    // else if(diferenca == 3){
+                    //     tamanhoNextLevel += 30;
+                    // }
+                    // else if(diferenca == 4){
+                    //     tamanhoNextLevel += 25;
+                    // }
+                    // else if(diferenca == 5){
+                    //     tamanhoNextLevel += 20;
+                    // }
+                    // else if(diferenca == 6){
+                    //     tamanhoNextLevel += 15;
+                    // }
+                    // else if(diferenca == 7){
+                    //     tamanhoNextLevel += 5;
+                    // }
+                    // else if(diferenca == 8){
+                    //     tamanhoNextLevel += 2;
+                    // }
+                    // Debug.Log(tamanhoNextLevel);
+                    // Debug.Log(diferenca);
 
 
-                    if(gameObject.GetComponent<personagem>().nivelTamanho < 9 && tamanhoNextLevel>=100){
-                        gameObject.GetComponent<personagem>().nivelTamanho +=1;
-                        tamanhoNextLevel = 0;
-                    }
-                        /*
+                    // if(gameObject.GetComponent<personagem>().nivelTamanho < 9 && tamanhoNextLevel>=100){
+                    //     gameObject.GetComponent<personagem>().nivelTamanho +=1;
+                    //     tamanhoNextLevel = 0;
+                    // }
+                        
                         if(gameObject.GetComponent<personagem>().nivelTamanho < 9){
                             gameObject.GetComponent<personagem>().nivelTamanho +=1;
                         }
-                        */
+                        
                     // if(gameObject.transform.localScale.x < 1.3f) { 
                     //     gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                     // }

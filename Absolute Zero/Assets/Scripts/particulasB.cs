@@ -86,7 +86,7 @@ public class particulasB : MonoBehaviour
       
 
         //MovB();
-        float novoTam = (float)nivelTamanho*0.3f+0.3f;
+        float novoTam = (float)nivelTamanho*0.2f+0.15f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
         //fim de codigo para movimentar B
 

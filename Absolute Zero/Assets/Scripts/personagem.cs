@@ -79,7 +79,7 @@ public class personagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float novoTam = (float)nivelTamanho*0.3f+0.45f;
+        float novoTam = (float)nivelTamanho*0.2f-(10-(float)nivelTamanho)*0.1f*0.2f+0.3f;
         rb.transform.localScale = new Vector3(novoTam,novoTam, 0);
     }
 

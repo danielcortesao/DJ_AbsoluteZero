@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class CaracterController : MonoBehaviour
 {
-
-
-
-
-    public float speed = 10;
+    public float initSpeed = 7;
+    public float speed = 7;
     public Text countText;
     public Text winText;
 
@@ -45,6 +42,8 @@ public class CaracterController : MonoBehaviour
 
     void Update()
     {
+        speed = initSpeed - gameObject.GetComponent<personagem>().nivelTamanho*0.4f;
+        
         MouseMove();
     }
 
