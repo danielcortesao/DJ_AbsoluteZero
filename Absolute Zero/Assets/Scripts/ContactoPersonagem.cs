@@ -433,7 +433,7 @@ public class ContactoPersonagem : MonoBehaviour
     }
     IEnumerator FadeControl(GameObject tmpObj,float t)
     {
-        fadeAmount = 0.1f;
+        float fadeAmount = 0.1f;
         var material = tmpObj.GetComponent<Renderer> ().material;
         var color = material.color;
  
