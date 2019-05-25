@@ -396,8 +396,23 @@ public class ContactoPersonagem : MonoBehaviour
             //criaParticulas.GetComponent<particulasC>().activaPSA(c,false);
             //Destroi filhos passados 5 segundos
             Destroy(tmpObj,5.0f);
+            StartCoroutine (FadeControl(tmpObj,5.0f)); 
         }
         
+    }
+    IEnumerator FadeControl(GameObject tmpObj,float t)
+    {
+        fadeAmount = 0.1f;
+        var material = tmpObj.GetComponent<Renderer> ().material;
+        var color = material.color;
+ 
+        color.a = fadeAmount;
+ 
+        while (fadeAmount <= 0.9f)
+        {
+            material.color = new Color (color.r, color.g, color.b, fadeAmount + (0.01f * Time.deltaTime));
+            yield return null;
+        }
     }
     private void removeEventario(string s){
         if(s == "plasma"){
