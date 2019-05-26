@@ -426,25 +426,41 @@ public class ContactoPersonagem : MonoBehaviour
             removePowerUp(c);
             //criaParticulas.GetComponent<particulasC>().activaPSA(c,false);
             //Destroi filhos passados 5 segundos
-            Destroy(tmpObj,5.0f);
-            StartCoroutine (FadeControl(tmpObj,5.0f)); 
+            Destroy(tmpObj,2.0f);
+            StartCoroutine (FadeControl(tmpObj, 2.0f)); 
         }
         
     }
-    IEnumerator FadeControl(GameObject tmpObj,float t)
-    {
-        float fadeAmount = 0.1f;
+    public IEnumerator FadeControl(GameObject tmpObj, float TotalTime) {
         var material = tmpObj.GetComponent<Renderer> ().material;
         var color = material.color;
- 
-        color.a = fadeAmount;
- 
-        while (fadeAmount <= 0.9f)
-        {
-            material.color = new Color (color.r, color.g, color.b, fadeAmount + (0.01f * Time.deltaTime));
-            yield return null;
+        Debug.Log("Starting Infestation!");
+        float ElapsedTime = 0.0f;
+        while (ElapsedTime < TotalTime) {
+              ElapsedTime += Time.deltaTime;
+              material.color = new Color (color.r, color.g, color.b, 1-(ElapsedTime / TotalTime));
+              yield return null;
         }
+        Debug.Log("Ending Infestation!");
     }
+
+//     IEnumerator FadeControl(GameObject tmpObj,float t)
+//     {
+
+// yield return null;
+
+//         fadeAmount += (0.01f * Time.deltaTime)
+//         var material = tmpObj.GetComponent<Renderer> ().material;
+//         var color = material.color;
+//  material.color = new Color (color.r, color.g, color.b, fadeAmount);
+//         color.a = fadeAmount;
+ 
+//         while (fadeAmount <= 0.9f)
+//         {
+//             material.color = new Color (color.r, color.g, color.b, fadeAmount + (0.01f * Time.deltaTime));
+//             yield return null;
+//         }
+//     }
     private void removeEventario(string s){
         if(s == "plasma"){
             gameObject.GetComponent<personagem>().chaves.plasma = false;
