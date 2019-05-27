@@ -434,14 +434,14 @@ public class ContactoPersonagem : MonoBehaviour
     public IEnumerator FadeControl(GameObject tmpObj, float TotalTime) {
         var material = tmpObj.GetComponent<Renderer> ().material;
         var color = material.color;
-        Debug.Log("Starting Infestation!");
+        //Debug.Log("Starting Fade!");
         float ElapsedTime = 0.0f;
         while (ElapsedTime < TotalTime) {
               ElapsedTime += Time.deltaTime;
               material.color = new Color (color.r, color.g, color.b, 1-(ElapsedTime / TotalTime));
               yield return null;
         }
-        Debug.Log("Ending Infestation!");
+        //Debug.Log("Ending Fade!");
     }
 
 //     IEnumerator FadeControl(GameObject tmpObj,float t)

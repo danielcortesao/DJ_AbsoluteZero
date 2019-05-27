@@ -42,7 +42,7 @@ public class CaracterController : MonoBehaviour
 
     void Update()
     {
-        speed = initSpeed - gameObject.GetComponent<personagem>().nivelTamanho*0.3f;
+        speed = initSpeed - gameObject.GetComponent<personagem>().nivelTamanho*0.35f;
         
         MouseMove();
     }
