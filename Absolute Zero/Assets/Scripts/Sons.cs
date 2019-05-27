@@ -16,6 +16,11 @@ public class Sons : MonoBehaviour {
     bool teclaInvisivel = false;
     bool teclaMagnetico = false;
 
+    bool sonarPressed = false;
+    bool invisivelPressed = false;
+    bool magneticoPressed = false;
+
+
     private float timeRemaining;
 
     public int timeToDecrease = 2;
@@ -43,14 +48,17 @@ public class Sons : MonoBehaviour {
 
         if (Input.GetKeyDown("1"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.sonar == 0)
+            if (personagem.GetComponent<personagem>().eventarioPSA.sonar == 0 || sonarPressed == true)
             {
                 audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
             }
-            else{
+            else if (sonarPressed == false){
+               
                 audioSource[3].Play();
                 teclaSonar = true;
+                sonarPressed = true;
+
             }
 
         }
@@ -62,6 +70,7 @@ public class Sons : MonoBehaviour {
                 audioSource[3].Stop();
                 timeRemaining = 15;
                 teclaSonar = false;
+                sonarPressed = false;
             }
         }
 
@@ -70,15 +79,16 @@ public class Sons : MonoBehaviour {
 
         if (Input.GetKeyDown("2"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.magnetico == 0)
+            if (personagem.GetComponent<personagem>().eventarioPSA.magnetico == 0 || magneticoPressed == true)
             {
                 audioSource[1].Play();
             }
-            else
+            else if (magneticoPressed == false)
             {
                 audioSource[5].Play();
                 audioSource[0].volume = 0.3f;
                 teclaMagnetico = true;
+                magneticoPressed = true;
             }
 
         }
@@ -92,22 +102,24 @@ public class Sons : MonoBehaviour {
                 audioSource[0].volume = 1;
                 timeRemaining = 15;
                 teclaMagnetico = false;
+                magneticoPressed = false;
             }
         }
 
         // INVISIBILIDADE 
         if (Input.GetKeyDown("3"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.invisibildade == 0)
+            if (personagem.GetComponent<personagem>().eventarioPSA.invisibildade == 0 || invisivelPressed == true)
             {
                 //audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
                 
             }
-            else{
+            else if (invisivelPressed == false){
                 audioSource[0].Stop();
                 audioSource[4].Play();
                 teclaInvisivel = true;
+                invisivelPressed = true;
             }
 
         }
@@ -120,6 +132,7 @@ public class Sons : MonoBehaviour {
                 audioSource[0].Play();
                 timeRemaining = 15;
                 teclaInvisivel = false;
+                invisivelPressed = false;
             }
         }
 
