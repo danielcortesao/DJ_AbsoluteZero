@@ -69,20 +69,20 @@ public class TransicoesScript : MonoBehaviour {
 				mudaDeCamada();
 			}
 		}
-		// else if (!keyCima && (Input.GetKeyDown(KeyCode.DownArrow) || micInput.GetComponent<MicrophoneInput>().vozBaixo) && personagemOnTransicao){
-		// 	if(player.GetComponent<personagem>().chaves.plasma && plasma){
-		// 		mudaDeCamada();
-		// 	}
-		// 	else if(player.GetComponent<personagem>().chaves.solido && solido){
-		// 		mudaDeCamada();
-		// 	}
-		// 	else if(player.GetComponent<personagem>().chaves.gasoso && gasoso){
-		// 		mudaDeCamada();
-		// 	}
-		// 	else if(player.GetComponent<personagem>().chaves.liquido && liquido){
-		// 		mudaDeCamada();
-		// 	}
-		//}
+		else if (!keyCima && (Input.GetKeyDown(KeyCode.DownArrow) || micInput.GetComponent<MicrophoneInput>().vozBaixo) && personagemOnTransicao){
+			if(player.GetComponent<personagem>().chaves.plasma && plasma){
+				mudaDeCamada();
+			}
+			else if(player.GetComponent<personagem>().chaves.solido && solido){
+				mudaDeCamada();
+			}
+			else if(player.GetComponent<personagem>().chaves.gasoso && gasoso){
+				mudaDeCamada();
+			}
+			else if(player.GetComponent<personagem>().chaves.liquido && liquido){
+				mudaDeCamada();
+			}
+		}
 		if(inTransition){
 			transicaoCamada();
 		}
