@@ -107,13 +107,13 @@ public class powerUps : MonoBehaviour
                     if (x > camera.transform.position.x)
                     {   //x é na aresta do viewport lado esq
                         xIntersecao = p1.x;
-                        Debug.Log("3 vieport_a: m:" + m + " b:" + b + " yint: " +  yIntersecao + " p1.x:" + p1.x+ " p1.y:" + p1.y+ " p2.x:" + p2.x+ " p2.y:" + p2.y);
+//                        Debug.Log("3 vieport_a: m:" + m + " b:" + b + " yint: " +  yIntersecao + " p1.x:" + p1.x+ " p1.y:" + p1.y+ " p2.x:" + p2.x+ " p2.y:" + p2.y);
 
                         yIntersecao = m * p1.x + b;
                     }
                     else
                     {   //x é na aresta do viewport lado drt
-                        Debug.Log("3 vieport_b: m:" + m + " b:" + b + " yint: " +  yIntersecao + " p1.x:" + p1.x+ " p1.y:" + p1.y+ " p2.x:" + p2.x+ " p2.y:" + p2.y);
+//                        Debug.Log("3 vieport_b: m:" + m + " b:" + b + " yint: " +  yIntersecao + " p1.x:" + p1.x+ " p1.y:" + p1.y+ " p2.x:" + p2.x+ " p2.y:" + p2.y);
 
                         xIntersecao = p2.x;
                         yIntersecao = m * p2.x + b;
