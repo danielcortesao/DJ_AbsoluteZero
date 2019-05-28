@@ -427,8 +427,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8699951, y: -7}
-  m_SizeDelta: {x: 400, y: 160}
+  m_AnchoredPosition: {x: -0.000019073, y: 23.95}
+  m_SizeDelta: {x: 523.5, y: 195.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150821337
 MonoBehaviour:
@@ -769,7 +769,8 @@ AudioSource:
   m_GameObject: {fileID: 314503799}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 2d518f12f4eead14487589f91fa3e0b8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2527,10 +2528,10 @@ RectTransform:
   m_Father: {fileID: 2102590300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.600006, y: 8.6}
-  m_SizeDelta: {x: -5.2, y: -13.259997}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 16.8, y: -4.9}
+  m_SizeDelta: {x: 1358.2, y: 641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894470877
 MonoBehaviour:
@@ -3201,8 +3202,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8699951, y: -7}
-  m_SizeDelta: {x: 400, y: 160}
+  m_AnchoredPosition: {x: 0, y: 21.39}
+  m_SizeDelta: {x: 523.5, y: 190.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1106014687
 MonoBehaviour:
@@ -3677,8 +3678,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8700256, y: -7}
-  m_SizeDelta: {x: 400, y: 160}
+  m_AnchoredPosition: {x: -0.000015259, y: 0.000011444}
+  m_SizeDelta: {x: 703.3, y: 319.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190816022
 MonoBehaviour:
@@ -3700,7 +3701,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1c6a5110b9eb2b449b17046ba51ab17a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f279a3cea1ac42448d0a24f685877b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3880,10 +3881,10 @@ RectTransform:
   m_Father: {fileID: 894470876}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.000017226, y: 515}
+  m_SizeDelta: {x: 1284.6, y: 145.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254867362
 MonoBehaviour:
@@ -3961,7 +3962,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8699951, y: -10}
+  m_AnchoredPosition: {x: -0.000014305, y: 6}
   m_SizeDelta: {x: 400, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1259870795
@@ -3984,7 +3985,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 28a29ea4958017e4ab7ab53587a20308, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b56bf48e189df941a5844abd5d3a5d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4346,8 +4347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8699951, y: -7}
-  m_SizeDelta: {x: 400, y: 160}
+  m_AnchoredPosition: {x: -0.000011444, y: 21.38999}
+  m_SizeDelta: {x: 523.5, y: 190.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525631186
 MonoBehaviour:
@@ -4508,8 +4509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8699951, y: -7}
-  m_SizeDelta: {x: 400, y: 160}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 21.39}
+  m_SizeDelta: {x: 523.5, y: 190.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570989776
 MonoBehaviour:
@@ -9964,7 +9965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.87, y: -116}
+  m_AnchoredPosition: {x: 1.8701, y: -231}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011600804
@@ -10242,8 +10243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.8699951, y: -10}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 0.000015259, y: 6}
+  m_SizeDelta: {x: 581, y: 282.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2131222926
 MonoBehaviour:
@@ -10265,7 +10266,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: cc70b023e301fd54eaf39057494569cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f0e9433058270e43be06fff554a07e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

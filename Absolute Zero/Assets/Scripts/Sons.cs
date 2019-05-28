@@ -26,13 +26,38 @@ public class Sons : MonoBehaviour {
     public int timeToDecrease = 2;
     public GameObject personagem;
     // Use this for initialization
-    void Start () {
+
+    IEnumerator Espera(int s)
+    {
+        yield return new WaitForSeconds(s);
+    }
+
+        void Start () {
 
         timeRemaining = 15;
         audioSource = this.GetComponentsInChildren<AudioSource>();
         audioSource[0].Play();
+        audioSource[0].volume = 0.5f;
+        int j = 0;
+        int i = 0;
+       // for (int i =0; i<=6; i++)
+       //{
+       //     j = i + 2;
+       //     audioSource[i].PlayDelayed(1+j);
+       // }
 
-        foreach(AudioSource sound in audioSource){
+       
+        // audioSource[0].PlayDelayed(1); //musica de fundo
+        // audioSource[0].Pause();
+        // audioSource[1].PlayDelayed(3);  //erro
+        // audioSource[2].PlayDelayed(5); //musica apanhar 
+        // audioSource[3].PlayDelayed(7); //sonar
+        // audioSource[4].PlayDelayed(9); //invisivel
+        // audioSource[5].PlayDelayed(11); //magnetico
+        // audioSource[6].PlayDelayed(13); //perde psa ou chave
+
+
+        foreach (AudioSource sound in audioSource){
             Debug.Log(sound);
         }
 
@@ -43,6 +68,67 @@ public class Sons : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (Input.GetKeyDown("z")) //musica de fundo
+        {
+            if (audioSource[0].isPlaying)
+                audioSource[0].Pause();
+            else
+                audioSource[0].PlayDelayed(0);
+            
+        }
+        if (Input.GetKeyDown("x")) //erro
+        {
+            audioSource[1].volume = 1.0f;
+            if (audioSource[1].isPlaying)
+                audioSource[1].Pause();
+            else
+                audioSource[1].PlayDelayed(0);
+
+        }
+        if (Input.GetKeyDown("c")) //musica apanhar
+        {
+            if (audioSource[2].isPlaying)
+                audioSource[2].Pause();
+            else
+                audioSource[2].PlayDelayed(0);
+
+        }
+        if (Input.GetKeyDown("v")) //sonar
+        {
+            if (audioSource[3].isPlaying)
+                audioSource[3].Pause();
+            else
+                audioSource[3].PlayDelayed(0);
+
+        }
+        if (Input.GetKeyDown("b")) //invisivel
+        {
+            audioSource[4].volume = 1.0f;
+            if (audioSource[4].isPlaying)
+                audioSource[4].Pause();
+            else
+                audioSource[4].PlayDelayed(0);
+
+        }
+        if (Input.GetKeyDown("n")) //musica magnetico
+        {
+            audioSource[5].volume = 1.0f;
+            //audioSource[5]
+            if (audioSource[5].isPlaying)
+                audioSource[5].Pause();
+            else
+                audioSource[5].PlayDelayed(0);
+
+        }
+        if (Input.GetKeyDown("m")) //musica perde chave ou psa
+        {
+            audioSource[6].volume = 1.0f;
+            if (audioSource[6].isPlaying)
+                audioSource[6].Pause();
+            else
+                audioSource[6].PlayDelayed(0);
+
+        }
 
         // ---------- SONAR --------
 
