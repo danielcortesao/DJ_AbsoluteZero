@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CaracterController : MonoBehaviour
 {
+    public GameObject personagem;
     public float initSpeed = 8;
     public float speed = 8;
     public Text countText;
@@ -42,8 +43,16 @@ public class CaracterController : MonoBehaviour
 
     void Update()
     {
-        speed = initSpeed - gameObject.GetComponent<personagem>().nivelTamanho*0.35f;
+        if(this.GetComponent<personagem>().PSAActivas.camaraLenta == true){
+            speed = 2*initSpeed - gameObject.GetComponent<personagem>().nivelTamanho*0.35f;
+        }
+        else{
+            speed = initSpeed - gameObject.GetComponent<personagem>().nivelTamanho*0.35f;  
+        }
         
+
+
+
         MouseMove();
     }
 
