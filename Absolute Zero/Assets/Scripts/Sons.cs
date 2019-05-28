@@ -68,6 +68,8 @@ public class Sons : MonoBehaviour {
 
     void FixedUpdate()
     {
+
+        /*
         if (Input.GetKeyDown("z")) //musica de fundo
         {
             if (audioSource[0].isPlaying)
@@ -129,6 +131,27 @@ public class Sons : MonoBehaviour {
                 audioSource[6].PlayDelayed(0);
 
         }
+
+         if (Input.GetKeyDown(",")) //musica perde chave ou psa
+        {
+            //audioSource[7].volume = 1.0f;
+            if (audioSource[7].isPlaying)
+                audioSource[7].Pause();
+            else
+                audioSource[7].PlayDelayed(0);
+
+        }
+         if (Input.GetKeyDown(".")) //musica perde chave ou psa
+        {
+            //audioSource[8].volume = 1.0f;
+            if (audioSource[8].isPlaying)
+                audioSource[8].Pause();
+            else
+                audioSource[8].PlayDelayed(0);
+
+        }
+
+    */
 
         // ---------- SONAR --------
 
