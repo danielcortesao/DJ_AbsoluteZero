@@ -73,7 +73,7 @@ public class Sons : MonoBehaviour {
         if (Input.GetKeyDown("z")) //musica de fundo
         {
             if (audioSource[0].isPlaying)
-                audioSource[0].Pause();
+                audioSource[0].Stop();
             else
                 audioSource[0].PlayDelayed(0);
             
@@ -82,7 +82,7 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[1].volume = 1.0f;
             if (audioSource[1].isPlaying)
-                audioSource[1].Pause();
+                audioSource[1].Stop();
             else
                 audioSource[1].PlayDelayed(0);
 
@@ -90,7 +90,7 @@ public class Sons : MonoBehaviour {
         if (Input.GetKeyDown("c")) //musica apanhar
         {
             if (audioSource[2].isPlaying)
-                audioSource[2].Pause();
+                audioSource[2].Stop();
             else
                 audioSource[2].PlayDelayed(0);
 
@@ -98,7 +98,7 @@ public class Sons : MonoBehaviour {
         if (Input.GetKeyDown("v")) //sonar
         {
             if (audioSource[3].isPlaying)
-                audioSource[3].Pause();
+                audioSource[3].Stop();
             else
                 audioSource[3].PlayDelayed(0);
 
@@ -107,7 +107,7 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[4].volume = 1.0f;
             if (audioSource[4].isPlaying)
-                audioSource[4].Pause();
+                audioSource[4].Stop();
             else
                 audioSource[4].PlayDelayed(0);
 
@@ -117,7 +117,7 @@ public class Sons : MonoBehaviour {
             //audioSource[5].volume = 1.0f;
             //audioSource[5]
             if (audioSource[5].isPlaying)
-                audioSource[5].Pause();
+                audioSource[5].Stop();
             else
                 audioSource[5].PlayDelayed(0);
 
@@ -126,7 +126,7 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[6].volume = 1.0f;
             if (audioSource[6].isPlaying)
-                audioSource[6].Pause();
+                audioSource[6].Stop();
             else
                 audioSource[6].PlayDelayed(0);
 
@@ -135,9 +135,19 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[6].volume = 1.0f;
             if (audioSource[7].isPlaying)
-                audioSource[7].Pause();
+                audioSource[7].Stop();
             else
                 audioSource[7].PlayDelayed(0);
+
+        }
+
+        if (Input.GetKeyDown(".")) //musica perde chave ou psa
+        {
+            //audioSource[6].volume = 1.0f;
+            if (audioSource[8].isPlaying)
+                audioSource[8].Stop();
+            else
+                audioSource[8].PlayDelayed(0);
 
         }
 

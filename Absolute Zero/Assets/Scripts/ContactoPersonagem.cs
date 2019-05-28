@@ -103,6 +103,7 @@ public class ContactoPersonagem : MonoBehaviour
                 //Se Player >= outro objecto (localScale tem que ser alterado para o parametro do tamanho)
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
+                    audioSource[8].Play();
                     // int diferenca = gameObject.GetComponent<personagem>().nivelTamanho - other.gameObject.GetComponent<particulasA>().nivelTamanho;
                     // if(diferenca == 2){
                     //     tamanhoNextLevel += 50;
@@ -146,6 +147,7 @@ public class ContactoPersonagem : MonoBehaviour
                 {//Se Player < outro objecto
                     if(gameObject.GetComponent<personagem>().nivelTamanho > 1){
                         gameObject.GetComponent<personagem>().nivelTamanho -=1;
+                        audioSource[6].Play();
                     }
 
                     //                 if (gameObject.transform.localScale.x >= 0.4)
@@ -164,6 +166,7 @@ public class ContactoPersonagem : MonoBehaviour
                 if (gameObject.transform.localScale.x >= other.transform.localScale.x)
                 {
                     //Não acontece nada ao player
+                    audioSource[8].Play();
                 }
                 else
                 {   
