@@ -59,13 +59,13 @@ public class MicrophoneInput : MonoBehaviour {
 			vozBaixo = true;
         }
         else if(averagedFrequency < defaultFrequency - sensibilityFrequency){
-            //Debug.Log("CIMA-GetAveragedFrequency" + averagedFrequency);
+            Debug.Log("CIMA-GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.red;
 			handlerFreq.colors = cb;
 			vozCima = true;
         }
         else{
-            //Debug.Log ("-----GetAveragedFrequency" + averagedFrequency);
+            Debug.Log ("-----GetAveragedFrequency" + averagedFrequency);
 			cb.normalColor = Color.white;
 			handlerFreq.colors = cb;
 			vozCima = false;
