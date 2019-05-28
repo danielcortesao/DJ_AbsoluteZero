@@ -171,7 +171,6 @@ MonoBehaviour:
   camadaFim: {fileID: 0}
   botao: {fileID: 0}
   texto: {fileID: 0}
-  imgTutTransicao: {fileID: 0}
   caixaTexto: {fileID: 0}
 --- !u!70 &16640065
 CapsuleCollider2D:
@@ -248,7 +247,6 @@ MonoBehaviour:
   camadaFim: {fileID: 1600658578}
   botao: {fileID: 0}
   texto: {fileID: 1254867362}
-  imgTutTransicao: {fileID: 0}
   caixaTexto: {fileID: 2102590296}
 --- !u!70 &50728094
 CapsuleCollider2D:
@@ -306,7 +304,8 @@ AudioSource:
   m_GameObject: {fileID: 96246689}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243062981682584812, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 0f16b48a683b24539a0b337ce7d9e8c7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -450,7 +449,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2e10e57de61c2234f9e3bc8c01e2ba15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be0bcfcc24c71ab4cb5efe00739f8103, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -769,7 +768,7 @@ AudioSource:
   m_GameObject: {fileID: 314503799}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+  OutputAudioMixerGroup: {fileID: 243290314940079854, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2d518f12f4eead14487589f91fa3e0b8, type: 3}
   m_PlayOnAwake: 0
@@ -1666,7 +1665,8 @@ AudioSource:
   m_GameObject: {fileID: 639418638}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243792747298800994, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c3dc562cd96b8154ebd050e4bfc7c29a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2309,7 +2309,6 @@ MonoBehaviour:
   camadaFim: {fileID: 893882527}
   botao: {fileID: 0}
   texto: {fileID: 1254867362}
-  imgTutTransicao: {fileID: 0}
   caixaTexto: {fileID: 2102590296}
 --- !u!70 &848072501
 CapsuleCollider2D:
@@ -2367,7 +2366,8 @@ AudioSource:
   m_GameObject: {fileID: 852198643}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243886005350635828, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 7353ca7dc76534089bcb8b65821ffeaa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2889,7 +2889,8 @@ AudioSource:
   m_GameObject: {fileID: 984147726}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243224426086989630, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1d40f4cf970c64dfcb426dfe0c608900, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3104,7 +3105,6 @@ MonoBehaviour:
   camadaFim: {fileID: 1600658578}
   botao: {fileID: 0}
   texto: {fileID: 1254867362}
-  imgTutTransicao: {fileID: 2131222924}
   caixaTexto: {fileID: 2102590296}
 --- !u!70 &1052958267
 CapsuleCollider2D:
@@ -3225,7 +3225,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: be0bcfcc24c71ab4cb5efe00739f8103, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e10e57de61c2234f9e3bc8c01e2ba15, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4696,7 +4696,8 @@ AudioSource:
   m_GameObject: {fileID: 1625928294}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243410151132448824, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 5201d14484b7842ca8d421b29efcb631, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -9842,7 +9843,8 @@ AudioSource:
   m_GameObject: {fileID: 1994280373}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243505393825737938, guid: cf7bef2e6d3c51847bbcd49e6c1d4965,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 181c4c19ff398473da18a98eefc8fb62, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

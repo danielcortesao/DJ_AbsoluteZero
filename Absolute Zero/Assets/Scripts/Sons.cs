@@ -37,7 +37,7 @@ public class Sons : MonoBehaviour {
         timeRemaining = 15;
         audioSource = this.GetComponentsInChildren<AudioSource>();
         audioSource[0].Play();
-        audioSource[0].volume = 0.5f;
+        //audioSource[0].volume = 0.5f;
         int j = 0;
         int i = 0;
        // for (int i =0; i<=6; i++)
@@ -78,7 +78,7 @@ public class Sons : MonoBehaviour {
         }
         if (Input.GetKeyDown("x")) //erro
         {
-            audioSource[1].volume = 1.0f;
+            //audioSource[1].volume = 1.0f;
             if (audioSource[1].isPlaying)
                 audioSource[1].Pause();
             else
@@ -103,7 +103,7 @@ public class Sons : MonoBehaviour {
         }
         if (Input.GetKeyDown("b")) //invisivel
         {
-            audioSource[4].volume = 1.0f;
+            //audioSource[4].volume = 1.0f;
             if (audioSource[4].isPlaying)
                 audioSource[4].Pause();
             else
@@ -112,7 +112,7 @@ public class Sons : MonoBehaviour {
         }
         if (Input.GetKeyDown("n")) //musica magnetico
         {
-            audioSource[5].volume = 1.0f;
+            //audioSource[5].volume = 1.0f;
             //audioSource[5]
             if (audioSource[5].isPlaying)
                 audioSource[5].Pause();
@@ -122,7 +122,7 @@ public class Sons : MonoBehaviour {
         }
         if (Input.GetKeyDown("m")) //musica perde chave ou psa
         {
-            audioSource[6].volume = 1.0f;
+            //audioSource[6].volume = 1.0f;
             if (audioSource[6].isPlaying)
                 audioSource[6].Pause();
             else
@@ -185,6 +185,8 @@ public class Sons : MonoBehaviour {
             if (timeRemaining <= 0)
             {
                 audioSource[5].Stop();
+
+
                 audioSource[0].volume = 1;
                 timeRemaining = 15;
                 teclaMagnetico = false;

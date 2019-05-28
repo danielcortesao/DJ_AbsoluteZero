@@ -348,7 +348,7 @@ public class ContactoPersonagem : MonoBehaviour
                             if (!ajudaLento)
                             {
                                 caixaTexto.SetActive(true);
-                                imgTutInvisivel.SetActive(true);
+                                imgTutLento.SetActive(true);
                                 frase = "Ganhaste uma partícula sub-atómica! " + '\n' + " Para usares pressiona a tecla 4.";
                                 parado = true;
                                 Time.timeScale = 0.0f;
