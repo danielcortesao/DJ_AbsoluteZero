@@ -65,6 +65,8 @@ public class Sons : MonoBehaviour {
 
     }
 
+    
+
 
     void FixedUpdate()
     {
@@ -127,6 +129,15 @@ public class Sons : MonoBehaviour {
                 audioSource[6].Pause();
             else
                 audioSource[6].PlayDelayed(0);
+
+        }
+        if (Input.GetKeyDown(",")) //musica perde chave ou psa
+        {
+            //audioSource[6].volume = 1.0f;
+            if (audioSource[7].isPlaying)
+                audioSource[7].Pause();
+            else
+                audioSource[7].PlayDelayed(0);
 
         }
 
