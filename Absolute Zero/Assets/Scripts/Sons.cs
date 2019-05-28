@@ -65,15 +65,13 @@ public class Sons : MonoBehaviour {
 
     }
 
-    
-
 
     void FixedUpdate()
     {
         if (Input.GetKeyDown("z")) //musica de fundo
         {
             if (audioSource[0].isPlaying)
-                audioSource[0].Stop();
+                audioSource[0].Pause();
             else
                 audioSource[0].PlayDelayed(0);
             
@@ -82,7 +80,7 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[1].volume = 1.0f;
             if (audioSource[1].isPlaying)
-                audioSource[1].Stop();
+                audioSource[1].Pause();
             else
                 audioSource[1].PlayDelayed(0);
 
@@ -90,7 +88,7 @@ public class Sons : MonoBehaviour {
         if (Input.GetKeyDown("c")) //musica apanhar
         {
             if (audioSource[2].isPlaying)
-                audioSource[2].Stop();
+                audioSource[2].Pause();
             else
                 audioSource[2].PlayDelayed(0);
 
@@ -98,7 +96,7 @@ public class Sons : MonoBehaviour {
         if (Input.GetKeyDown("v")) //sonar
         {
             if (audioSource[3].isPlaying)
-                audioSource[3].Stop();
+                audioSource[3].Pause();
             else
                 audioSource[3].PlayDelayed(0);
 
@@ -107,7 +105,7 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[4].volume = 1.0f;
             if (audioSource[4].isPlaying)
-                audioSource[4].Stop();
+                audioSource[4].Pause();
             else
                 audioSource[4].PlayDelayed(0);
 
@@ -117,7 +115,7 @@ public class Sons : MonoBehaviour {
             //audioSource[5].volume = 1.0f;
             //audioSource[5]
             if (audioSource[5].isPlaying)
-                audioSource[5].Stop();
+                audioSource[5].Pause();
             else
                 audioSource[5].PlayDelayed(0);
 
@@ -126,28 +124,9 @@ public class Sons : MonoBehaviour {
         {
             //audioSource[6].volume = 1.0f;
             if (audioSource[6].isPlaying)
-                audioSource[6].Stop();
+                audioSource[6].Pause();
             else
                 audioSource[6].PlayDelayed(0);
-
-        }
-        if (Input.GetKeyDown(",")) //musica perde chave ou psa
-        {
-            //audioSource[6].volume = 1.0f;
-            if (audioSource[7].isPlaying)
-                audioSource[7].Stop();
-            else
-                audioSource[7].PlayDelayed(0);
-
-        }
-
-        if (Input.GetKeyDown(".")) //musica perde chave ou psa
-        {
-            //audioSource[6].volume = 1.0f;
-            if (audioSource[8].isPlaying)
-                audioSource[8].Stop();
-            else
-                audioSource[8].PlayDelayed(0);
 
         }
 
@@ -155,9 +134,9 @@ public class Sons : MonoBehaviour {
 
         if (Input.GetKeyDown("1"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.sonar == 0 || sonarPressed == true)
+            if (personagem.GetComponent<personagem>().eventarioPSA.sonar == 0 || sonarPressed == true || personagem.GetComponent<powerUps>().coolDown == true)
             {
-                audioSource[0].volume = 0.5f;
+                //audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
             }
             else if (sonarPressed == false){
@@ -186,14 +165,14 @@ public class Sons : MonoBehaviour {
 
         if (Input.GetKeyDown("2"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.magnetico == 0 || magneticoPressed == true)
+            if (personagem.GetComponent<personagem>().eventarioPSA.magnetico == 0 || magneticoPressed == true || personagem.GetComponent<powerUps>().coolDown == true)
             {
                 audioSource[1].Play();
             }
             else if (magneticoPressed == false)
             {
                 audioSource[5].Play();
-                audioSource[0].volume = 0.3f;
+                //audioSource[0].volume = 0.3f;
                 teclaMagnetico = true;
                 magneticoPressed = true;
             }
@@ -208,7 +187,7 @@ public class Sons : MonoBehaviour {
                 audioSource[5].Stop();
 
 
-                audioSource[0].volume = 1;
+                //audioSource[0].volume = 1;
                 timeRemaining = 15;
                 teclaMagnetico = false;
                 magneticoPressed = false;
@@ -218,7 +197,7 @@ public class Sons : MonoBehaviour {
         // INVISIBILIDADE 
         if (Input.GetKeyDown("3"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.invisibildade == 0 || invisivelPressed == true)
+            if (personagem.GetComponent<personagem>().eventarioPSA.invisibildade == 0 || invisivelPressed == true || personagem.GetComponent<powerUps>().coolDown == true)
             {
                 //audioSource[0].volume = 0.5f;
                 audioSource[1].Play();
@@ -250,7 +229,7 @@ public class Sons : MonoBehaviour {
 
         if (Input.GetKeyDown("4"))
         {
-            if (personagem.GetComponent<personagem>().eventarioPSA.camaraLenta > 0)
+            if (personagem.GetComponent<personagem>().eventarioPSA.camaraLenta > 0 && personagem.GetComponent<powerUps>().coolDown == false)
             {
                 tempoInicio = Time.realtimeSinceStartup;
                 lento = true;

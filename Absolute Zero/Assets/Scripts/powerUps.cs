@@ -29,7 +29,7 @@ public class powerUps : MonoBehaviour
     private float timeRemaining;
     private float timeCoolDown;
 
-    private bool coolDown;
+    public bool coolDown;
 
     bool invisivel, mag, lenta,Sonar;
     public string nomeCamadaOn;
