@@ -22,6 +22,7 @@ public class ContactoPersonagem : MonoBehaviour
     public GameObject imgTutLento;
     public GameObject imgTutChave;
     public GameObject imgTutTransicao;
+    public GameObject Sons;
 
     public GameObject[] powerUpsOnPersonagem;
     public GameObject chaveGasosoOnPersonagem;

@@ -35,15 +35,20 @@ public class TransicoesScript : MonoBehaviour {
 
     public GameObject caixaTexto;
 
+    private AudioSource[] audioSource;
+    public GameObject Sons;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		personagemOnTransicao = false;
 		m_MainCamera = Camera.main;
 		inTransition = false;
         micro = false;
         parado = false;
 
+        
+        audioSource = player.GetComponent<ContactoPersonagem>().Sons.GetComponentsInChildren<AudioSource>();
         //imgTutTransicao.SetActive(false);
     }
 
@@ -166,17 +171,24 @@ public class TransicoesScript : MonoBehaviour {
         	camadaInicio.SetActive(false);
         	if(plasma){
 	    		player.GetComponent<powerUps>().nomeCamadaOn = "PlasmaTut";
-	    	}
+                audioSource[7].Stop();
+                audioSource[0].Play();
+            }
         	else if(gasoso){
     			player.GetComponent<powerUps>().nomeCamadaOn = "GasosoTut";
+                audioSource[0].Stop();
+                audioSource[7].Play();
 	    	}
 	    	else if(liquido){
 	    		player.GetComponent<powerUps>().nomeCamadaOn = "LiquidoTut";
-
-	    	}
+                audioSource[7].Stop();
+                audioSource[0].Play();
+            }
 	    	else if(solido){
 	    		player.GetComponent<powerUps>().nomeCamadaOn = "Solido";
-	    	}
+                audioSource[0].Stop();
+                audioSource[7].Play();
+            }
 	    	
         	
 
